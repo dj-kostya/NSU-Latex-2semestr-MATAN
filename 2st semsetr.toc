@@ -1,0 +1,8 @@
+\babel@toc {russian}{}
+\contentsline {section}{\numberline {1}ГЛАВА}{1}% 
+\contentsline {subsection}{\numberline {1.1}Определение ряда. Основные свойства}{1}% 
+\contentsline {subsubsection}{\numberline {1.1.0}Конечные суммы}{1}% 
+\contentsline {subsubsection}{\numberline {1.1.1}Числовые ряды}{1}% 
+\contentsline {subsubsection}{\numberline {1.1.2}Основные свойства}{2}% 
+\contentsline {subsubsection}{\numberline {1.1.3}Неотрицательные числовые ряды}{4}% 
+\contentsline {subsubsection}{\numberline {1.1.4}Телескопический признак. Эталонный ряд $\DOTSB \sum@ \slimits@ _{k=1}^{\infty }{\frac {1}{n^p}}$}{5}% 
