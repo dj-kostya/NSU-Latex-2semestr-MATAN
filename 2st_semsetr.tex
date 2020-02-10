@@ -42,7 +42,7 @@
 \numberwithin{theorem}{subsection}
 \numberwithin{lemma}{subsection}
 \numberwithin{definition}{subsection}
-\numberwithin{comment}{subsection}
+\numberwithin{comment*}{subsection}
 \numberwithin{consequence}{subsection}
 \numberwithin{property}{subsection}
 \begin{document}
@@ -296,7 +296,7 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
 %\setcounter{theorem}{0}
 \definition Ряд вида $a_1 - a_2 + a_3 - a_4 + ... = \sum_{n=1}^{\infty}{(-1)^n-1 a_n}$ называется знакочередующимся, где $\forall{n}\ a_n > 0$
 \begin{theorem}[Признак сходимости Лейбница знакочередующихся рядов]
- Пусть дан знакочередующийся ряд $\sum_{n=1}^{\infty}{(-1)^n-1 a_n}\ a_n > 0$\\
+ Пусть дан знакочередующийся ряд $\sum_{n=1}^{\infty}{(-1)^{n-1} a_n}\ a_n > 0$\\
  Если $\lim_{n \rightarrow \infty}{a_n} = 0 $ и $\{a_n\}\searrow$, то ряд сходится
 \end{theorem}
 \begin{proof}
@@ -307,4 +307,83 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
  $$ S_{2m+1} = S_m +a_{2m+1} \xRightarrow{S_m \rightarrow S, a_{2m+1} \rightarrow 0 \text{ При } n\rightarrow \infty} \lim_{n \rightarrow \infty}{S_{2m+1}} = S $$
 \end{proof}
 \comment Признак достаточный, но не необходимый!
+\begin{consequence*}[Оценка для остаточного члена ряда Лейбница]
+ $$ S = S_n + R_n = S_n + (-1)^n a_{n+1} + (-1)^{n+1} a_{n+2}+ \dots $$
+ $$ |R_n| = |(-1)^n| |(a_{n+1} - a_{n+2}) + (a_{n+2} - a_{n+3}) + \dots | = $$ $$ = a_{n+1} - (a_{n+2} - a_{n+3}) - (a_{n+4} - a_{n+5}) - \dots \leq a_{n+1}$$
+ $$ | \Rightarrow |R_n| \leq a_{n+1} $$
+\end{consequence*}
+\begin{lemma*}[Абеля]
+ Дано $a_1, \dots , a_n $ и $b_1, \dots , b_n $. При этом:
+ \begin{enumerate}
+  \item $\{a_i\}$ монотонно
+  \item $\exists{B} > 0 : |\sum_{i=1}^{m}{b_i}| \leq B$, где $m = 1, 2, 3, \dots, n$
+ \end{enumerate}
+ Тогда выполняется неравенство $|\sum_{k=1}^{n}{a_k b_k}| \leq B (|a_1|+2|a_n|)$
+\end{lemma*}
+\begin{proof}[]
+ Обозначим $B_1 = b_1, B_2 = b_1 + b_2, \dots, B_n = b_1 + b_2 +  \dots + b_n$, также перепишем (2) условие, как $\exists{B} > 0 : |B_m| \leq B$, где $m = 1, 2, 3, \dots, n$
+ $$ \sum_{k=1}^{n}{a_k b_k} = a_1 b_1 + a_2 b_2 + a_n b_n = a_1 B_1 + a_2 (B_2 - B_1) + \dots + a_n(B_n - B_{n-1}) =$$
+ $$ =B_1 (a_1 - a_2) + B_2(a_2 - a_3)+ \dots + B_{n-1}(a_{n-1} - a_n) + B_n a_n $$
+ $$ |\sum_{k=1}^{n}{a_k b_k}| =|B_1| |a_1 - a_2| + \dots + |B_{n-1}||a_{n-1} - a_n| + |B_n||a_n| \leq$$
+ $$\leq B (\underbrace{|a_1 -a_2| + |a_2 - a_3| + \dots + |a_{n-1} - a_n|}_{\text{По монотонности, либо все модули раскроются с +, либо все с -}} + |a_n|) =$$
+ $$  = B (|a_1 - a_n| + |a_n|) \stackrel{\text{Использую неравенство треугольника}}{ \leq} B(|a_1| + 2|a_n|)$$
+\end{proof}
+\begin{theorem}[Признак Дирихле]
+ Пусть дан ряд $\sum_{n=1}^{\infty}{a_n b_n}$ тогда, если:
+ \begin{enumerate}
+  \item $a_n$ монотонно сходится к 0
+  \item $\exists{C}\ \forall{n}\ |\sum_{k=1}^{m}{b_k}| \leq C$
+ \end{enumerate}
+ Ряд $\sum_{n=1}^{\infty}{a_n b_n}$ сходится
+\end{theorem}
+\begin{proof}
+ Из (1) условия $a_n$ - монотонно $\rightarrow 0 \xRightarrow{\text{По определению предела}} \forall{\varepsilon}>0 \exists{N > 0}:\ \forall{n > N}\ |a_n| < \frac{\varepsilon}{6C}$ \\
+ Из (2) условия $\forall{n}\ \forall{p}\ |\sum_{k=n}^{n+p}{b_k}| = |\sum_{k=1}^{n+p}{b_k} - \sum_{k=1}^{n-1}{b_{k}}| \leq 2C$ \\
+ Рассмотрим $a_n, \dots, a_{n+p}$ и $b_n, \dots , b_{n+p} \xRightarrow{\text{По лемме Абеля ($B=2C$)}} |\sum_{k=1}^{n}{a_k b_k}| \leq 2C(|a_n| + 2|a_{n+p}|) \leq 6C \frac{\varepsilon}{6C} = \varepsilon \xRightarrow{\text{По критерию Коши}} $ ряд $\sum_{n=1}^{\infty}{a_n b_n}$ сходится
+\end{proof}
+\begin{theorem}[Признак Абеля]
+ Пусть дан ряд $\sum_{n=1}^{\infty}{a_n b_n}$ тогда, если:
+ \begin{enumerate}
+  \item $a_n$ монотонно и ограничена
+  \item $\sum_{k=1}^{\infty}{b_k}$
+ \end{enumerate}
+ Ряд $\sum_{n=1}^{\infty}{a_n b_n}$ сходится
+\end{theorem}
+\begin{proof}
+ Из (1) условия $\Rightarrow |a_n| \leq A \ \forall{n}$\\
+ Из (2) условия $\xRightarrow{\text{По пр. Коши}} \forall{\varepsilon} > 0 \exists{N > 0}:\ \forall{n > N}\ |\sum_{k=n}^{n+p}{b_k}| < \frac{\varepsilon}{3A}$\\
+ Рассмотрим $a_n, a_{n+1}, \dots, a_{n+p}$ и $b_n, b_{n+1}, \dots, b_{n+p}$
+ $$ \xRightarrow{\text{По лемме Абеля. $\{a_i\}$ - монот. из усл, $B = \frac{\varepsilon}{3A}$} } |\sum_{k=n}^{n+p}{a_k b_k}| \leq B(|a_n| + 2|a_{n+p}|)=$$
+ $$= \frac{\varepsilon}{3A} (\overbrace{|a_n|}^{ \leq A} + 2\overbrace{|a_{n+p}|}^{ \leq A}) \leq \varepsilon $$
+ Тогда по кр. Коши для ряда $\sum_{k=1}^{\infty}{a_k b_k}$ - сходится
+\end{proof}
+\begin{proof}[\textit{Докозательство. Теоремы 1. Вариант 2}]
+ Из условия, что $\{ a_n \} \searrow к 0$ и того факта, что $|\sum_{n=1}^{m}{(-1)^n}| \leq 1$, по теореме Дирихле следует, что ряд $\sum_{n=1}^{\infty}{(-1)^{n-1}a_n}$ - сходится
+\end{proof}
+\begin{exmp}
+ $$ \sum_{n=1}^{\infty}{\frac{sin(nx)}{n}}\ \forall{x} \in \mathbb{R}$$
+ Зафиксируем $m$. Тогда
+ $$ a_n = \frac{1}{n} \searrow \text{ к } 0, b_n = sin(nx) $$
+ $$ S_m = sin(x) + sin(2x) + sin(3x) + \dots + sin(mx) =$$
+ $$= \frac{1}{sin(x/2)} ( sin(x)sin(x/2) + sin(2x)sin(x/2) + \dots + sin(mx)sin(x/2))  =$$
+ $$= \frac{1}{2sin(x/2)} (cos(x/2) - cos(3x/2) + \dots + cos(\frac{2m-1}{2}x) - cos(\frac{2m+1}{2}x)  =$$
+ $$ = \frac{1}{2sin(x/2)}(cos(x/2)- cos(\frac{2m+1}{2}x) )$$
+ Если $sin(x/2) = 0 \Rightarrow sin(nx) = 0 \Rightarrow$ ряд сходится \\
+ Если $sin(x/2) \ne 0 \Rightarrow |\sum_{k=1}^{n}{sin(nx)}| \leq \frac{2}{2sin(x/2)} = \frac{1}{sin(x/2)} = C$\\
+ $| \xRightarrow{\text{по признаку Дирихле}}$ ряд сходится
+\end{exmp}
+\upr $$\sum_{n=1}^{\infty}{\frac{sin(n)cos(\frac{\pi}{4})}{2}}$$
+\subsection{Абсолютно и условно сходящиеся ряды}
+\begin{definition*}
+ Числовой ряд $\sum_{n=1}^{\infty}{a_n}$ называется абсолютно сходящимся, если сходится ряд $\sum_{n=1}^{\infty}{|a_n|}$
+\end{definition*}
+
+\begin{theorem}
+ Абсолютный ряд сходится
+\end{theorem}
+\begin{proof}
+ Дано $\sum_{n=1}^{\infty}{|a_n|}$ - сходится. Докажем, что сходится ряд $\sum_{n=1}^{\infty}{a_n}$\\
+ $\sum_{n=1}^{\infty}{|a_n|}$ - сходится $\xRightarrow{\text{по th. Коши}} \forall{\varepsilon} > 0\ \exists{N > 0}:\ \forall{n > N}\ \forall{p}\ |a_n| + |a_{n+1}| + \dots + |a_{n+p}| < \varepsilon $\\
+ Рассмотрим ряд $\sum_{n=1}^{\infty}{a_n}  \xRightarrow{\text{th. Коши}} \forall{\varepsilon} > 0 \exists{N > 0}:\ \forall{n > N}\ \forall{p}\ |a_n + a_{n+1} + \dots + a_{n+p}| \leq |a_n| + |a_{n+1}| + \dots + |a_{n+p}|< \varepsilon \Rightarrow $ ряд $\sum_{n=1}^{\infty}{a_n}$ - сходится
+\end{proof}
 \end{document}
