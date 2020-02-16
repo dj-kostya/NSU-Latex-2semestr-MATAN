@@ -10,6 +10,9 @@
 \usepackage[12pt]{extsizes}
 \usepackage{cancel}
 \usepackage{titlesec}
+\usepackage{hyperref}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 \newtheorem{theorem}{Теорема}
 \newtheorem*{theorem*}{Теорема}
 \newtheorem{lemma}{Лемма}
@@ -38,7 +41,11 @@
 \title{ МАТАН 2 Семестр}
 \author{Носорев Константин}
 \date{2019\\}
-
+\hypersetup{
+       colorlinks=true, %set true if you want colored links
+       linktoc=all,     %set to all if you want both sections and subsections linked
+       linkcolor=blue,  %choose some color if you want links to stand out
+}
 \numberwithin{theorem}{subsection}
 \numberwithin{lemma}{subsection}
 \numberwithin{definition}{subsection}
@@ -294,7 +301,7 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
 \subsection{Признак Лейбница. Признак Дирихле. Признак Абеля}
 \subsubsection{}
 %\setcounter{theorem}{0}
-\definition Ряд вида $a_1 - a_2 + a_3 - a_4 + ... = \sum_{n=1}^{\infty}{(-1)^n-1 a_n}$ называется знакочередующимся, где $\forall{n}\ a_n > 0$
+\definition Ряд вида $a_1 - a_2 + a_3 - a_4 + ... = \sum_{n=1}^{\infty}{(-1)^{n-1} a_n}$ называется знакочередующимся, где $\forall{n}\ a_n > 0$
 \begin{theorem}[Признак сходимости Лейбница знакочередующихся рядов]
  Пусть дан знакочередующийся ряд $\sum_{n=1}^{\infty}{(-1)^{n-1} a_n}\ a_n > 0$\\
  Если $\lim_{n \rightarrow \infty}{a_n} = 0 $ и $\{a_n\}\searrow$, то ряд сходится
@@ -331,7 +338,7 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
 \begin{theorem}[Признак Дирихле]
  Пусть дан ряд $\sum_{n=1}^{\infty}{a_n b_n}$ тогда, если:
  \begin{enumerate}
-  \item $a_n$ монотонно сходится к 0
+  \item $a_n$ монотонно стремится к 0
   \item $\exists{C}\ \forall{n}\ |\sum_{k=1}^{m}{b_k}| \leq C$
  \end{enumerate}
  Ряд $\sum_{n=1}^{\infty}{a_n b_n}$ сходится
@@ -435,4 +442,81 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
         $| \Rightarrow |a-b| = |\sum_{n=1}^{m}{b_n} - b - \sum_{n=1}^{l}{a_n} + a + c | < 3 \varepsilon \xRightarrow{\text{Т.к $\varepsilon$ произвольное}} a = b$
  \end{itemize}
 \end{proof}
+\begin{theorem}
+ Есди ряды $\sum_{n=1}^{\infty}{a_n}, \sum_{n=1}^{\infty}{b_n}$ - абсолютно сходится, то ряд, составленный из все возможных попарных произведений $a_m b_n$, расположенных в произвольном порядке, также сходится абсолютно, и если ряд $\sum_{n=1}^{\infty}{a_n} = S^A $, а ряд $\sum_{n=1}^{\infty}{b_n} = S^B$, то сумма полученного ряда равна $S=S^A S^B$
+\end{theorem}
+\begin{proof}
+ Расположем $a_m b_n$ в удобном порядке:
+ $$ a_1 b_1, a_1 b_2, \dots, a_1 b_n, \dots $$
+ $$ a_2 b_1, a_2 b_2, \dots, a_2 b_n, \dots $$
+ $$ \dots $$
+ $$ a_m b_1, a_m b_2, \dots, a_m b_n, \dots $$
+ $$ \dots $$
+ $$ a_1 b_1 + a_1 b_2 + a_2 b_2 + a_2 b_1 + \dots \eqno(1)$$
+ Рассмотрим ряд:
+ $$ |a_1 b_1| + |a_1 b_2| + |a_2 b_2| + |a_2 b_1| + \dots $$
+ Введем обозначения:$S_n^A = \sum_{k=1}^{n}{a_k} \rightarrow S^A, S_n^B = \sum_{k=1}^{n}{b_k} \rightarrow S^B$\\
+ Для того, чтобы доказать, что ряд сходится абсолютно, достаточно доказать, что существует хотябы одна подпоследовательность частичных сумм ограниченных сверху\\
+ $S_n \nearrow$, т.к числа положительные
+ $$S_1 = |a_1 b_1| = S_1^A \cdot S_1^B \leq S^A S^B$$
+ $$S_4 = |a_1 b_1| + |a_1 b_2| + |a_2 b_2| + |a_2 b_1| = (|a_1| + |a_2|)(|b_1| + |b_2|)=S_2^A \cdot S_2^B \leq S^A S^B$$
+ $$ \dots $$
+ $$S_{n^2} = |a_1 b_1| + \dots + |a_1 b_n| + \dots + |a_n b_1| = (|a_1| + \dots + |a_n|)(|b_1| + \dots + |b_n|)=S_n^A \cdot S_n^B \leq S^A S^B$$
+ $$| \Rightarrow S_{n^2} \leq \underbrace{S^A S^B}_{\text{Конечное число в силу абс. схожд.}}$$
+ $$  \Rightarrow S_n \leq S^A S^B, S_n \nearrow \xRightarrow{\text{По th. Вейерштрасса}} \exists{\lim_{n \rightarrow \infty}{S_n}} = S $$
+ $  \Rightarrow $ ряд (1) сходится абсолютно $ \xRightarrow{\text{th 3}} $ исходный ряд сходится\\
+ Докажем, что $S = S^A S^B$\\
+ По th3 вновь переставим ряд "удобно"
+ $$ \widetilde{S_n^A} = \sum_{k=1}^{n}{a_k}, \widetilde{S_n^B} = \sum_{k=1}^{n}{b_k}$$
+ $$ \underbrace{\widetilde{S_{n^2}}}_{\rightarrow \tilde{S}} = \underbrace{\widetilde{S_n^A}}_{\rightarrow \tilde{S^A}}\cdot \underbrace{\widetilde{S_n^B}}_{\rightarrow \tilde{S^B}} \Rightarrow S = S^A S^B$$
+\end{proof}
+\comment Пусть есть ряды $\sum_{n=1}^{\infty}{a_n}, \sum_{n=1}^{\infty}{b_n}, \sum_{n=1}^{\infty}{a_n + b_n}$, тогда ряд $\sum_{n=1}^{\infty}{a_n}$ - сходится $\Leftrightarrow$ сходятся ряды $\sum_{n=1}^{\infty}{b_n}, \sum_{n=1}^{\infty}{a_n+b_n}$
+\begin{theorem}[Римана]
+ Если ряд $\sum_{n=1}^{\infty}{a_n}$ сходится условно, то $\forall{A}$ можно так переставить члены ряда, что $\sum_{n=1}^{\infty}{a_n} = A$
+\end{theorem}
+\begin{proof}
+ \mbox{}\\
+ Пусть $a_1^+ , \dots , a_n^+, \dots $ - неотрицательные члены последовательности, взятые по порядку\\
+ Пусть $a_1^- , \dots , a_n^-, \dots $ - отрицательные члены последовательности, взятые по порядку\\
+ По условию ряд $\sum_{n=1}^{\infty}{a_n}$ - сходится, но ряд $\sum_{n=1}^{\infty}{|a_n|}$ - расходится $\Rightarrow$
+ $$ a_1^+ + \dots + a_n^+ + \dots \xrightarrow{n \rightarrow \infty} +\infty$$
+ $$ a_1^- + \dots + a_n^- + \dots \xrightarrow{n \rightarrow \infty} -\infty$$
+ В каждой этой сумме бесконечное число слагаемых, иначе н.н.н все члены одного знака, и сходимость эквивалентна абсолютной. Если нет нитого ни другого (оба конечны), тогда ряд будет абсолютно сходится(противоречие). Если одно есть, но нет другого, тогда ряд расходится\\
+ Пусть A\geq0:\\
+ $  n_1 : \begin{cases}
+   n_1 = 1,                                                                    & a_1^+ \geq A \\
+   a_1^+ + \dots + a_{n_1-1}^+ \leq A < a_1^+ + \dots + a_{n-1}^+ + a_{n_1}^+, & a_1^+ < A    \\
+  \end{cases}$
+ \mbox{}\\
+ $$ S_{n_1} = a_1^+ + \dots + a_{n_1}^+, |S_{n_1} - A| < a_{n_1}^+$$
+ $$ n_2: a_1^+ + \dots + a_{n_1}^+ a_1^- + \dots + a_{n_2 - 1}^- \leq A < a_1^+ + \dots + a_{n_1}^+ +a_1^- + \dots + a_{n_2}^- $$
+ $$ S_{n_1 + n_2} = a_1^+ + \dots + a_{n_1}^+ +a_1^- + \dots + a_{n_2}^-, |S_{n_1 + n_2} - A| < |a_{n_2}^-| $$
+ $ n_3: a_1^+ + \dots + a_{n_1}^+ +a_1^- + \dots + a_{n_2}^- + a_{n_1 + 1}^+ + \dots + a_{n_3 - 1}^+ \leq$\\
+ $ \leq A < a_1^+ + \dots + a_{n_1}^+ +a_1^- + \dots + a_{n_2}^- + a_{n_1 + 1}^+ + \dots + a_{n_3}^+$
+ $$ |S_{n_1+n_2+n_3} - A| < a_{n_3}^+$$
+ $$ n_1+n_2 < n < n_1 + n_2 +n_3, S_n \nearrow $$
+ $$ |S_n - A| < max\{|a_{n_2}^-|, a_{n_3}^+ \}$$
+ Применив метод математической индукции легко показать, что:\\
+ Если $n_1 + n_2 + \dots +n_{2k-1} + n_{2k} < n \leq n_1 + n_2 + \dots + n_{2k-1} + n_{2k} + n_{2k+1}$, то
+ $$ |S_n - A| < max\{|a_{2k}^-|, a_{2k+1}^+ \}$$
+ Если $n_1 + n_2 + \dots + n_{2k-1} + n_{2k} + n_{2k+1}< n \leq n_1 + n_2 + \dots + n_{2k-1} + n_{2k} + n_{2k+1} + n_{2k+2}$, то
+ $$ |S_n - A| < max\{ a_{2k+1}^+, |a_{2k+2}^-| \}$$
+ Итак, сформирован новый ряд.\\
+ Докажем, что $S_n \xrightarrow{n \rightarrow \infty} A$\\
+ Пусть $\forall{\varepsilon} > 0 $ Из сходимости ряда $\sum_{n=1}^{\infty}{a_n}$ $\xRightarrow{\text{Необходимы признак сход-ти}} \lim_{n \rightarrow \infty}{a_n} = 0 \Rightarrow \exists{N > 0}:\ \forall{n > N}\ |a_n| < \varepsilon$
+ $$ | \Rightarrow |S_n - A| < |a_n| < \varepsilon \Rightarrow S_n \xrightarrow{n \rightarrow \infty} A$$
+\end{proof}
+\begin{upr}
+ Покажите, что если ряд $\sum_{n=1}^{\infty}{a_n}$ - условно сходится, то его члены можно переставить так, чтобы он стал расходится
+\end{upr}
+\begin{upr}
+ Докажите, что если при любой перестановки его членов ряд остаётся сходящимся, то ряд сходится абсолютно
+\end{upr}
+
+\section{Интеграл}
+\subsection{Неопределенный интеграл}
+\begin{definition*}
+ Функция $F$ называется первообразной функции $f$ на некотором интервале, если $F'(x) = f(x)$
+\end{definition*}
+\includegraphics{pervoobraz}
 \end{document}

@@ -1,0 +1,6 @@
+/.git
+*.*
+!.gitignore
+!pictures
+!*.pdf
+!2st_semsetr.tex
