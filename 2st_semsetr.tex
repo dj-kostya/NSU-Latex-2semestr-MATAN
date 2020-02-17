@@ -11,6 +11,30 @@
 \usepackage{cancel}
 \usepackage{titlesec}
 \usepackage{hyperref}
+\usepackage[framemethod=TikZ]{mdframed}
+\newcounter{memories}[subsection]\setcounter{memories}{0}
+\renewcommand{\thetheo}{\arabic{subsection}.\arabic{memories}}
+\newenvironment{memories}[2][]{%
+\refstepcounter{memories}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20]
+{\strut Воспоминание~\thetheo};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20]
+{\strut Воспоминание~\thetheo:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
 \graphicspath{{pictures/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 \newtheorem{theorem}{Теорема}
@@ -34,6 +58,7 @@
 \newtheorem*{consequence*}{Следствие}
 \newtheorem{property}{Свойство}
 \newtheorem*{property*}{Свойство}
+\renewcommand\qedsymbol{$\blacksquare$}
 \renewcommand{\thesubsubsection}{П.\arabic{subsubsection}}
 \renewcommand{\thesubsection}{\S \arabic{subsection}}
 %\renewcommand{\thesection}{Глава \arabic{section}}
@@ -523,10 +548,11 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
 \begin{definition*}
  Функция $F: I \rightarrow \mathbb{R}$ (точная) первообразная ф-ции $f: I \rightarrow \mathbb{R}$, если $\forall{x} \in I \ F'(x) = f(x)$
 \end{definition*}
-% TODO: Оформить воспоминание
-\begin{theorem}[Теорема Лагранджа о среднем]
- $f:[a,b]\rightarrow\mathbb{R}$ - непрерывная на $[a,b]$  и дифференцируема на $(a,b)$. Тогда $\exists{c}\in (a,b): f(b)-f(a)=f'(c)(b-a)$
-\end{theorem}
+\begin{memories}
+ $\textit{Теорема Лагранджа о среднем.}$\\
+ $ \text{Пусть} f:[a,b]\rightarrow\mathbb{R}$ - непрерывная на $[a,b]$  и дифференцируема на $(a,b)$. Тогда $\exists{c}\in (a,b): f(b)-f(a)=f'(c)(b-a)$
+\end{memories}
+
 \begin{lemma}[ о точных первообразных]
  Пусть $f: [a,b] \rightarrow \mathbb{R}$, $F_1, F_2$ - первообразные на $[a,b]$, тогда $F_1(x)=F_2(x)+C$, где $C \in \mathbb{R}$
 \end{lemma}
@@ -561,7 +587,7 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
 \end{lemma}
 \begin{proof}
  Пусть $x_1<x_2< \dots < x_n$ - точки, в которых нет $F_1'(x)$ или нет $F_2'(x)$\\
- На любом отрезке $[x_i; x_{i+1}]$ - $F_1$ и $F_2$ - точные первообразные ф-ции $f$ (по лемме 3)\\
+ На любом отрезке  $[x_i; x_{i+1}]$ по предыдущей лемме  $F_1$ и $F_2$ - точные первообразные ф-ции $f$ (по лемме 3)\\
  $$ F_1(x)=F_2(x) + C_i &\text{ На }[x_i; x_{i+1}]$$
  $$ F_1(x)=F_2(x) + C_{i-1} &\text{ На }[x_{i-1}; x_{i}]$$
  $$|\Rightarrow F_1(x_i)= F_2(x_i) + C_i = F_2(x_i) + C_{i-1} \Rightarrow C_i = C_{i-1}$$
@@ -616,6 +642,29 @@ $$ \int f(x)g(x)dx $$
         $$ \int x sin(x) dx = \int x (-cosx)'dx = x(-cosx) - \int (-cosx)dx =$$
         $$= x(-cosx) + \int cos(x)dx=-xcosx + sinx + C$$
        \end{exmp}
+       \begin{exmp}
+        $$ \int lnx dx = \int x' ln(x) dx = x ln(x) - \int 1 dx = x ln(x) -x + C$$
+       \end{exmp}
+ \item Замена переменной
+       $$f(\phi(x))'= f'(\phi(x))\phi'(x)$$
+       Если $\phi(x)$ - дифференцируемая функция, то $y = \phi(x)$
+       $$ \int f(\phi(y))dy = \int f(\phi(x))\phi'(x)dx$$
+       \begin{exmp}
+        $$ \int \frac{x}{x^2+1} dx = \int \frac{\frac{1}{2}}{x^2+1} 2x dx = \int \frac{\frac{1}{2}}{x^2+1} (x^2)' dx$$
+        Обозначим $y = x^2 + 1$
+        $$ y = x^2 + 1  $$
+        $$ \int  \frac{\frac{1}{2}}{y}dy = \frac{1}{2}ln(y) + C = \frac{1}{2}ln(x^2 + 1) + C$$
+       \end{exmp}
+ \item "Стыковка"
+       $$f:[a,c] \Rightarrow \mathbb{R}, a<b<c$$
+
+       $$ F_1(x) \text{- Первообразна на }[a,b]$$
+       $$ F_2(x) \text{- Первообразна на }[b,c]$$
+       Тогда:
+       $$ \int f(x) dx = \begin{cases}
+         F_1(x) + C,               & x\in [a,b] \\
+         F_2(x) + F_2(b)-F_1(b)+C, & x\in [b,c] \\
+        \end{cases}$$
 \end{enumerate}
 
 \end{document}
