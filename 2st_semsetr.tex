@@ -666,5 +666,86 @@ $$ \int f(x)g(x)dx $$
          F_2(x) + F_2(b)-F_1(b)+C, & x\in [b,c] \\
         \end{cases}$$
 \end{enumerate}
+\subsubsection{Первообразная от рациональной функции}
+\begin{definition*}
+ Рациональная функция - это отношение двух многочленов
+ $$R(x)= \frac{P(x)}{Q(x)} \text{Где }P(x), Q(x) \text{ - многочлены}$$
+\end{definition*}
+\begin{name}
+ $deg P$ - степень многочлена $P(x) = a_n x^n + a_{n-1}x^{n-1}+ \dots +$\\ $+ a_1 x + a_0, a_n \ne 0$
+\end{name}
+\begin{comment}
+В комплесных числах $$ P(z) = (z - z_1)(z - z_2) \dots (z - z_n)$$
+Где $z_1 \dots z_n $ - корни многочлена
+Если коэффициенты вещественные:\\
+либо корень вещественный,$z_k \in \mathbb{R}$ \\
+либо есть комплесно сопряженные $z_k, \overline{z_k}: (z-z_k)(z-\overline{z_k}) = z^2 - (z_k + \overline{z_k})z + z_k \overline{z_k}$
+\end{comment}
+\begin{lemma}
+ Если $P(x)$ - многочлен над $\mathbb{R}$, то его можно разбить на $P(x)= (x-x_1)^{k_1} (x-x_2)^{k_2} \dots (x-x_m)^{k_m} (x^2+ p_1 x+q_1)^{l_1} \dots (x^2+ p_n x+q_n)^{l_n}$
+ Это представление едиственно (с точностью до перестановки множителей)
+\end{lemma}
+\begin{lemma}[о делении с отсатком]
+ Если $P(x), Q(x), deg(P) \geq deg(Q),\ \mbox{ Q \ne 0}$, тогда $\exists{}!$ многочлены $q(x), r(x), deg(q) = deg(P)-deg(Q),\ deg(r) < deg(Q): P(x)=Q(x)q(x)+r(x)$
+\end{lemma}
+\begin{lemma}
+ Еслм $deg(P), deg(Q)>0,$ и $d(x) = NOD(P(x), Q(x))$, тогда $\exists{u(x), v(x)}: deg(u)<deg(Q), deg(v)<deg(P),\\ d(x) = P(x)u(x) + Q(x)v(x)$
+\end{lemma}
+\begin{theorem}[о разложении в простые дроби]
+ Пусть $P(x), Q(x)$ - многочлены, $0 < deg (P) < deg (Q), NOD(P(x), Q(x)) = 1$ и $P(x)$ как в лемме 5, тогда $$\frac{P(x)}{Q(x)} = \sum_{i=1}^{m}{\sum_{j=1}^{k_m}{\frac{C_{ij}}{(x-x_j)^j}}} + \sum_{i=1}^{n}{\sum_{j=1}^{l_n}{\frac{a_{ij}x+b_{ij}}{(x^2 + p_i x + q_i)^j}}}$$
+\end{theorem}
+\begin{exmp}
+ $$ \frac{3x^2 - 13x + 5}{x^3 -5x^2 +8x -4} = \frac{P(x)}{Q(x)} = R(x)$$
+ \begin{enumerate}
+  \item Найти корни знаменателя
+        $Q(x)=(x-1)(x-2)^2$
+  \item теорема о разложении в простые дроби: $R(x) = \frac{A}{x-1}+ \frac{B}{x-2} + \frac{C}{(x-2)^2}$. Найдем коэффициенты $A, B, C$
+        $$ 3x^2 - 13x + 5 = A(x-2)^2 + B(x-1)(x-2) + C(x-1)$$
+        $$ A = -5, B = 8, C= -9$$
+ \end{enumerate}
+ $$ \int \frac{3x^2 - 13x + 5}{x^3 -5x^2 +8x -4} dx = \int \frac{-5}{x-1} dx + \int \frac{8}{x-2} dx + \int \frac{-9}{(x-2)^2} dx $$
+\end{exmp}
+\subsubsection{Первообразные простых дробей}
+\begin{comment}
+$$\int \frac{1}{x-x_i} dx = \{y=x - x_i \} = \int \frac{dy}{y}= ln|y|+C = ln|x-x_i| + C$$
+$$\int \frac{1}{(x-x_i)^k} dx = \frac{-1}{(k-1)(x-x_i)^{k-1}} + C $$
+$$ \int \frac{1}{x^2 + px + q} dx = \text{\{Выделим полный квадрат\}} = \int \frac{1}{(x- \frac{p}{2})^2 + (\underbrace{q- \frac{p^2}{4}}_{>0})} dx = $$
+$$ = \int \frac{1}{a^2((\frac{x+\frac{p}{2}}{a})^2 + 1)} dx =\{y =\frac{x + \frac{p}{2}}{a}\} = \int \frac{a}{a^2(y^2+1)} dy =\frac{1}{a} \int \frac{1}{y^2 +1} dy = \frac{1}{a} arctg(\frac{x}{x} + \frac{p}{2a})+ C$$
+$$ \int \frac{1}{1+x^2} dx = arctgx + C$$
+$$ \int \frac{x}{1+x^2} dx =\{ y = x^2\}= \int \frac{\frac{1}{2}dy}{y + 1}  =\frac{1}{2}ln(x^2 + 1) + C$$
+$$ \int \frac{x}{(1+x)^k} dx = \int \frac{\frac{1}{2}dy}{(1+y)^k}= -\frac{1}{2} \frac{1}{(k-1)(1+x^2)^{k-1}} + C$$
+$$ I_k(y) = \int \frac{1}{(1+y^2)^k} dy = \frac{y}{1+y^2}^k - \int y(\frac{1}{(1+y^2)^k})' dy= \frac{y}{1+y^2}^k - \int \frac{y(-k(1+y^2)^{k-1} 2y)}{(1+y^2)^{2k}} dy = $$
+$$= \frac{y}{1+y^2}^k + 2k \int \frac{y^2}{(1+y^2)^{k+1}} dy = \frac{y}{1+y^2}^k + 2k \int (\frac{y^2+1}{(1+y^2)^{k+1}} - \frac{1}{(1+y^2)^{k+1}}) dy = $$
+$$ = \frac{y}{1+y^2}^k + 2k I_k(y) - 2k I_{k+1}(y)$$
+$$ I_k(y) = \int \frac{1}{(1+y^2)^k} dy$$
+$$ I_1(y) = arctg\ y + C$$
+$$ I_{k+1}(y) = \frac{1}{2k(1+y^2)^k} + \frac{2k-1}{2k} I_{k}(y)$$
+\end{comment}
+\subsubsection{первообразные сводящиеся к рациональным}
+$R$ - рациональная функция
+\begin{enumerate}
+ \item $R(x,\sqrt[n]{ax+b})$ замена $y = \sqrt[n]{ax+b}$ сводит к рациональной функции
+       \begin{comment}
+       $$\int R(x, \sqrt[n]{ax+b}) dx = \int R(\frac{y^n - b}{a}, y) \frac{y^{n-1}}{a}dy$$
+       \end{comment}
+       \begin{exmp}
+        $$ \int \frac{\sqrt{2x+2}}{\sqrt{x+1} + x - 5} dx \textcircled{\ = \ }$$
+        $$ y = \sqrt{x=1}, x = y^2 - 1, dx = 2ydy $$
+        $$ \textcircled{\ = \ } \int \frac{\sqrt{2} y 2y}{y + y^2 - 6} dy = 2\sqrt{2} \int \frac{y^2}{y^2+y-6} dy  = 2\sqrt{2} \int (1- \frac{y-6}{y^2+y-6}) dy = \dots$$
+       \end{exmp}
+ \item $R(x, \sqrt[n]{\frac{ax+b}{cx+d}}), ad \ne bc$ замена $y=\sqrt[n]{\frac{ax+b}{cx+d}}, x = \frac{b - dy^n}{cy^n-a} = z(y)$
+       $$ \int R(x, \sqrt[n]{\frac{ax+b}{cx+d}}) dx = \int R(z(y), y)\cdot z'(y) dy$$
+       \begin{exmp}
+        $$ \int \frac{\sqrt{x+1} - \sqrt{x-1}}{\sqrt{x+1} + \sqrt{x-1}} dx = \int \frac{1 - \sqrt{\frac{x-1}{x+1}}}{1 + \sqrt{\frac{x-1}{x+1}}} dx$$
+       \end{exmp}
+ \item $R(sinX, cosX)$ универсальная тригонометрическая замена $y = tg(\frac{x}{2})$
+       $sinx = 2 sin(x/2)cos(x/2) = 2 tg(x/2) cos^2(x/2) = \frac{2 y}{1+y}$\\
+       $cosx= \frac{1-y}{1+y}$ \\
+       $dx = \frac{2}{1+y} dy$ \\
+       Если $R(-sinX, cosX) = - R(sinX, cosX), t = cosX$\\
+       Если $R(sinX, -cosX) = - R(sinX, cosX), t = sinX$\\
+       Если $R(-sinX, -cosX) =  R(sinX, cosX), t = tgX$\\
+ \item $R(shX, chX)$ по аналогии с пунктом (3) + работает замена $y = e^x$
+\end{enumerate}
 
 \end{document}
