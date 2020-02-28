@@ -11,6 +11,7 @@
 \usepackage{cancel}
 \usepackage{titlesec}
 \usepackage{hyperref}
+\usepackage{enumitem}
 \usepackage[framemethod=TikZ]{mdframed}
 \graphicspath{{pictures/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
@@ -853,5 +854,31 @@ $$ \int R(x, \sqrt{ax^2+bx+c}) dx $$
        $$ x = \frac{-ax_1 + t^2 x_0}{t^2 - a} \Rightarrow \sqrt{ax^2+bx+c} = t(x-x_0)=$$
        $$ = t(\frac{-ax_1 + t^2 x_0}{t^2 - a} - x_0)$$
 \end{enumerate}
+\subsubsection{Биноминальные интегралы}
+$$ \int x^m (ax^n + b)^p dx\ , m,n,p \in \mathbb{Q}$$
+\begin{enumerate}[label=\alph*)]
+ \item $p$ - целое, тогда по биному Ньютона
+ \item $p$ - дробное\\
+       Выполнить замену $z=x^n$, тогда $x=z^{\frac{1}{n}}, dx=\frac{1}{n}z^{\frac{1}{n}-1}dz$
+       $$ \Rightarrow \int z^{\frac{m}{n}}(az+b)^p \frac{1}{n}z^{n(\frac{1}{n}-1)} dz  =$$
+       Вариант 1
+       $$= \frac{1}{n} \int z^{\frac{m+1}{n}-1}(az+b)^p dz\text{, если }\frac{m+1}{n} \text{- целое, то}$$
+       $$p = \frac{\mu}{\nu} \Rightarrow t^{\nu}=az+b=ax^n+b \Rightarrow \text{получим рациональную функцию}$$
+       Вариант 2
+       $$= \frac{1}{n} \int z^{\frac{m+1}{n}-1+p}(\frac{az+b}{z})^p dz$$
+       Если $\frac{m+1}{n}+p-1$ - целое, то $t^\nu = \frac{az+b}{z}=\frac{ax^n+b}{x^n}$
+\end{enumerate}
+\begin{theorem}[Чебышева]
+ $$\int x^m(ax^n+b)^p dx$$ вычесляется в элементарных функциях только, если
+ \begin{enumerate}
+  \item p-целое
+  \item p-дробное, $\frac{\mu}{\nu}$ $\left[
+         \begin{gathered}
+          \frac{m+1}{n} \text{ - целое}\hfill,   t^\nu = ax^n+b             \\
+          \frac{m+1}{n}+p \text{ - целое}\hfill,  t^\nu = \frac{ax^n+b}{x^n}
+         \end{gathered}
+         \right.$
+ \end{enumerate}
 
+\end{theorem}
 \end{document}
