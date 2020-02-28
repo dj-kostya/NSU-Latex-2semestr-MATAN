@@ -12,29 +12,6 @@
 \usepackage{titlesec}
 \usepackage{hyperref}
 \usepackage[framemethod=TikZ]{mdframed}
-\newcounter{memories}[subsection]\setcounter{memories}{0}
-\renewcommand{\thetheo}{\arabic{subsection}.\arabic{memories}}
-\newenvironment{memories}[2][]{%
-\refstepcounter{memories}%
-\ifstrempty{#1}%
-{\mdfsetup{%
-frametitle={%
-\tikz[baseline=(current bounding box.east),outer sep=0pt]
-\node[anchor=east,rectangle,fill=blue!20]
-{\strut Воспоминание~\thetheo};}}
-}%
-{\mdfsetup{%
-frametitle={%
-\tikz[baseline=(current bounding box.east),outer sep=0pt]
-\node[anchor=east,rectangle,fill=blue!20]
-{\strut Воспоминание~\thetheo:~#1};}}%
-}%
-\mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
-linewidth=2pt,topline=true,%
-frametitleaboveskip=\dimexpr-\ht\strutbox\relax
-}
-\begin{mdframed}[]\relax%
-\label{#2}}{\end{mdframed}}
 \graphicspath{{pictures/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 \newtheorem{theorem}{Теорема}
@@ -47,6 +24,7 @@ frametitleaboveskip=\dimexpr-\ht\strutbox\relax
 \newtheorem*{name}{Обозначение}
 \newtheorem*{exmp}{Пример}
 \newtheorem*{paradoks}{Парадокс}
+\newtheorem*{memories}{Воспоминания}
 \newtheorem*{hypo}{Гипотеза}
 \newtheorem{proposition}{Предложение}
 \newtheorem*{proposition*}{Предложение}
@@ -93,19 +71,19 @@ $$a_1+a_2+\dots+a_n = \sum_{k=1}^{n} a_k$$
 \subsubsection{Числовые ряды}
 \definition{Числовым рядом называется выражение вида $$\sum_{k=1}^{\infty}{a_k} = a_1 + a_2 + \dots + a_n+ \dots $$ где $a_k \in \mathbb{R}$ - общий член последовательности, \\а $S_1 = a_1,  S_2 = a_1 + a_2, S_n = \sum_{k=1}^{n}{a_k}$ - частичные суммы ряда }
 \begin{definition}
- Числовой ряд называется \textit{сходящимся}, если сходится последовательность его частичных сумм\\
+ Числовой ряд называется \textit{сходящимся}, если сходится последовательность его частичных сумм
  $$\lim_{n\rightarrow \infty}{S_n}=S \text{ - сумма ряда}, \sum_{k=1}^{\infty}{a_k} = S \in \mathbb{R} $$
  Если предел бесконечен или не существует, то ряд \textit{расходится}
 \end{definition}
-\exmp $\sum_{k=0}^{\infty}{q^k} \text{ - геометрическая прогрессия }$\\
-$$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac{1-q^{n+1}}{1-q}$$\\
+\exmp $\sum_{k=0}^{\infty}{q^k} \text{ - геометрическая прогрессия }$
+$$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac{1-q^{n+1}}{1-q}$$
 Если $|q| < 1$, то $S_n \xrightarrow{n\rightarrow \infty} \frac{1}{1-q}$ - ряд сходится\\
 Если $|q| > 1$, то $S_n \xrightarrow{n\rightarrow \infty} \infty$ - ряд расходится\\
 Если $q = 1$, то $S_n \xrightarrow{n\rightarrow \infty} \infty$ - ряд расходится\\
 Если $q = -1$, то $S_n = \begin{cases}
   0, & \text{n=2k}   \\
   1, & \text{n=2k+1} \\
- \end{cases}$ - ряд расходится\\
+ \end{cases}$ - ряд расходится
 \subsubsection{Основные  свойства}
 \begin{theorem}[Критерий Коши]
  $$\sum_{k=1}^{\infty}{a_k} - \text{ - сходится }\Leftrightarrow\ \forall{\varepsilon}> 0\ \exists{N}:\ \forall{m\geq n > N}\  |\sum_{k=n}^{m}{a_k}|<\varepsilon$$
@@ -148,9 +126,10 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac
  Ряд, члены короторого неотрицательны, сходится $\Leftrightarrow$ посл-ть частичных сумм ограничена
 \end{theorem}
 \begin{proof}
- \mbox{}\\
- $\Rightarrow$ Ряд сходится $\xRightarrow{\text{По определению}}$ последовательность частичных сумм сходится $\xRightarrow{\text{По свойству сходящейся посл-ти}} \{S_n\}  $ - ограничена \\
- $\Leftarrow$   $\{S_n\}  $ - ограничена и $S_n \nearrow \xRightarrow{\text{По th. Вейерштрасса}}  \{S_n\} $ - сходится $\xRightarrow{\text{По определению}}$ ряд сходится
+ $\Rightarrow$ Ряд сходится $\xRightarrow{\text{По определению}}$ последовательность частичных сумм сходится\\
+ $\xRightarrow{\text{По свойству сходящейся посл-ти}} \{S_n\}  $ - ограничена \\
+ $\Leftarrow$   $\{S_n\}  $ - ограничена\\
+ $S_n \nearrow \xRightarrow{\text{По th. Вейерштрасса}}  \{S_n\} $ - сходится $\xRightarrow{\text{По определению}}$ ряд сходится
 \end{proof}
 \begin{theorem}[Признак сравнения]
  Пусть $$\exists{N > 0}: \forall{n > N}  \sum_{k=n}^{\infty}{a_k}, \sum_{k=n}^{\infty}{b_k}, a_k \geq 0, b_k \geq 0 \text{ и } a_k \leq b_k $$
@@ -162,7 +141,7 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac
 \begin{proof}
  Конченое число членов ряда не влияет на сходимость $\Rightarrow$ будем считать, что $a_k \leq b_k \forall{k \geq 1}$
  \begin{enumerate}
-  \item Пусть $S_n^A=\sum_{k=1}^{n}{a_k}, S_n^B=\sum_{k=1}^{n}{b_k} $ \\
+  \item Пусть $S_n^A=\sum_{k=1}^{n}{a_k}, S_n^B=\sum_{k=1}^{n}{b_k} $
         $$\forall{k \geq 1}\ a_k \leq b_k\ \Rightarrow S_n^A \leq S_n^B\ \forall{n} \text{ , если сходится } \sum_{k=1}^{\infty}{b_k}$$
         $$\text{то }S_n^B \nearrow \text{ и сходится к }S^B \text{ при } n \rightarrow \infty \Rightarrow S_n^A \leq S_n^B \leq S^B \Rightarrow S_n^A \nearrow$$
         $$\text{ ограничена сверху } S^B \xRightarrow{\text{по th 4}} \text{ ряд } \sum_{k=1}^{\infty}{a_k} \text{ сходится }$$
@@ -182,13 +161,22 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac
  $$\exists{N_0 > 0}:\ \forall{n > N_0}\ $$
  $$ \frac{c}{2}b_n < a_n < \frac{3c}{2} b_n$$
  \begin{enumerate}
-  \item Пусть $\sum_{k=1}^{\infty}{b_k}$ - сходится $\xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=N_0}^{\infty}{b_k}$ - сходится $\xRightarrow{\text{по th 3}} \sum_{k=N_0}^{\infty}{\frac{3c}{2} b_n}$ - сходится $\xRightarrow{\text{по th 5}} \sum_{k=N_0}^{\infty}{a_n}$ - сходится $ \xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=1}^{\infty}{a_n} $ - сходится
-  \item Пусть $\sum_{k=1}^{\infty}{b_k}$ - расходится $\xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=N_0}^{\infty}{b_k}$ - расходится $\xRightarrow{\text{по th 3}} \sum_{k=N_0}^{\infty}{\frac{c}{2} b_n}$ - расходится $\xRightarrow{\text{по th 5}} \sum_{k=N_0}^{\infty}{a_n}$ - расходится $ \xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=1}^{\infty}{a_n} $ - расходится
+  \item Пусть $\sum_{k=1}^{\infty}{b_k}$ - сходится\\
+        $\xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=N_0}^{\infty}{b_k}$ - сходится\\
+        $\xRightarrow{\text{по th 3}} \sum_{k=N_0}^{\infty}{\frac{3c}{2} b_n}$ - сходится \\
+        $\xRightarrow{\text{по th 5}} \sum_{k=N_0}^{\infty}{a_n}$ - сходится \\
+        $\xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=1}^{\infty}{a_n} $ - сходится
+  \item Пусть $\sum_{k=1}^{\infty}{b_k}$ - расходится\\
+        $\xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=N_0}^{\infty}{b_k}$ - расходится\\
+        $\xRightarrow{\text{по th 3}} \sum_{k=N_0}^{\infty}{\frac{c}{2} b_n}$ - расходится \\
+        $\xRightarrow{\text{по th 5}} \sum_{k=N_0}^{\infty}{a_n}$ - расходится\\
+        $ \xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=1}^{\infty}{a_n} $ - расходится
  \end{enumerate}
 \end{proof}
-\subsubsection{Телескопический признак. Эталонный ряд $\sum_{k=1}^{\infty}{\frac{1}{n^p}}$}
+\subsubsection{Телескопический признак. \texorpdfstring{Эталонный ряд $\sum_{k=1}^{\infty}{\frac{1}{n^p}}$}{Эталонный ряд} }
 \begin{theorem}[Телескопический признак]
- Пусть $a_n \searrow , a_n \geq 0$ ряд $\sum_{k=1}^{\infty}{a_n} $ - сходится $\Leftrightarrow$ сходится $\sum_{k=0}^{\infty}{2^n a_{2^n}}$
+ Пусть $a_n \searrow , a_n \geq 0$ ряд $\sum_{k=1}^{\infty}{a_n} $ - сходится \\
+ $\Leftrightarrow$ сходится $\sum_{k=0}^{\infty}{2^n a_{2^n}}$
 \end{theorem}
 \begin{proof}
  Правый ряд $a_1 + 2a_2 + 4a_4+\dots$
@@ -274,14 +262,14 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac
 Признак удобно применять, если в $a_n$ есть $2^n, n^k$
 \end{comment}
 \begin{proof}
- $$\forall{\varepsilon} > 0\ \exists{N > 0}:\ \forall{n > N}\  |\sqrt[n]{a_n}} - q| < \varepsilon$$
- $$- \varepsilon < \sqrt[n]{a_n}} -q <\varepsilon  $$
- $$ (q-\varepsilon) < \sqrt[n]{a_n}} < (q+\varepsilon)\ \ \ \forall{n} = N + 1, N+2,\dots$$
+ $$\forall{\varepsilon} > 0\ \exists{N > 0}:\ \forall{n > N}\  |\sqrt[n]{a_n} - q| < \varepsilon$$
+ $$- \varepsilon < \sqrt[n]{a_n} -q <\varepsilon  $$
+ $$ (q-\varepsilon) < \sqrt[n]{a_n} < (q+\varepsilon)\ \ \ \forall{n} = N + 1, N+2,\dots$$
  \begin{enumerate}
   \item Пусть $q < 1 \Rightarrow \exists{\widetilde{q}} = \frac{q+1}{2} | q < \widetilde{q} < 1 \exists{N > 0}:\ \forall{n > N}\ $\\
-        $$ \sqrt[n]{a_n}} < \widetilde{q} \Leftrightarrow a_n < \widetilde{q}^n\ \ \ \sum_{n=1}^{\infty}{\widetilde{q}^n} \text{ - геометрическая прогрессия} (\widetilde{q} < 1)} $$
+        $$ \sqrt[n]{a_n} < \widetilde{q} \Leftrightarrow a_n < \widetilde{q}^n\ \ \ \sum_{n=1}^{\infty}{\widetilde{q}^n} \text{ - геометрическая прогрессия} (\widetilde{q} < 1) $$
         $$\Rightarrow \text{ ряд сходится} \xRightarrow{\text{по признаку сравнения}} \text{сходится исходный ряд }$$
-  \item Пусть $q > 1 \Rightarrow \exists{\{ a_{n_k}\}}: \sqrt[n]{a_{n_k}}} > 1 \Rightarrow a_{n_k} > 1 \Rightarrow \lim_{n \rightarrow \infty}{a_{n_k}} \ne 0 \Rightarrow$ ряд расходится
+  \item Пусть $q > 1 \Rightarrow \exists{\{ a_{n_k}\}}: \sqrt[n]{a_{n_k}} > 1 \Rightarrow a_{n_k} > 1 \Rightarrow \lim_{n \rightarrow \infty}{a_{n_k}} \ne 0 \Rightarrow$ ряд расходится
   \item Пусть $ q = 1$
         $$ \sum_{n=1}^{\infty}{\frac{1}{n} : \lim_{n \rightarrow \infty}{\frac{1}{\sqrt[n]{n}}}} = 1  \text{ ряд расходится} $$
         $$ \sum_{n=1}^{\infty}{\frac{1}{n^2} : \lim_{n \rightarrow \infty}{\frac{1}{\sqrt[n]{n^2}}}} = 1  \text{ ряд сходится} $$
@@ -390,7 +378,8 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
  Тогда по кр. Коши для ряда $\sum_{k=1}^{\infty}{a_k b_k}$ - сходится
 \end{proof}
 \begin{proof}[\textit{Докозательство. Теоремы 1. Вариант 2}]
- Из условия, что $\{ a_n \} \searrow к 0$ и того факта, что $|\sum_{n=1}^{m}{(-1)^n}| \leq 1$, по теореме Дирихле следует, что ряд $\sum_{n=1}^{\infty}{(-1)^{n-1}a_n}$ - сходится
+ Из условия, что $\{ a_n \} \searrow 0$ и того факта, что $|\sum_{n=1}^{m}{(-1)^n}| \leq 1$,
+ \\ по теореме Дирихле следует, что ряд $\sum_{n=1}^{\infty}{(-1)^{n-1}a_n}$ - сходится
 \end{proof}
 \begin{exmp}
  $$ \sum_{n=1}^{\infty}{\frac{sin(nx)}{n}}\ \forall{x} \in \mathbb{R}$$
@@ -427,11 +416,11 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
 \begin{theorem}[Общие свойства абсолютно сходящихся рядов]
  \begin{enumerate}
   \item Если $\sum_{n=1}^{\infty}{a_n}, \sum_{n=1}^{\infty}{b_n}$ - абсолютно сходящиеся ряды, то ряд $\sum_{n=1}^{\infty}{\lambda a_n + \mu b_k}$ абсолютно сходится
-  \item Если $\overline{\lim}_{n \rightarrow \infty}{|\frac{a_{n+1}}{a_n}|} = q$ или $\overline{\lim}_{n \rightarrow \infty}{\sqrt[n]{|a_n|}} = q$, тогда ряд \begin{cases}
-         \text{абсолютно сходитя}, & $q<1$ \\
-         \text{расходитя},         & $q>1$ \\
-         \text{не работает},       & $q=1$ \\
-        \end{cases}
+  \item Если $\overline{\lim}_{n \rightarrow \infty}{|\frac{a_{n+1}}{a_n}|} = q$ или $\overline{\lim}_{n \rightarrow \infty}{\sqrt[n]{|a_n|}} = q$, тогда ряд $\begin{cases}
+          \text{абсолютно сходитя}, & q<1 \\
+          \text{расходитя},         & q>1 \\
+          \text{не работает},       & q=1 \\
+         \end{cases}$
  \end{enumerate}
 \end{theorem}
 %TODO: Дописать доказательство
@@ -507,11 +496,11 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
  $$ a_1^+ + \dots + a_n^+ + \dots \xrightarrow{n \rightarrow \infty} +\infty$$
  $$ a_1^- + \dots + a_n^- + \dots \xrightarrow{n \rightarrow \infty} -\infty$$
  В каждой этой сумме бесконечное число слагаемых, иначе н.н.н все члены одного знака, и сходимость эквивалентна абсолютной. Если нет нитого ни другого (оба конечны), тогда ряд будет абсолютно сходится(противоречие). Если одно есть, но нет другого, тогда ряд расходится\\
- Пусть A\geq0:\\
- $  n_1 : \begin{cases}
+ Пусть $A\geq0$:\\
+ $$  n_1 : \begin{cases}
    n_1 = 1,                                                                    & a_1^+ \geq A \\
    a_1^+ + \dots + a_{n_1-1}^+ \leq A < a_1^+ + \dots + a_{n-1}^+ + a_{n_1}^+, & a_1^+ < A    \\
-  \end{cases}$
+  \end{cases}$$
  \mbox{}\\
  $$ S_{n_1} = a_1^+ + \dots + a_{n_1}^+, |S_{n_1} - A| < a_{n_1}^+$$
  $$ n_2: a_1^+ + \dots + a_{n_1}^+ a_1^- + \dots + a_{n_2 - 1}^- \leq A < a_1^+ + \dots + a_{n_1}^+ +a_1^- + \dots + a_{n_2}^- $$
@@ -539,8 +528,11 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
 \end{upr}
 
 \section{Интеграл}
+
 \subsection{Неопределенный интеграл}
+
 \subsubsection{Первообразные}
+
 \begin{definition*}
  Функция $F$ называется первообразной функции $f$ на некотором интервале, если $F'(x) = f(x)$
 \end{definition*}
@@ -549,8 +541,8 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
  Функция $F: I \rightarrow \mathbb{R}$ (точная) первообразная ф-ции $f: I \rightarrow \mathbb{R}$, если $\forall{x} \in I \ F'(x) = f(x)$
 \end{definition*}
 \begin{memories}
- $\textit{Теорема Лагранджа о среднем.}$\\
- $ \text{Пусть} f:[a,b]\rightarrow\mathbb{R}$ - непрерывная на $[a,b]$  и дифференцируема на $(a,b)$. Тогда $\exists{c}\in (a,b): f(b)-f(a)=f'(c)(b-a)$
+ \textit{Теорема Лагранджа о среднем.}
+ Пусть $f:[a,b]\rightarrow \mathbb{R}$ - непрерывная на $[a,b]$  и дифференцируема на $(a,b)$. Тогда $\exists{c}\in (a,b): f(b)-f(a)=f'(c)(b-a)$
 \end{memories}
 
 \begin{lemma}[ о точных первообразных]
@@ -588,8 +580,8 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
 \begin{proof}
  Пусть $x_1<x_2< \dots < x_n$ - точки, в которых нет $F_1'(x)$ или нет $F_2'(x)$\\
  На любом отрезке  $[x_i; x_{i+1}]$ по предыдущей лемме  $F_1$ и $F_2$ - точные первообразные ф-ции $f$ (по лемме 3)\\
- $$ F_1(x)=F_2(x) + C_i &\text{ На }[x_i; x_{i+1}]$$
- $$ F_1(x)=F_2(x) + C_{i-1} &\text{ На }[x_{i-1}; x_{i}]$$
+ $$ F_1(x)=F_2(x) + C_i  \text{ На }[x_i; x_{i+1}]$$
+ $$ F_1(x)=F_2(x) + C_{i-1} \text{ На }[x_{i-1}; x_{i}]$$
  $$|\Rightarrow F_1(x_i)= F_2(x_i) + C_i = F_2(x_i) + C_{i-1} \Rightarrow C_i = C_{i-1}$$
 \end{proof}
 \begin{name}
@@ -686,7 +678,7 @@ $$ \int f(x)g(x)dx $$
  Это представление едиственно (с точностью до перестановки множителей)
 \end{lemma}
 \begin{lemma}[о делении с отсатком]
- Если $P(x), Q(x), deg(P) \geq deg(Q),\ \mbox{ Q \ne 0}$, тогда $\exists{}!$ многочлены $q(x), r(x), deg(q) = deg(P)-deg(Q),\ deg(r) < deg(Q): P(x)=Q(x)q(x)+r(x)$
+ Если $P(x), Q(x), deg(P) \geq deg(Q),  Q \ne 0$, тогда $\exists{}!$ многочлены $q(x), r(x), deg(q) = deg(P)-deg(Q),\ deg(r) < deg(Q): P(x)=Q(x)q(x)+r(x)$
 \end{lemma}
 \begin{lemma}
  Еслм $deg(P), deg(Q)>0,$ и $d(x) = NOD(P(x), Q(x))$, тогда $\exists{u(x), v(x)}: deg(u)<deg(Q), deg(v)<deg(P),\\ d(x) = P(x)u(x) + Q(x)v(x)$
@@ -729,9 +721,9 @@ $R$ - рациональная функция
        $$\int R(x, \sqrt[n]{ax+b}) dx = \int R(\frac{y^n - b}{a}, y) \frac{y^{n-1}}{a}dy$$
        \end{comment}
        \begin{exmp}
-        $$ \int \frac{\sqrt{2x+2}}{\sqrt{x+1} + x - 5} dx \textcircled{\ = \ }$$
+        $$ \int \frac{\sqrt{2x+2}}{\sqrt{x+1} + x - 5} dx \text{\textcircled{ = }}$$
         $$ y = \sqrt{x=1}, x = y^2 - 1, dx = 2ydy $$
-        $$ \textcircled{\ = \ } \int \frac{\sqrt{2} y 2y}{y + y^2 - 6} dy = 2\sqrt{2} \int \frac{y^2}{y^2+y-6} dy  = 2\sqrt{2} \int (1- \frac{y-6}{y^2+y-6}) dy = \dots$$
+        $$ \text{\textcircled{ = }} \int \frac{\sqrt{2} y 2y}{y + y^2 - 6} dy = 2\sqrt{2} \int \frac{y^2}{y^2+y-6} dy  = 2\sqrt{2} \int (1- \frac{y-6}{y^2+y-6}) dy = \dots$$
        \end{exmp}
  \item $R(x, \sqrt[n]{\frac{ax+b}{cx+d}}), ad \ne bc$ замена $y=\sqrt[n]{\frac{ax+b}{cx+d}}, x = \frac{b - dy^n}{cy^n-a} = z(y)$
        $$ \int R(x, \sqrt[n]{\frac{ax+b}{cx+d}}) dx = \int R(z(y), y)\cdot z'(y) dy$$
@@ -747,5 +739,91 @@ $R$ - рациональная функция
        Если $R(-sinX, -cosX) =  R(sinX, cosX), t = tgX$\\
  \item $R(shX, chX)$ по аналогии с пунктом (3) + работает замена $y = e^x$
 \end{enumerate}
+\subsubsection{План изучения}
+\begin{itemize}
+ \item Формула замены переменной, формула интегрирования по частям
+ \item Интегрирование рациональных функций
+       \begin{itemize}
+        \item Разложение на простые дроби
+        \item Метод Остроградского(*)
+       \end{itemize}
+ \item Интегрирование тригонометрических функций
+       \begin{itemize}
+        \item $\int R(sinX; cosX) dx \ \ ,  t=tg(\frac{x}{2})$ - универсальная подстановка
+        \item Четность/нечетность функции $\rightarrow$ специальная замена
+        \item Частные случаи(**)
+       \end{itemize}
+ \item Интегрирование иррациональных функций
+       \begin{itemize}
+        \item $\int R(x, \sqrt[m]{\frac{ax+b}{cx+d}}) dx$
+              $$\int R(x, \sqrt[m]{\frac{ax+b}{cx+d}}, \sqrt[n]{\frac{ax+b}{cx+d}}, \dots ) dx $$
+              $t = \sqrt[N]{\frac{ax+b}{cx+d}}, N = NOK(m,n, \dots)$
+        \item $\int R(x, \sqrt{ax^2+bx+c}) dx$ - выделение полного квадрата или замена Эйлера(***)
+        \item Биноминальный интеграл (****)
+       \end{itemize}
+\end{itemize}
+\begin{comment}
+Все методы сводятся к интегрированию рациональных функции
+\end{comment}
 
+\subsubsection{Частные случаи интегрирования тригонометрических функций}
+\begin{enumerate}
+ \item $$\int sin^{2m}(x) cos^{2n}(x) dx \ \ \ \ \textit{используя формулы понижения степени получим} $$ $$  \int \frac{1-cos(2x)}{2}^m \frac{1+cos(2x)}{2}^n dx $$
+ \item $$\int sin^{2m+1}(x) cos^{2n}(x) dx = \int sin^{2m}(x) cos^{2n+1}(x) dx = $$
+       $$= - \int sin^{2m}(x) cos^{2n}(x) d \underbrace{cos(x)}_{t} = -\int (1-t^2)^m t^{2n} dt$$
+ \item $\int sin(ax)cos(bx) dx = (1) $\\
+       $\int sin(ax)sin(bx) dx = (2)$\\
+       $\int cos(ax)cos(bx) dx = (3)$\\
+       $$(1)=\int \frac{1}{2}(sin(a+b)x+sin(a-b)x) dx$$
+       $$(2)=\int \frac{1}{2}(cos(a-b)x-cos(a+b)x) dx$$
+       $$(3)=\int \frac{1}{2}(cos(a+b)x+cos(a-b)x) dx$$
+\end{enumerate}
+\subsubsection{\texorpdfstring{$\int R(x, \sqrt{ax^2+bx+c}) dx$}{(***)} }
+$$ax^2 +bx +c = a {\underbrace{(x+\frac{b}{2a})}_{u}}^2 + c - \frac{b^2}{4a}$$
+В зависимости от дискриминанта и знака $a$ сводится к:
+\begin{itemize}
+ \item $\int R(u; \sqrt{a^2-u^2}) du$
+ \item $\int R(u; \sqrt{u^2-a^2}) du$
+ \item $\int R(u; \sqrt{a^2+u^2}) du$
+\end{itemize}
+\begin{center}
+ \begin{tabular}{ |c|c|c|c| }
+  \hline
+  случай           & подстановка (замена)          & $du$                          & корень                        \\
+  \hline
+  $\sqrt{a^2-u^2}$ & $\begin{aligned}
+    u = asint \\
+    u = acost \\
+   \end{aligned}$ & $\begin{aligned}
+    du = acost dt  \\
+    du = -asint dt \\
+   \end{aligned}$ & $\begin{aligned}
+    acost \\
+    asint \\
+   \end{aligned}$ \\
+  \hline
+  $\sqrt{u^2-a^2}$ & $\begin{aligned}
+    u = \frac{a}{sint} \\
+    u = \frac{a}{cost} \\
+   \end{aligned}$ & $\begin{aligned}
+    du = -\frac{acost}{sin^2 t} dt \\
+    du = -\frac{asint}{cos^2 t} dt \\
+   \end{aligned}$ & $\begin{aligned}
+    \sqrt{(\frac{a}{sint})^2 - a^2}=a\ ctg(t) \\
+    \sqrt{(\frac{a}{cost})^2 - a^2}=a\ tg(t)  \\
+   \end{aligned}$ \\
+  \hline
+  $\sqrt{u^2+a^2}$ & $\begin{aligned}
+    u = \frac{a}{tg(t)}  \\
+    u = \frac{a}{ctg(t)} \\
+   \end{aligned}$ & $\begin{aligned}
+    du = \frac{a}{cos^2 t} dt  \\
+    du = -\frac{a}{sin^2 t} dt \\
+   \end{aligned}$ & $\begin{aligned}
+    \sqrt{(\frac{a}{tg(t)})^2 - a^2}=\frac{a}{cost}  \\
+    \sqrt{(\frac{a}{ctg(t)})^2 - a^2}=\frac{a}{sint} \\
+   \end{aligned}$ \\
+  \hline
+ \end{tabular}
+\end{center}
 \end{document}
