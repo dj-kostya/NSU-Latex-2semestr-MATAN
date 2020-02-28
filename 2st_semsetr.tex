@@ -792,38 +792,65 @@ $$ax^2 +bx +c = a {\underbrace{(x+\frac{b}{2a})}_{u}}^2 + c - \frac{b^2}{4a}$$
   случай           & подстановка (замена)          & $du$                          & корень                        \\
   \hline
   $\sqrt{a^2-u^2}$ & $\begin{aligned}
-    u = asint \\
-    u = acost \\
+    u = asin(t) \\
+    u = acos(t) \\
    \end{aligned}$ & $\begin{aligned}
-    du = acost dt  \\
-    du = -asint dt \\
+    du = acos(t) dt  \\
+    du = -asin(t) dt \\
    \end{aligned}$ & $\begin{aligned}
-    acost \\
-    asint \\
+    acos(t) \\
+    asin(t) \\
    \end{aligned}$ \\
   \hline
   $\sqrt{u^2-a^2}$ & $\begin{aligned}
-    u = \frac{a}{sint} \\
-    u = \frac{a}{cost} \\
+    u = \frac{a}{sin(t)} \\
+    u = \frac{a}{cos(t)} \\
    \end{aligned}$ & $\begin{aligned}
-    du = -\frac{acost}{sin^2 t} dt \\
-    du = -\frac{asint}{cos^2 t} dt \\
+    du = -\frac{acos(t)}{sin^2 (t)} dt \\
+    du = -\frac{asin(t)}{cos^2 (t)} dt \\
    \end{aligned}$ & $\begin{aligned}
-    \sqrt{(\frac{a}{sint})^2 - a^2}=a\ ctg(t) \\
-    \sqrt{(\frac{a}{cost})^2 - a^2}=a\ tg(t)  \\
+    \sqrt{(\frac{a}{sin(t)})^2 - a^2}=a\ ctg(t) \\
+    \sqrt{(\frac{a}{cos(t)})^2 - a^2}=a\ tg(t)  \\
    \end{aligned}$ \\
   \hline
   $\sqrt{u^2+a^2}$ & $\begin{aligned}
     u = \frac{a}{tg(t)}  \\
     u = \frac{a}{ctg(t)} \\
    \end{aligned}$ & $\begin{aligned}
-    du = \frac{a}{cos^2 t} dt  \\
-    du = -\frac{a}{sin^2 t} dt \\
+    du = \frac{a}{cos^2 (t)} dt  \\
+    du = -\frac{a}{sin^2 (t)} dt \\
    \end{aligned}$ & $\begin{aligned}
-    \sqrt{(\frac{a}{tg(t)})^2 - a^2}=\frac{a}{cost}  \\
-    \sqrt{(\frac{a}{ctg(t)})^2 - a^2}=\frac{a}{sint} \\
+    \sqrt{(\frac{a}{tg(t)})^2 - a^2}=\frac{a}{cos(t)}  \\
+    \sqrt{(\frac{a}{ctg(t)})^2 - a^2}=\frac{a}{sin(t)} \\
    \end{aligned}$ \\
   \hline
  \end{tabular}
 \end{center}
+\begin{exmp}
+ $$ \int \frac{x^2-x+1}{(x^2+1)\sqrt{x^2+1}} dx= \left\{\!\begin{aligned}
+   x = tg(t)                 \\
+   dx = \frac{dt}{cos^2 (t)} \\
+   x^2+1 = \frac{1}{cos^2 (t)}
+  \end{aligned} \right\} = \int \frac{tg^2 (t) - tg (t) + 1}{\frac{1}{cos^2 (t)}\cdot \frac{1}{cos(t)}} \cdot \frac{dt}{cos^2 (t)} =$$
+ $$ = \int (tg^2(t)+1)cos(t)\ dt - \int tg(t)cos(t)\ dt= \int \frac{1}{cos^2t}cos(t)\ dt - \int tg(t)cos(t)\ dt = $$
+ $$=\left\{\!\begin{aligned}
+   u = tg(\frac{t}{2})    \\
+   dt = \frac{2du}{1+u^2} \\
+   cos(t) = \frac{2u}{1+u^2}
+  \end{aligned} \right\} = \int \frac{1+u^2}{2u} \frac{2du}{1+u^2} du + cos(t) = ln|u|+cos(t) + C=$$
+ $$=ln|tg(\frac{arctg(x)}{2})| + cos(arctg(x)) + C$$
+\end{exmp}
+\subsubsection{Подстановка Эйлера}
+$$ \int R(x, \sqrt{ax^2+bx+c}) dx $$
+\begin{enumerate}
+ \item $a>0\ \ \underbrace{\sqrt{ax^2+bx+c}}_{\text{Корней нет}}=t \pm \sqrt{a}x$
+       $$ ax^2 + bx+ c = t^2 \pm 2\sqrt{a}x + ax^2$$
+       $$ x = \frac{t^2-c}{b \mp 2t \sqrt{a}} \Rightarrow \sqrt{ax^2+bx+c}=t \pm \frac{\sqrt{a}(t^2-c)}{b\mp2t \sqrt{a}}$$
+       Получаем рациональную функцию под интегралом
+ \item 2 различных корня $ax^2+bx+c=a(x-x_0)(x-x_1)$
+       $$ t = \frac{ \sqrt{ax^2+bx+c}}{x-x_0},\ t^2 (x-x_0)^2 = ax^2+bx+c$$
+       $$ t^2(x-x_0) = a(x-x_1)$$
+       $$ x = \frac{-ax_1 + t^2 x_0}{t^2 - a} \Rightarrow \sqrt{ax^2+bx+c} = t(x-x_0)=$$
+       $$ = t(\frac{-ax_1 + t^2 x_0}{t^2 - a} - x_0)$$
+\end{enumerate}
 \end{document}
