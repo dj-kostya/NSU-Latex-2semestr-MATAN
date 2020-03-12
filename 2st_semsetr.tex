@@ -882,7 +882,7 @@ $$ \int x^m (ax^n + b)^p dx\ , m,n,p \in \mathbb{Q}$$
          \right.$
  \end{enumerate}
 \end{theorem}
-\subsubsection{Определенные интегралы}
+\subsection{Определенные интегралы}
 \includegraphics{opr_int}
 $$ f:[a,b] \rightarrow R, f(x) \geq 0$$
 \begin{formula}[Ньютона-Лейбница]
@@ -946,5 +946,47 @@ $$ f:[a,b] \rightarrow R, f(x) \geq 0$$
  $$  S^*(E) = 1 $$
  $$  S_*(E) = 0 $$
 \end{exmp}
+\begin{definition*}
+ Если $S_*(A) = S^*(A)$, тогда $A$ - квадрируемое
+\end{definition*}
+\begin{theorem}
+ Множество квадрируемых множеств это кольцо. И площадь продолжается на них с сохранением всех свойств
+\end{theorem}
+\subsubsection{Модель интеграла Дарбу}
+\begin{definition*}
+ Разбиение отрезка $[a,b]$, это коннечный набор точек $P = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \}$
+\end{definition*}
+\begin{property*}
+ $P_2$ - \textit{подразбиение} $P_1$, если $P_1 \subset P_2$
+\end{property*}
+\begin{property*}
+ У любых двух разбиений есть общее подразбиение
+\end{property*}
+\begin{definition*}
+ Пусть $f: [a,b] \rightarrow \mathbb{R}$ - ограниченая функция.
+ Определим \textit{верхний интеграл Дарбу}.\\
+ Пусть $P = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \}$. На каждом отрезке $A_i = [x_i;x_{i+1}]$ выберем $C_i \geq f(x) \forall{x} \in A$.
+ $$ \int_a^{b*} f(x)  dx = inf_{P, C_i}\{\sum_{i=0}^{n-1}{C_i(x_{i+1}-x_i)}\} $$
+ Аналогично определяется \textit{нижний интегралл Дарбу}
+ $$ \int_{a*}^{b} f(x)  dx = $$
+ $$=sup_{P, C_i}\{\sum_{i=0}^{n-1}{C_i(x_{i+1}-x_i), P = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \}}, C_i \leq f(x) \forall{x} \in [x_i;x_{i+1}]\} $$
+\end{definition*}
+\begin{comment}
+$$ \int_{a*}^{b} f(x)  dx \leq \int_a^{b*} f(x)  dx$$
+\end{comment}
+\begin{exmp}
+ $$f_D: [0,1] \rightarrow [0,1]$$
+ $$ f_D(x) = \begin{cases}
+   1, & x\in \mathbb{Q}     \\
+   0, & x \notin \mathbb{Q} \\
+  \end{cases}$$
+\end{exmp}
+\begin{comment}
+Если они совпадают, то $f$ \textit{интегрируема по Дарбу}
+$$\int_a^b f(x)  dx = \int_{a*}^{b} f(x)  dx = \int_a^{b*} f(x)  dx$$
+Интеграл Дарбу функции $f$ на отрезке $[a,b]$
+\end{comment}
+\subsubsection{Модель интегралла Римана}
+$$\text{Пусть } f:[a,b] \rightarrow \mathbb{R}$$
 
 \end{document}
