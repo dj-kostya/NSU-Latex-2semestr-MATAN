@@ -32,6 +32,8 @@
 \newtheorem*{comment}{Замечание}
 \newtheorem{comment*}{Замечание}
 \newtheorem*{upr}{Упражнение}
+\newtheorem*{question}{Вопрос}
+\newtheorem*{formula}{Формула}
 \newtheorem{upr*}{Упражнение}
 \newtheorem{consequence}{Следствие}
 \newtheorem*{consequence*}{Следствие}
@@ -879,6 +881,70 @@ $$ \int x^m (ax^n + b)^p dx\ , m,n,p \in \mathbb{Q}$$
          \end{gathered}
          \right.$
  \end{enumerate}
-
 \end{theorem}
+\subsubsection{Определенные интегралы}
+\includegraphics{opr_int}
+$$ f:[a,b] \rightarrow R, f(x) \geq 0$$
+\begin{formula}[Ньютона-Лейбница]
+ $$S = F(b)-F(a) =  \int_a^b f(x) dx, \text{ где } F \text{ - первообразная f}$$
+ $$S'(x) = \lim_{\Delta x \rightarrow 0}{\frac{S(x +\Delta x)-S(x)}{\Delta x}} = f(x) $$
+\end{formula}
+\begin{definition*}
+ Кольцо множеств - набор множеств замкнутый относительно
+ % TODO: add \
+ $\cup, \cap, \setminus , \Delta  $
+\end{definition*}
+\begin{exmp}
+ Подмножество $\mathbb{R}^2: $
+ \begin{itemize}
+  \item Все подмножества пл-ти $P(\mathbb{R}^2)$
+  \item $\{\mathbb{R}^2, \emptyset\}$
+  \item Все ограниченые множества
+  \item Все многоугольники (+$\emptyset$)
+ \end{itemize}
+\end{exmp}
+\begin{definition*}
+ Площадь на кольце $R$ подмножеств $\mathbb{R}^2$ это функция $S: R \rightarrow \mathbb{R}$, такая что:
+ \begin{enumerate}
+  \item $\forall{A} \subset R, S(A) \geq 0$
+  \item $ \forall{A,B} \subset R, A\cap B = \emptyset \rightarrow S(A\cup B) = S(A) + S(B)$
+  \item не меняется при сдвигах, поворотах, отражениях. Т.е $L:\mathbb{R}^2 \rightarrow \mathbb{R}^2 \Rightarrow S(L(A)) = S(A)$
+  \item $S([0,1]^2) = 1$
+ \end{enumerate}
+\end{definition*}
+\begin{comment}
+Аналогично $V: R(\mathbb{R}^3) \rightarrow \mathbb{R} $ - объем
+\end{comment}
+\begin{comment}
+Аналогично $l: R(\mathbb{R}) \rightarrow \mathbb{R} $ - длина
+\end{comment}
+\begin{comment}
+\begin{enumerate}
+ \item Из определения $S(\subset) = 0$ \\
+       $S(A \cup \emptyset) = S(\emptyset) +  S(A)$
+ \item $S([0,a] \times [0,b]) = ab$
+\end{enumerate}
+\end{comment}
+\comment Площадь однозначно определяется на кольце многоугольников
+\begin{consequence}
+ $A \subset B \Rightarrow S(A) \leq S(B) $
+\end{consequence}
+\begin{proof}
+ $$ B = A \cup (B \setminus A) $$
+\end{proof}
+\begin{definition*}
+ Пусть $A\subset \mathbb{R}^2$ - ограниченное множество. \\
+ \includegraphics{ploshad}
+ $$ S^*(A) = inf(S(M), \text{M - многоугольник}, A\subset M ) \text{ - Внешняя площадь}$$
+ $$ S_*(A) = sup(S(M), \text{M - многоугольник}, M \subset A )) \text{ - Внутренняя площадь}$$
+ Причем $S^*(A) \geq S_*(A)$
+\end{definition*}
+\begin{exmp}
+ Когда не совпадают:\\
+ \includegraphics{edinsquare}\\
+ $ E = (Q \cap [0,1]^2)$ - точки единичного квадрата с рациональными координатами $\Rightarrow$
+ $$  S^*(E) = 1 $$
+ $$  S_*(E) = 0 $$
+\end{exmp}
+
 \end{document}
