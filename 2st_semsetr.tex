@@ -882,7 +882,7 @@ $$ \int x^m (ax^n + b)^p dx\ , m,n,p \in \mathbb{Q}$$
          \right.$
  \end{enumerate}
 \end{theorem}
-\subsection{Определенные интегралы}
+\section{Определенные интегралы}
 \includegraphics{opr_int}
 $$ f:[a,b] \rightarrow R, f(x) \geq 0$$
 \begin{formula}[Ньютона-Лейбница]
@@ -969,7 +969,7 @@ $$ f:[a,b] \rightarrow R, f(x) \geq 0$$
  $$ \int_a^{b*} f(x)  dx = inf_{P, C_i}\{\sum_{i=0}^{n-1}{C_i(x_{i+1}-x_i)}\} $$
  Аналогично определяется \textit{нижний интегралл Дарбу}
  $$ \int_{a*}^{b} f(x)  dx = $$
- $$=sup_{P, C_i}\{\sum_{i=0}^{n-1}{C_i(x_{i+1}-x_i), P = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \}}, C_i \leq f(x) \forall{x} \in [x_i;x_{i+1}]\} $$
+ $$=sup_{P, C_i}\{\sum_{i=0}^{n-1}{C_i(x_{i+1}-x_i), P = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \}, C_i \leq f(x) \forall{x} \in [x_i;x_{i+1}]\}} $$
 \end{definition*}
 \begin{comment}
 $$ \int_{a*}^{b} f(x)  dx \leq \int_a^{b*} f(x)  dx$$
@@ -988,5 +988,123 @@ $$\int_a^b f(x)  dx = \int_{a*}^{b} f(x)  dx = \int_a^{b*} f(x)  dx$$
 \end{comment}
 \subsubsection{Модель интегралла Римана}
 $$\text{Пусть } f:[a,b] \rightarrow \mathbb{R}$$
+$ \tau = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \} $\\
+Набор точек $\{ \xi_1, \dots ,\xi_n \}$ - подчиненён разбиению P, если $$ \xi_i\in[x_{i-1}m x_i] $$
+\begin{formula}[Сумма Римона]
+ $$ S(f, P, \xi)=\sum_{i=1}^{n}{f(\xi_i)(x_i-x_{i-1})} $$
+\end{formula}
+\begin{definition*}
+ \textit{Шаг разбиения}: $\Delta(\tau) = max_{i=1, \dots,n} (x_i - x_{i-1})$
+\end{definition*}
+\begin{definition*}
+ \textit{Интеграл Римона}
+ $I$ - называется интегралом Римона, если $f$ на $[a,b]$,если
+ $$ \forall{\varepsilon}>0 \exists{\delta}>0: |I-S(f, \tau, \xi)|<\varepsilon $$
+ $$ \int_a^b f(x)  dx = \lim_{\Delta(P) \rightarrow 0}{S(f,\tau,\xi)} $$
+ Если этот предел существует и независит от $\tau, \xi$
+\end{definition*}
+\begin{exmp}
+ $f \equiv c $ на [a,b]
+ $$ S(f, \tau, \xi) = c(b-a) $$
+\end{exmp}
+\begin{exmp}
+ $$D(X) = \begin{cases}
+   1, & \text{рац на }[0,1] \\
+   0, & \text{ир на }[0,1]  \\
+  \end{cases}$$
+ $\forall{\tau} $ - разбиение $[0,1]$ $\exists{\xi_k` }\in \mathbb{Q}, \xi_k``  \notin \mathbb{Q} $
+ $$S(D, \tau, \xi_k`  ) = \sum_{n=1}^{\infty}{1(x_k - x_{k-1})} = 1$$
+ $$S(D, \tau, \xi_k`` ) = \sum_{n=1}^{\infty}{0(x_k - x_{k-1})} = 0 $$
+ $$ | \Rightarrow \nexists lim $$
+\end{exmp}
+\begin{exmp}
+ $$R(X) = \begin{cases}
+   \frac{1}{n}, & x = \frac{m}{n} \text{несократима} \\
+   0,           & x \notin \mathbb{Q}                \\
+  \end{cases} \text{ на [a,b]}$$
+ $$ S(R, \tau, \xi) = \sum_{i=0}^{k}{R(\xi_i)\delta x_i} = \sum_{R(\xi_i) < \frac{1}{N}}{R(\xi_i)\delta x_i}+ \sum_{R(\xi_i) \geq \frac{1}{N}}{R(\xi_i)\delta x_i} <$$
+ $$ < \sum_{R(\xi_i) < \frac{1}{N}}{\frac{1}{N} \delta x_i} + \sum_{R(\xi_i) \geq \frac{1}{N}} {1 \delta x_i} < \frac{1}{N} \sum_{R(\xi_i) < \frac{1}{N}}{\delta x_i} + \Delta (\tau) \text{кол-во } \{R(\xi_i) \geq \frac{1}{N} \} <$$
+ Грубой оценкой является $N^2$\\
+ $N = 1, x = 1  \longrightarrow1$\\
+ $N = 2, x = 1, x = \frac{1}{2} \longrightarrow2$\\
+ $N = 3, x = 1, x = \frac{1}{2}, x = \frac{1}{3}, x = \frac{2}{3} \longrightarrow 4$\\
+ Далее, если кол-во $\{x: R(x) \geq \frac{1}{N} \}$ не более $N^2$, то для $\{x: R(x) \geq \frac{1}{N+1} \}$ могут добавляться дроби $\frac{k}{N+1}$, $k = 1, \dots, n$\\
+ Т.е добавится не более $N$ штук $N^2+N <(N+1)^2$
+ %TODO: Add circle for <
+ $$S(R, \tau, \xi) < \frac{1}{N}+\Delta(\tau)N^2$$
+ Засчет выбора достаточно малого $\Delta(\tau): \forall{\varepsilon}>0\ \exists{N}\ \ \frac{1}{N}<\frac{\varepsilon}{2} $ и $\Delta = \frac{1}{N^3}$\\
+ $\Rightarrow \forall{\tau}: \Delta(\tau) < \delta $ получаем:
+ $$|0 - S(R, \tau, \xi)| = \frac{1}{N} +\delta N^2 = \frac{1}{N} + \frac{N^2}{N^3}=\frac{2}{N} < 2 \frac{\varepsilon}{2} = \varepsilon \Rightarrow \int\limits_0^1 R(x)  dx $$
+\end{exmp}
+\subsubsection{Верхние и нижние суммы Дарбу}
+\begin{definition*}
+ Пусть $f: [a,b] \rightarrow \mathbb{R}$ - ограниченая функция.
+ Определим \textit{верхняя сумма Дарбу}.\\
+ $f$ - огр на $[a,b]$
+ $$ M_k = \sup_{[x_k, x_{k-1}]}(f(x)), m_k = \inf_{[x_{k-1}, x_k]}(f(x)) $$
+ $$S_\tau = \sum_{k=0}^{n}{M_k \Delta x_k} , s_\tau = \sum_{k=0}^{n}{m_k \Delta x_k}$$
+\end{definition*}
 
+\begin{property}
+ $$ s_\tau \leq S(f, \tau, \xi) \leq S_\tau \  \forall{\xi}$$
+\end{property}
+\begin{property}
+ $$ \tau' \subseteq \tau'' \Rightarrow S_{\tau''} \leq S_{\tau'}$$
+\end{property}
+\begin{property}
+ $$\forall{\tau', \tau''}: s_{\tau'} \leq S_{\tau''} $$
+ Нижний предел:
+ $$ \sup_{\tau} (s_\tau) = \underline{I} = \int\limits_{a*}^b f(x)dx$$
+ Верхний предел:
+ $$ \inf_{\tau} (S_\tau) = \overline{I} = \int\limits_{a}^{b*} f(x)dx$$
+\end{property}
+\begin{property}
+ $$\forall{\varepsilon}>0\ \exists{\tau}\ \exists{\overline{\xi}}: 0 \leq S_\tau - S(f,\tau, \overline{\xi})< \varepsilon $$
+\end{property}
+\begin{proof}
+ По определению $M_k \exists{\xi_k} \in [x_{k-1}, x_k]: M_k - f(\xi_k) < \frac{\varepsilon}{b-a}, \underline{\xi} ={\xi_k}$
+ $$S_\tau - S(f, \tau, \underline{\xi}) = \sum_{i=0}^{n}{(M_k-f(\xi_k)) \Delta x_k} < \frac{\varepsilon}{b-a}\sum_{i=0}^{n}{\Delta x_k} = \varepsilon$$
+\end{proof}
+\begin{property}
+ $$\forall{\varepsilon}>0\ \exists{\tau}\ \exists{\underline{\xi}}: 0 \leq  S(f,\tau, \underline{\xi}) - S_\tau < \varepsilon $$
+\end{property}
+\begin{property}
+ Пусть $\tau'$ полученна из $\tau$ путем добавления $p$ точек. Тогда $S_\tau - S_{\tau'} \leq (M-m)p\Delta(\tau)$ , $S_{\tau'} - S_{\tau} \leq (M-m)p\Delta(\tau)$
+\end{property}
+\begin{proof}
+ добавление 1 точки: $x_{k-1} < x' < x_k$
+ $$S_\tau - S_{\tau'} = M_k(x_k - x_{k-1}) - (M_k'(x_k - x') + M_k''(x'-x_{k-1}))= $$
+ $$= (M_k-M_{k'})(x_k-x') + (M_k - M_{k}'')(x'-x_{k-1}) \leq (M-m)\Delta(\tau)$$
+ Далее по индукции\\
+\end{proof}
+\begin{lemma}[Дарбу]
+ $$\overline{I} = \lim_{\Delta(\tau) \rightarrow 0}{S_\tau}$$
+ $$\underline{I} = \lim_{\Delta(\tau) \rightarrow 0}{s_\tau}$$
+\end{lemma}
+\begin{proof}
+ $M=m \Rightarrow f(x) = const = m = M\ \underline{I} = s_\tau, \overline{I}=S_\tau$
+ $$ M > m, \forall{\varepsilon}\ \exists{\tau^*}: S_{\tau^*}-\underline{I}<\frac{\varepsilon}{2} \text{по опр inf} $$
+ Пусть $p$ - кол-во точек $\tau^*$, лежащие внутри $[a,b]$. Выберем $$\delta = \frac{\varepsilon}{2(M-m)p}$$
+ Пусть $\tau : \Delta(\tau) < \delta, $ $\tau' = \tau \cup \tau^*$ \\
+ $$ S_\tau - \underline{I} = S_\tau - S_{\tau'} + S_{\tau'} - \underline{I} \leq (M-m)p\Delta(\tau) + S_{\tau'} - \underline{I} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon $$
+ Для второго \textit{УПР!}
+\end{proof}
+\begin{theorem}[Критерий Дарбу интегрируемости по Римону]
+ Ограниченная на $[a,b]$ ф-ция $f$ интегрируема по Римону $\Leftrightarrow \ \forall{\varepsilon}>0\ \exists{\tau}:\ S_\tau - s_\tau < \varepsilon$
+\end{theorem}
+\begin{proof}
+ $\Rightarrow$\\
+ Тогда $\exists{\delta}> 0 $ из определения инт-мости выберем $\tau: \Delta(\tau)< \delta \  $
+ $$ |I - S(f, \tau, \xi)| <\frac{\varepsilon}{4}\ \forall{\xi} $$
+ По св-ву 4 и 5 выберем $\underline{\xi}, \overline{\xi}$:
+ $$ S_\tau - S(f,\tau, \overline{\xi}) < \frac{\varepsilon}{4}, \ S(f, \tau, \underline{\xi})- s_\tau<\frac{\varepsilon}{4} $$
+ $$S_\tau-s_\tau = S_\tau - S(f, \tau, \overline{\xi}) + S(f,\tau, \overline{\xi})- I + I - S(f,\tau, \underline{\xi}) +S(f,\tau, \underline{\xi}) -s_\tau < \varepsilon  $$
+
+ $ \Leftarrow $\\
+ Из условия следует: $\underline{I} = \overline{I} = I$ - обозначение. \\
+ По лемме Дарбу: по $\varepsilon $ выберем $\delta: \Delta(\tau) < \delta$\\
+ $$S_\tau - I < \frac{\varepsilon}{2}, I- s_\tau < \frac{\varepsilon}{2} \Rightarrow $$
+ $$ \Rightarrow \forall{\xi} \text{ по св-ву 1} |S(f,\tau,\xi) -I|<\varepsilon $$
+
+\end{proof}
 \end{document}
