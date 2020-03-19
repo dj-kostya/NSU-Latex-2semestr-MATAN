@@ -39,6 +39,14 @@
 \newtheorem*{consequence*}{Следствие}
 \newtheorem{property}{Свойство}
 \newtheorem*{property*}{Свойство}
+\newcommand\Set[1]{%
+\left\{ #1 \right\}}
+\newcommand\funcSet[2]{%
+\left\{ #1 \colon #2 \right\}}
+\newcommand\abs[1]{%
+\mbox{$| #1 |$}}
+\newcommand\InAll[0]{%
+|\Rightarrow}
 \renewcommand\qedsymbol{$\blacksquare$}
 \renewcommand{\thesubsubsection}{П.\arabic{subsubsection}}
 \renewcommand{\thesubsection}{\S \arabic{subsection}}
@@ -79,9 +87,9 @@ $$a_1+a_2+\dots+a_n = \sum_{k=1}^{n} a_k$$
  Если предел бесконечен или не существует, то ряд \textit{расходится}
 \end{definition}
 \exmp $\sum_{k=0}^{\infty}{q^k} \text{ - геометрическая прогрессия }$
-$$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac{1-q^{n+1}}{1-q}$$
-Если $|q| < 1$, то $S_n \xrightarrow{n\rightarrow \infty} \frac{1}{1-q}$ - ряд сходится\\
-Если $|q| > 1$, то $S_n \xrightarrow{n\rightarrow \infty} \infty$ - ряд расходится\\
+$$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \cfrac{1-q^{n+1}}{1-q}$$
+Если $\abs{q} < 1$, то $S_n \xrightarrow{n\rightarrow \infty} \cfrac{1}{1-q}$ - ряд сходится\\
+Если $\abs{q} > 1$, то $S_n \xrightarrow{n\rightarrow \infty} \infty$ - ряд расходится\\
 Если $q = 1$, то $S_n \xrightarrow{n\rightarrow \infty} \infty$ - ряд расходится\\
 Если $q = -1$, то $S_n = \begin{cases}
   0, & \text{n=2k}   \\
@@ -89,14 +97,14 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac
  \end{cases}$ - ряд расходится
 \subsubsection{Основные  свойства}
 \begin{theorem}[Критерий Коши]
- $$\sum_{k=1}^{\infty}{a_k} - \text{ - сходится }\Leftrightarrow\ \forall{\varepsilon}> 0\ \exists{N}:\ \forall{m\geq n > N}\  |\sum_{k=n}^{m}{a_k}|<\varepsilon$$
+ $$\sum_{k=1}^{\infty}{a_k} - \text{ - сходится }\Leftrightarrow\ \forall{\varepsilon}> 0\ \exists{N}:\ \forall{m\geq n > N}\  \abs{\sum_{k=n}^{m}{a_k}}<\varepsilon$$
 \end{theorem}
 \begin{proof}
  Используя критерий Коши для посл-ти частичных сумм
- $$\sum_{k=1}^{\infty}{a_k}\text{ - сходится }\Leftrightarrow S_n = \sum_{k=1}^{n}{a_k} \text{ - сходится }$$ $$\xLeftrightarrow{\text{По кр. Коши}} \forall{\varepsilon}>0 \exists{N}\ :\forall{m\geq n-1 > N}\  |S_m-S_{n-1}|<\varepsilon$$
- $$\forall{\varepsilon}>0 \exists{N}\ :\forall{m\geq n \geq N+1}\ |\sum_{k=n}^{m}{a_k}|<\varepsilon$$
+ $$\sum_{k=1}^{\infty}{a_k}\text{ - сходится }\Leftrightarrow S_n = \sum_{k=1}^{n}{a_k} \text{ - сходится }$$ $$\xLeftrightarrow{\text{По кр. Коши}} \forall{\varepsilon}>0 \exists{N}\ :\forall{m\geq n-1 > N}\  \abs{S_m-S_{n-1}}<\varepsilon$$
+ $$\forall{\varepsilon}>0 \exists{N}\ :\forall{m\geq n \geq N+1}\ \abs{\sum_{k=n}^{m}{a_k}}<\varepsilon$$
 \end{proof}
-\exmp $$\sum_{k=1}^{\infty}{\frac{1}{n}} \text{ - расходится }  \sum_{k=1}^{\infty}{\frac{1}{n^2}} \text{ - сходится } $$
+\exmp $$\sum_{k=1}^{\infty}{\cfrac{1}{n}} \text{ - расходится }  \sum_{k=1}^{\infty}{\cfrac{1}{n^2}} \text{ - сходится } $$
 \begin{consequence*}
  Если в ряду изменить произвольным образом конечное число слагаемых, то новый ряд сходится, когда сходится исходный, и новый ряд расходится, если исходный расходится
 \end{consequence*}
@@ -152,31 +160,31 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac
  \end{enumerate}
 \end{proof}
 \begin{theorem}[Признак сравнения в предельной форме]
- Пусть $$\sum_{k=1}^{\infty}{a_k},\ \sum_{k=1}^{\infty}{b_k}, a_k \geq 0\ b_k > 0\ \text{ и }\exists{\lim_{n \rightarrow \infty}{\frac{a_n}{b_n}} = c > 0} \text{ - конечное} $$
+ Пусть $$\sum_{k=1}^{\infty}{a_k},\ \sum_{k=1}^{\infty}{b_k}, a_k \geq 0\ b_k > 0\ \text{ и }\exists{\lim_{n \rightarrow \infty}{\cfrac{a_n}{b_n}} = c > 0} \text{ - конечное} $$
  тогда ряды сходятся и расходятся одновременно
 \end{theorem}
 \begin{proof}
- $$\forall{\varepsilon > 0} \exists{N > 0}:\ \forall{n > N}\ |\frac{a_n}{b_n} - c| < \varepsilon $$
- $$-\varepsilon < \frac{a_n}{b_n} - c < \varepsilon$$
- $$-\varepsilon + c< \frac{a_n}{b_n}  < \varepsilon + c$$
+ $$\forall{\varepsilon > 0} \exists{N > 0}:\ \forall{n > N}\ \abs{\cfrac{a_n}{b_n} - c} < \varepsilon $$
+ $$-\varepsilon < \cfrac{a_n}{b_n} - c < \varepsilon$$
+ $$-\varepsilon + c< \cfrac{a_n}{b_n}  < \varepsilon + c$$
  $$(-\varepsilon + c)b_n < a_n  < (\varepsilon + c)b_n$$
- Возьмем $\varepsilon = \frac{c}{2}$
+ Возьмем $\varepsilon = \cfrac{c}{2}$
  $$\exists{N_0 > 0}:\ \forall{n > N_0}\ $$
- $$ \frac{c}{2}b_n < a_n < \frac{3c}{2} b_n$$
+ $$ \cfrac{c}{2}b_n < a_n < \cfrac{3c}{2} b_n$$
  \begin{enumerate}
   \item Пусть $\sum_{k=1}^{\infty}{b_k}$ - сходится\\
         $\xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=N_0}^{\infty}{b_k}$ - сходится\\
-        $\xRightarrow{\text{по th 3}} \sum_{k=N_0}^{\infty}{\frac{3c}{2} b_n}$ - сходится \\
+        $\xRightarrow{\text{по th 3}} \sum_{k=N_0}^{\infty}{\cfrac{3c}{2} b_n}$ - сходится \\
         $\xRightarrow{\text{по th 5}} \sum_{k=N_0}^{\infty}{a_n}$ - сходится \\
         $\xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=1}^{\infty}{a_n} $ - сходится
   \item Пусть $\sum_{k=1}^{\infty}{b_k}$ - расходится\\
         $\xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=N_0}^{\infty}{b_k}$ - расходится\\
-        $\xRightarrow{\text{по th 3}} \sum_{k=N_0}^{\infty}{\frac{c}{2} b_n}$ - расходится \\
+        $\xRightarrow{\text{по th 3}} \sum_{k=N_0}^{\infty}{\cfrac{c}{2} b_n}$ - расходится \\
         $\xRightarrow{\text{по th 5}} \sum_{k=N_0}^{\infty}{a_n}$ - расходится\\
         $ \xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=1}^{\infty}{a_n} $ - расходится
  \end{enumerate}
 \end{proof}
-\subsubsection{Телескопический признак. \texorpdfstring{Эталонный ряд $\sum_{k=1}^{\infty}{\frac{1}{n^p}}$}{Эталонный ряд} }
+\subsubsection{Телескопический признак. \texorpdfstring{Эталонный ряд $\sum_{k=1}^{\infty}{\cfrac{1}{n^p}}$}{Эталонный ряд} }
 \begin{theorem}[Телескопический признак]
  Пусть $a_n \searrow , a_n \geq 0$ ряд $\sum_{k=1}^{\infty}{a_n} $ - сходится \\
  $\Leftrightarrow$ сходится $\sum_{k=0}^{\infty}{2^n a_{2^n}}$
@@ -190,35 +198,35 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac
  $$ 2^n a_{2^{n+1}} \leq \sum_{k=2^{n}+1}^{2^{n+1}}{a_k} \leq 2^n a_{2^n} $$
  Сложим выражения в левой и правой частях
  $$ a_2 + 2a_4 + 4a_8 + \dots + 2^na_{2^{n+1}} \leq S_{2^{n+1}}^A - a_1 \leq S_n^B$$
- $$\frac{1}{2} (S_{n+1}^B - a_1) \leq S_{2^{n+1}}^A - a_1 \leq S_n^B$$
+ $$\cfrac{1}{2} (S_{n+1}^B - a_1) \leq S_{2^{n+1}}^A - a_1 \leq S_n^B$$
  Рассмотрим отдельно каждое неравенство
  \begin{enumerate}
   \item $S_{2^{n+1}}^A - a_1 \leq S_n^B$
         Если ряд $S_n^B$ - сходится $\Rightarrow S_{2^{n+1}}^A - a_1$ - сходится $\Rightarrow S_n^A \leq S^B$ и $\{ S_n^A \}\nearrow \xRightarrow{\text{По th. Вейерштрасса}}$ ряд $\sum_{k=1}^{\infty}{a_n}$ - сходится
-  \item $\frac{1}{2} (S_{n+1}^B - a_1) \leq S_{2^{n+1}}^A - a_1$
+  \item $\cfrac{1}{2} (S_{n+1}^B - a_1) \leq S_{2^{n+1}}^A - a_1$
         $$S_{n+1}^B \leq 2S_{2^{n+1}}^A - a_1$$
         Если ряд $\sum_{k=1}^{\infty}{a_n}$ - сходится $\Rightarrow S_n^B \leq 2S_{2^{n+1}}^A - a_1 $ и $\{ S_n^B \}\nearrow\xRightarrow{\text{По th. Вейерштрасса}}$ ряд $\sum_{k=1}^{\infty}{2^n a_{2^n}}$ - сходится
  \end{enumerate}
  \textit{Примечание:} Расхождение доказывается по признаку сравнения\\
 \end{proof}
 \begin{theorem}
- Ряд $\sum_{k=1}^{\infty}{\frac{1}{n^p}}$ $\begin{cases}
+ Ряд $\sum_{k=1}^{\infty}{\cfrac{1}{n^p}}$ $\begin{cases}
    \text{cходится} ,   & \text{если} p > 1    \\
    \text{расходится} , & \text{если} p \leq 1 \\
   \end{cases}$
 \end{theorem}
 \begin{proof} \mbox{}\\
  \begin{itemize}
-  \item Пусть $p > 1 \Rightarrow 0 < \{\frac{1}{n^p} \} \searrow_0 $
-        Рассмотрим ряд из th 7 $\sum_{k=0}^{\infty}{2^n \frac{1}{2^{np}}} = \sum_{k=0}^{\infty}{(2^{1-p})^n}$ - геометрическая прогрессия $q = 2^{1-p} \Rightarrow \sum_{k=1}^{\infty}{(2^{1-p})^n}$ - сходится $\xRightarrow{\text{по th 7}} \sum_{k=1}^{\infty}{\frac{1}{n^p}}$ - сходится
+  \item Пусть $p > 1 \Rightarrow 0 < \{\cfrac{1}{n^p} \} \searrow_0 $
+        Рассмотрим ряд из th 7 $\sum_{k=0}^{\infty}{2^n \cfrac{1}{2^{np}}} = \sum_{k=0}^{\infty}{(2^{1-p})^n}$ - геометрическая прогрессия $q = 2^{1-p} \Rightarrow \sum_{k=1}^{\infty}{(2^{1-p})^n}$ - сходится $\xRightarrow{\text{по th 7}} \sum_{k=1}^{\infty}{\cfrac{1}{n^p}}$ - сходится
   \item Пусть $p \leq 1$
-        $$\frac{1}{n^p} > \frac{1}{n}\ \forall{n} \in \mathbb{N} \Rightarrow \text{ т.к } \frac{1}{n} \text{ - расходится }
-         \xRightarrow{\text{по признаку сравнения}} \frac{1}{n^p} \text{ - расходится} $$
+        $$\cfrac{1}{n^p} > \cfrac{1}{n}\ \forall{n} \in \mathbb{N} \Rightarrow \text{ т.к } \cfrac{1}{n} \text{ - расходится }
+         \xRightarrow{\text{по признаку сравнения}} \cfrac{1}{n^p} \text{ - расходится} $$
  \end{itemize}
 \end{proof}
 \subsubsection{Признак Коши. Признак Даламбера}
 \begin{theorem}[признак Даламбера]
- Пусть $a_n > 0 $ и $\exists{\overline{\lim}_{n \rightarrow \infty}{\frac{a_{n+1}}{a_n}}} = q$, тогда
+ Пусть $a_n > 0 $ и $\exists{\overline{\lim}_{n \rightarrow \infty}{\cfrac{a_{n+1}}{a_n}}} = q$, тогда
  \begin{enumerate}
   \item Если $ 0 \leq q < 1$, то ряд $\sum_{k=1}^{\infty}{a_n} $ - сходится
   \item Если $ q > 1$, то ряд $\sum_{k=1}^{\infty}{a_n} $ - расходится
@@ -229,12 +237,12 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac
 Признак удобно применять, если в $a_n$ есть $2^n, n!, n^k$
 \end{comment}
 \begin{proof}
- $$\forall{\varepsilon} > 0\ \exists{N > 0}:\ \forall{n > N}\  |\frac{a_{n+1}}{a_n} - q| < \varepsilon$$
- $$- \varepsilon < \frac{a_{n+1}}{a_n} -q <\varepsilon  $$
- $$ (q-\varepsilon)a_n < \frac{a_{n+1}}{a_n} < (q+\varepsilon)a_n\ \ \ \forall{n} = N + 1, N+2,\dots$$
+ $$\forall{\varepsilon} > 0\ \exists{N > 0}:\ \forall{n > N}\  \abs{\cfrac{a_{n+1}}{a_n} - q} < \varepsilon$$
+ $$- \varepsilon < \cfrac{a_{n+1}}{a_n} -q <\varepsilon  $$
+ $$ (q-\varepsilon)a_n < \cfrac{a_{n+1}}{a_n} < (q+\varepsilon)a_n\ \ \ \forall{n} = N + 1, N+2,\dots$$
  \begin{enumerate}
   \item Пусть $ q < 1$ \\
-        Возьмем $\varepsilon: \widetilde{q} = q + \varepsilon < 1$ (Например $\varepsilon = \frac{1-q}{2}$)
+        Возьмем $\varepsilon: \widetilde{q} = q + \varepsilon < 1$ (Например $\varepsilon = \cfrac{1-q}{2}$)
         Тогда $\forall{n} > N$
         $$ a_{n+1} < a_n \widetilde{q}$$
         $$ N+1: a_{n+2} < a_{n+1} \widetilde{q}$$
@@ -246,12 +254,12 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac
         Возьмем $\varepsilon: \widetilde{q} = q - \varepsilon > 1$ \\
         Тогда $\forall{n} > N\ a_n \widetilde{q} <a_{n+1} \xRightarrow{\text{по 1 пункту}} a_{n+k} >a_{n+1} \widetilde{q}^{k-1}$
         $$a_{n+1}\widetilde{q}^{k-1} \xcancel{\xrightarrow{n \rightarrow \infty}}\ \ 0 \Rightarrow a_{n+k}\xcancel{\xrightarrow{n \rightarrow \infty}}\ \ 0 \xRightarrow{\text{по необходимому признаку}} \text{ряд расходится}$$
-  \item Пусть $q=1$$$\sum_{n=1}^{\infty}{\frac{1}{n}}:\ \lim_{n \rightarrow \infty}{\frac{\frac{1}{n+1}}{\frac{1}{n}}} = 1   \text{ ряд расходится} $$
-        $$\sum_{n=1}^{\infty}{\frac{1}{n^2}}:\ \lim_{n \rightarrow \infty}{\frac{\frac{1}{(n+1)^2}}{\frac{1}{n^2}}} = 1  \text{ ряд сходится}$$
+  \item Пусть $q=1$$$\sum_{n=1}^{\infty}{\cfrac{1}{n}}:\ \lim_{n \rightarrow \infty}{\cfrac{\cfrac{1}{n+1}}{\cfrac{1}{n}}} = 1   \text{ ряд расходится} $$
+        $$\sum_{n=1}^{\infty}{\cfrac{1}{n^2}}:\ \lim_{n \rightarrow \infty}{\cfrac{\cfrac{1}{(n+1)^2}}{\cfrac{1}{n^2}}} = 1  \text{ ряд сходится}$$
  \end{enumerate}
 \end{proof}
 \begin{exmp}
- $$\sum_{n=1}^{\infty}{\frac{n^2}{2^n}}, \lim_{n \rightarrow \infty}{\frac{\frac{(n+1)^2}{2^{n+1}}}{\frac{n^2}{2^n}}} = \lim_{n \rightarrow \infty}{\frac{(n+1)^2}{2n^2}} = \frac{1}{2} < 1 \Rightarrow \text{ряд сходится} $$
+ $$\sum_{n=1}^{\infty}{\cfrac{n^2}{2^n}}, \lim_{n \rightarrow \infty}{\cfrac{\cfrac{(n+1)^2}{2^{n+1}}}{\cfrac{n^2}{2^n}}} = \lim_{n \rightarrow \infty}{\cfrac{(n+1)^2}{2n^2}} = \cfrac{1}{2} < 1 \Rightarrow \text{ряд сходится} $$
 \end{exmp}
 \begin{theorem}[радикальный признак Коши] \mbox{}\\
  Пусть $a_n \geq 0 $ и $\exists{\overline{\lim}_{n \rightarrow \infty}{\sqrt[n]{a_n}}} = q$, тогда
@@ -265,24 +273,24 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac
 Признак удобно применять, если в $a_n$ есть $2^n, n^k$
 \end{comment}
 \begin{proof}
- $$\forall{\varepsilon} > 0\ \exists{N > 0}:\ \forall{n > N}\  |\sqrt[n]{a_n} - q| < \varepsilon$$
+ $$\forall{\varepsilon} > 0\ \exists{N > 0}:\ \forall{n > N}\  \abs{\sqrt[n]{a_n} - q} < \varepsilon$$
  $$- \varepsilon < \sqrt[n]{a_n} -q <\varepsilon  $$
  $$ (q-\varepsilon) < \sqrt[n]{a_n} < (q+\varepsilon)\ \ \ \forall{n} = N + 1, N+2,\dots$$
  \begin{enumerate}
-  \item Пусть $q < 1 \Rightarrow \exists{\widetilde{q}} = \frac{q+1}{2} | q < \widetilde{q} < 1 \exists{N > 0}:\ \forall{n > N}\ $\\
+  \item Пусть $q < 1 \Rightarrow \exists{\widetilde{q}} = \cfrac{q+1}{2}\ \ | q < \widetilde{q} < 1 \exists{N > 0}:\ \forall{n > N}\ $\\
         $$ \sqrt[n]{a_n} < \widetilde{q} \Leftrightarrow a_n < \widetilde{q}^n\ \ \ \sum_{n=1}^{\infty}{\widetilde{q}^n} \text{ - геометрическая прогрессия} (\widetilde{q} < 1) $$
         $$\Rightarrow \text{ ряд сходится} \xRightarrow{\text{по признаку сравнения}} \text{сходится исходный ряд }$$
   \item Пусть $q > 1 \Rightarrow \exists{\{ a_{n_k}\}}: \sqrt[n]{a_{n_k}} > 1 \Rightarrow a_{n_k} > 1 \Rightarrow \lim_{n \rightarrow \infty}{a_{n_k}} \ne 0 \Rightarrow$ ряд расходится
   \item Пусть $ q = 1$
-        $$ \sum_{n=1}^{\infty}{\frac{1}{n} : \lim_{n \rightarrow \infty}{\frac{1}{\sqrt[n]{n}}}} = 1  \text{ ряд расходится} $$
-        $$ \sum_{n=1}^{\infty}{\frac{1}{n^2} : \lim_{n \rightarrow \infty}{\frac{1}{\sqrt[n]{n^2}}}} = 1  \text{ ряд сходится} $$
+        $$ \sum_{n=1}^{\infty}{\cfrac{1}{n} : \lim_{n \rightarrow \infty}{\cfrac{1}{\sqrt[n]{n}}}} = 1  \text{ ряд расходится} $$
+        $$ \sum_{n=1}^{\infty}{\cfrac{1}{n^2} : \lim_{n \rightarrow \infty}{\cfrac{1}{\sqrt[n]{n^2}}}} = 1  \text{ ряд сходится} $$
  \end{enumerate}
 \end{proof}
 \begin{exmp}
- $$\sum_{n=1}^{\infty}{(\frac{n-1}{n})^{n^2}}, \lim_{n \rightarrow \infty}{(\frac{n-1}{n})^{n}}=e^{-1} < 1 \Rightarrow \text{ряд сходится}$$
+ $$\sum_{n=1}^{\infty}{(\cfrac{n-1}{n})^{n^2}}, \lim_{n \rightarrow \infty}{(\cfrac{n-1}{n})^{n}}=e^{-1} < 1 \Rightarrow \text{ряд сходится}$$
 \end{exmp}
 \begin{theorem}[Признак Раабе]
- Пусть $a_n > 0 $ и $\exists{\lim_{n \rightarrow \infty}{n(\frac{a_n}{a_{n+1}}-1)}} = q$, тогда
+ Пусть $a_n > 0 $ и $\exists{\lim_{n \rightarrow \infty}{n(\cfrac{a_n}{a_{n+1}}-1)}} = q$, тогда
  \begin{enumerate}
   \item Если $ q < 1$, то ряд $\sum_{k=1}^{\infty}{a_n} $ - расходится
   \item Если $ q > 1$, то ряд $\sum_{k=1}^{\infty}{a_n} $ - сходится
@@ -290,27 +298,27 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \frac
  \end{enumerate}
 \end{theorem}
 \begin{exmp}
- $$\sum_{n=1}^{\infty}{\frac{1 \cdot 3 \cdot 5 \cdot \textit{\dots} \cdot (2n-1)}{2^n \cdot n!}}$$
- \textit{Доломбер: } $$  \lim_{n \rightarrow \infty}{\frac{(1 \cdot 3 \cdot 5 \cdot \textit{\dots} \cdot (2n+1)) 2^n \cdot n!} {2^{n+1} \cdot (n+1)!(1 \cdot 3 \cdot 5 \cdot \textit{\dots} \cdot (2n-1))}} =$$
- $$\lim_{n \rightarrow \infty}{\frac{2n+1}{2\cdot(n+1)}} = 1 $$
- \textit{Раабе: } $$ \lim_{n \rightarrow \infty}{n(\frac{2(n+1)}{2n+1}-1)} = \lim_{n \rightarrow \infty}{\frac{n}{2n+1}} = \frac{1}{2} < 1 \Rightarrow \text{ ряд расходится}$$
+ $$\sum_{n=1}^{\infty}{\cfrac{1 \cdot 3 \cdot 5 \cdot \textit{\dots} \cdot (2n-1)}{2^n \cdot n!}}$$
+ \textit{Доломбер: } $$  \lim_{n \rightarrow \infty}{\cfrac{(1 \cdot 3 \cdot 5 \cdot \textit{\dots} \cdot (2n+1)) 2^n \cdot n!} {2^{n+1} \cdot (n+1)!(1 \cdot 3 \cdot 5 \cdot \textit{\dots} \cdot (2n-1))}} =$$
+ $$\lim_{n \rightarrow \infty}{\cfrac{2n+1}{2\cdot(n+1)}} = 1 $$
+ \textit{Раабе: } $$ \lim_{n \rightarrow \infty}{n(\cfrac{2(n+1)}{2n+1}-1)} = \lim_{n \rightarrow \infty}{\cfrac{n}{2n+1}} = \cfrac{1}{2} < 1 \Rightarrow \text{ ряд расходится}$$
 \end{exmp}
 
 \subsubsection{Число e, как сумма ряда}
 
-$$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \infty}{e_n} $$
+$$e = \lim_{n \rightarrow \infty}{(1+\cfrac{1}{n})^n} = \lim_{n \rightarrow \infty}{e_n} $$
 \begin{enumerate}
- \item $$ e_n = (1 + \frac{1}{n})^n = \sum_{n=0}^{\infty}{C_k^n \frac{1}{n^k}} = \sum_{k=0}^{n}{\frac{n!}{k!(n-k)!} \frac{1}{n^k}} = $$
-       $$= \sum_{k=0}^{n}{\frac{(n-k+1)(n-k+2)\dots n}{k! n^k}} < \sum_{k=0}^{n}{\frac{n^k}{k!n^k}}=\sum_{k=0}^{n}{\frac{1}{k!}} = S_n \Rightarrow e_n < S_n $$
+ \item $$ e_n = (1 + \cfrac{1}{n})^n = \sum_{n=0}^{\infty}{C_k^n \cfrac{1}{n^k}} = \sum_{k=0}^{n}{\cfrac{n!}{k!(n-k)!} \cfrac{1}{n^k}} = $$
+       $$= \sum_{k=0}^{n}{\cfrac{(n-k+1)(n-k+2)\dots n}{k! n^k}} < \sum_{k=0}^{n}{\cfrac{n^k}{k!n^k}}=\sum_{k=0}^{n}{\cfrac{1}{k!}} = S_n \Rightarrow e_n < S_n $$
  \item Пусть $m<n$
-       $$e_n = \sum_{k=0}^{n}{C_n^k \frac{1}{n^k}} > \sum_{k=0}^{m}{C_n^k \frac{1}{n^k}}= $$
-       $$ = 1 + 1 + \frac{n(n-1)}{2! n^2} + \frac{n(n-1)(n-2)}{3! n^3}+ \dots + \frac{n(n-1)(n-2)\dots(n-m+1)}{m! n^m} = A_{n,m}$$
+       $$e_n = \sum_{k=0}^{n}{C_n^k \cfrac{1}{n^k}} > \sum_{k=0}^{m}{C_n^k \cfrac{1}{n^k}}= $$
+       $$ = 1 + 1 + \cfrac{n(n-1)}{2! n^2} + \cfrac{n(n-1)(n-2)}{3! n^3}+ \dots + \cfrac{n(n-1)(n-2)\dots(n-m+1)}{m! n^m} = A_{n,m}$$
        $$ \Rightarrow e_n > A_{n,m} \text{ Зафиксируем m. Тогда при } n\rightarrow \infty \ e \geq S_m$$
- \item $| \Rightarrow e_n < S_n \leq e \text{ и } \{S_n\} \nearrow \xRightarrow{\text{По th Вейерштрасса}} \text{Ряд сходится}$
-       $$e = 1 + 1 + \frac{1}{2!} + \frac{1}{3!} + \dots + \frac{1}{n!} + \dots $$
+ \item $\InAll e_n < S_n \leq e \text{ и } \{S_n\} \nearrow \xRightarrow{\text{По th Вейерштрасса}} \text{Ряд сходится}$
+       $$e = 1 + 1 + \cfrac{1}{2!} + \cfrac{1}{3!} + \dots + \cfrac{1}{n!} + \dots $$
  \item Оценка погрешности при приблежении числа e частичными суммами:
-       $$ 0 < e - S_n = \sum_{k=n+1}^{\infty}{\frac{1}{k!}} = \frac{1}{(n+1)!} +\frac{1}{(n+2)!} + \frac{1}{(n+3)!} + \dots =$$
-       $$= \frac{1}{(n+1)!} [ 1 + \frac{1}{(n+2)} + \frac{1}{(n+2)(n+3)}+\dots ]<$$$$< \frac{1}{(n+1)!} [ 1 + \frac{1}{(n+1)} + \frac{1}{(n+1)^2} + \frac{1}{(n+1)^3} +\dots] = \frac{1}{(n+1)!} \frac{n+1}{n} = \frac{1}{n \cdot n!}$$
+       $$ 0 < e - S_n = \sum_{k=n+1}^{\infty}{\cfrac{1}{k!}} = \cfrac{1}{(n+1)!} +\cfrac{1}{(n+2)!} + \cfrac{1}{(n+3)!} + \dots =$$
+       $$= \cfrac{1}{(n+1)!} [ 1 + \cfrac{1}{(n+2)} + \cfrac{1}{(n+2)(n+3)}+\dots ]<$$$$< \cfrac{1}{(n+1)!} [ 1 + \cfrac{1}{(n+1)} + \cfrac{1}{(n+1)^2} + \cfrac{1}{(n+1)^3} +\dots] = \cfrac{1}{(n+1)!} \cfrac{n+1}{n} = \cfrac{1}{n \cdot n!}$$
 \end{enumerate}
 \upr Доказать, что e - иррационально
 \upr Доказать, что 2<e<3
@@ -332,37 +340,37 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
 \comment Признак достаточный, но не необходимый!
 \begin{consequence*}[Оценка для остаточного члена ряда Лейбница]
  $$ S = S_n + R_n = S_n + (-1)^n a_{n+1} + (-1)^{n+1} a_{n+2}+ \dots $$
- $$ |R_n| = |(-1)^n| |(a_{n+1} - a_{n+2}) + (a_{n+2} - a_{n+3}) + \dots | = $$ $$ = a_{n+1} - (a_{n+2} - a_{n+3}) - (a_{n+4} - a_{n+5}) - \dots \leq a_{n+1}$$
- $$ | \Rightarrow |R_n| \leq a_{n+1} $$
+ $$ \abs{R_n} = \abs{(-1)^n} \abs{(a_{n+1} - a_{n+2}) + (a_{n+2} - a_{n+3}) + \dots } = $$ $$ = a_{n+1} - (a_{n+2} - a_{n+3}) - (a_{n+4} - a_{n+5}) - \dots \leq a_{n+1}$$
+ $$ \InAll \abs{R_n} \leq a_{n+1} $$
 \end{consequence*}
 \begin{lemma*}[Абеля]
  Дано $a_1, \dots , a_n $ и $b_1, \dots , b_n $. При этом:
  \begin{enumerate}
   \item $\{a_i\}$ монотонно
-  \item $\exists{B} > 0 : |\sum_{i=1}^{m}{b_i}| \leq B$, где $m = 1, 2, 3, \dots, n$
+  \item $\exists{B} > 0 : \abs{\sum_{i=1}^{m}{b_i}} \leq B$, где $m = 1, 2, 3, \dots, n$
  \end{enumerate}
- Тогда выполняется неравенство $|\sum_{k=1}^{n}{a_k b_k}| \leq B (|a_1|+2|a_n|)$
+ Тогда выполняется неравенство $\abs{\sum_{k=1}^{n}{a_k b_k}} \leq B (\abs{a_1}+2\abs{a_n})$
 \end{lemma*}
 \begin{proof}[]
- Обозначим $B_1 = b_1, B_2 = b_1 + b_2, \dots, B_n = b_1 + b_2 +  \dots + b_n$, также перепишем (2) условие, как $\exists{B} > 0 : |B_m| \leq B$, где $m = 1, 2, 3, \dots, n$
+ Обозначим $B_1 = b_1, B_2 = b_1 + b_2, \dots, B_n = b_1 + b_2 +  \dots + b_n$, также перепишем (2) условие, как $\exists{B} > 0 : \abs{B_m} \leq B$, где $m = 1, 2, 3, \dots, n$
  $$ \sum_{k=1}^{n}{a_k b_k} = a_1 b_1 + a_2 b_2 + a_n b_n = a_1 B_1 + a_2 (B_2 - B_1) + \dots + a_n(B_n - B_{n-1}) =$$
  $$ =B_1 (a_1 - a_2) + B_2(a_2 - a_3)+ \dots + B_{n-1}(a_{n-1} - a_n) + B_n a_n $$
- $$ |\sum_{k=1}^{n}{a_k b_k}| =|B_1| |a_1 - a_2| + \dots + |B_{n-1}||a_{n-1} - a_n| + |B_n||a_n| \leq$$
- $$\leq B (\underbrace{|a_1 -a_2| + |a_2 - a_3| + \dots + |a_{n-1} - a_n|}_{\text{По монотонности, либо все модули раскроются с +, либо все с -}} + |a_n|) =$$
- $$  = B (|a_1 - a_n| + |a_n|) \stackrel{\text{Использую неравенство треугольника}}{ \leq} B(|a_1| + 2|a_n|)$$
+ $$ \abs{\sum_{k=1}^{n}{a_k b_k}} =\abs{B_1} \abs{a_1 - a_2} + \dots + \abs{B_{n-1}}\abs{a_{n-1} - a_n} + \abs{B_n}\abs{a_n} \leq$$
+ $$\leq B (\underbrace{\abs{a_1 -a_2} + \abs{a_2 - a_3} + \dots + \abs{a_{n-1} - a_n}}_{\text{По монотонности, либо все модули раскроются с +, либо все с -}} + \abs{a_n}) =$$
+ $$  = B (\abs{a_1 - a_n} + \abs{a_n}) \stackrel{\text{Использую неравенство треугольника}}{ \leq} B(\abs{a_1} + 2\abs{a_n})$$
 \end{proof}
 \begin{theorem}[Признак Дирихле]
  Пусть дан ряд $\sum_{n=1}^{\infty}{a_n b_n}$ тогда, если:
  \begin{enumerate}
   \item $a_n$ монотонно стремится к 0
-  \item $\exists{C}\ \forall{n}\ |\sum_{k=1}^{m}{b_k}| \leq C$
+  \item $\exists{C}\ \forall{n}\ \abs{\sum_{k=1}^{m}{b_k}} \leq C$
  \end{enumerate}
  Ряд $\sum_{n=1}^{\infty}{a_n b_n}$ сходится
 \end{theorem}
 \begin{proof}
- Из (1) условия $a_n$ - монотонно $\rightarrow 0 \xRightarrow{\text{По определению предела}} \forall{\varepsilon}>0 \exists{N > 0}:\ \forall{n > N}\ |a_n| < \frac{\varepsilon}{6C}$ \\
- Из (2) условия $\forall{n}\ \forall{p}\ |\sum_{k=n}^{n+p}{b_k}| = |\sum_{k=1}^{n+p}{b_k} - \sum_{k=1}^{n-1}{b_{k}}| \leq 2C$ \\
- Рассмотрим $a_n, \dots, a_{n+p}$ и $b_n, \dots , b_{n+p} \xRightarrow{\text{По лемме Абеля ($B=2C$)}} |\sum_{k=1}^{n}{a_k b_k}| \leq 2C(|a_n| + 2|a_{n+p}|) \leq 6C \frac{\varepsilon}{6C} = \varepsilon \xRightarrow{\text{По критерию Коши}} $ ряд $\sum_{n=1}^{\infty}{a_n b_n}$ сходится
+ Из (1) условия $a_n$ - монотонно $\rightarrow 0 \xRightarrow{\text{По определению предела}} \forall{\varepsilon}>0 \exists{N > 0}:\ \forall{n > N}\ \abs{a_n} < \cfrac{\varepsilon}{6C}$ \\
+ Из (2) условия $\forall{n}\ \forall{p}\ \abs{\sum_{k=n}^{n+p}{b_k}} = \abs{\sum_{k=1}^{n+p}{b_k} - \sum_{k=1}^{n-1}{b_{k}}} \leq 2C$ \\
+ Рассмотрим $a_n, \dots, a_{n+p}$ и $b_n, \dots , b_{n+p} \xRightarrow{\text{По лемме Абеля ($B=2C$)}} \abs{\sum_{k=1}^{n}{a_k b_k}} \leq 2C(\abs{a_n} + 2\abs{a_{n+p}}) \leq 6C \cfrac{\varepsilon}{6C} = \varepsilon \xRightarrow{\text{По критерию Коши}} $ ряд $\sum_{n=1}^{\infty}{a_n b_n}$ сходится
 \end{proof}
 \begin{theorem}[Признак Абеля]
  Пусть дан ряд $\sum_{n=1}^{\infty}{a_n b_n}$ тогда, если:
@@ -373,45 +381,45 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
  Ряд $\sum_{n=1}^{\infty}{a_n b_n}$ сходится
 \end{theorem}
 \begin{proof}
- Из (1) условия $\Rightarrow |a_n| \leq A \ \forall{n}$\\
- Из (2) условия $\xRightarrow{\text{По пр. Коши}} \forall{\varepsilon} > 0 \exists{N > 0}:\ \forall{n > N}\ |\sum_{k=n}^{n+p}{b_k}| < \frac{\varepsilon}{3A}$\\
+ Из (1) условия $\Rightarrow \abs{a_n} \leq A \ \forall{n}$\\
+ Из (2) условия $\xRightarrow{\text{По пр. Коши}} \forall{\varepsilon} > 0 \exists{N > 0}:\ \forall{n > N}\ \abs{\sum_{k=n}^{n+p}{b_k}} < \cfrac{\varepsilon}{3A}$\\
  Рассмотрим $a_n, a_{n+1}, \dots, a_{n+p}$ и $b_n, b_{n+1}, \dots, b_{n+p}$
- $$ \xRightarrow{\text{По лемме Абеля. $\{a_i\}$ - монот. из усл, $B = \frac{\varepsilon}{3A}$} } |\sum_{k=n}^{n+p}{a_k b_k}| \leq B(|a_n| + 2|a_{n+p}|)=$$
- $$= \frac{\varepsilon}{3A} (\overbrace{|a_n|}^{ \leq A} + 2\overbrace{|a_{n+p}|}^{ \leq A}) \leq \varepsilon $$
+ $$ \xRightarrow{\text{По лемме Абеля. $\{a_i\}$ - монот. из усл, $B = \cfrac{\varepsilon}{3A}$} } \abs{\sum_{k=n}^{n+p}{a_k b_k}} \leq B(\abs{a_n} + 2\abs{a_{n+p}})=$$
+ $$= \cfrac{\varepsilon}{3A} (\overbrace{\abs{a_n}}^{ \leq A} + 2\overbrace{\abs{a_{n+p}}}^{ \leq A}) \leq \varepsilon $$
  Тогда по кр. Коши для ряда $\sum_{k=1}^{\infty}{a_k b_k}$ - сходится
 \end{proof}
 \begin{proof}[\textit{Докозательство. Теоремы 1. Вариант 2}]
- Из условия, что $\{ a_n \} \searrow 0$ и того факта, что $|\sum_{n=1}^{m}{(-1)^n}| \leq 1$,
+ Из условия, что $\{ a_n \} \searrow 0$ и того факта, что $\abs{\sum_{n=1}^{m}{(-1)^n}} \leq 1$,
  \\ по теореме Дирихле следует, что ряд $\sum_{n=1}^{\infty}{(-1)^{n-1}a_n}$ - сходится
 \end{proof}
 \begin{exmp}
- $$ \sum_{n=1}^{\infty}{\frac{sin(nx)}{n}}\ \forall{x} \in \mathbb{R}$$
+ $$ \sum_{n=1}^{\infty}{\cfrac{sin(nx)}{n}}\ \forall{x} \in \mathbb{R}$$
  Зафиксируем $m$. Тогда
- $$ a_n = \frac{1}{n} \searrow \text{ к } 0, b_n = sin(nx) $$
+ $$ a_n = \cfrac{1}{n} \searrow \text{ к } 0, b_n = sin(nx) $$
  $$ S_m = sin(x) + sin(2x) + sin(3x) + \dots + sin(mx) =$$
- $$= \frac{1}{sin(x/2)} ( sin(x)sin(x/2) + sin(2x)sin(x/2) + \dots + sin(mx)sin(x/2))  =$$
- $$= \frac{1}{2sin(x/2)} (cos(x/2) - cos(3x/2) + \dots + cos(\frac{2m-1}{2}x) - cos(\frac{2m+1}{2}x)  =$$
- $$ = \frac{1}{2sin(x/2)}(cos(x/2)- cos(\frac{2m+1}{2}x) )$$
+ $$= \cfrac{1}{sin(x/2)} ( sin(x)sin(x/2) + sin(2x)sin(x/2) + \dots + sin(mx)sin(x/2))  =$$
+ $$= \cfrac{1}{2sin(x/2)} (cos(x/2) - cos(3x/2) + \dots + cos(\cfrac{2m-1}{2}x) - cos(\cfrac{2m+1}{2}x)  =$$
+ $$ = \cfrac{1}{2sin(x/2)}(cos(x/2)- cos(\cfrac{2m+1}{2}x) )$$
  Если $sin(x/2) = 0 \Rightarrow sin(nx) = 0 \Rightarrow$ ряд сходится \\
- Если $sin(x/2) \ne 0 \Rightarrow |\sum_{k=1}^{n}{sin(nx)}| \leq \frac{2}{2sin(x/2)} = \frac{1}{sin(x/2)} = C$\\
+ Если $sin(x/2) \ne 0 \Rightarrow \abs{\sum_{k=1}^{n}{sin(nx)}} \leq \cfrac{2}{2sin(x/2)} = \cfrac{1}{sin(x/2)} = C$\\
  $| \xRightarrow{\text{по признаку Дирихле}}$ ряд сходится
 \end{exmp}
-\upr $$\sum_{n=1}^{\infty}{\frac{sin(n)cos(\frac{\pi}{4})}{2}}$$
+\upr $$\sum_{n=1}^{\infty}{\cfrac{sin(n)cos(\cfrac{\pi}{4})}{2}}$$
 \subsection{Абсолютно и условно сходящиеся ряды}
 \begin{definition*}
- Числовой ряд $\sum_{n=1}^{\infty}{a_n}$ называется абсолютно сходящимся, если сходится ряд $\sum_{n=1}^{\infty}{|a_n|}$
+ Числовой ряд $\sum_{n=1}^{\infty}{a_n}$ называется абсолютно сходящимся, если сходится ряд $\sum_{n=1}^{\infty}{\abs{a_n}}$
 \end{definition*}
 
 \begin{theorem}
  Абсолютный ряд сходится
 \end{theorem}
 \begin{proof}
- Дано $\sum_{n=1}^{\infty}{|a_n|}$ - сходится. Докажем, что сходится ряд $\sum_{n=1}^{\infty}{a_n}$\\
- $\sum_{n=1}^{\infty}{|a_n|}$ - сходится $\xRightarrow{\text{по th. Коши}} \forall{\varepsilon} > 0\ \exists{N > 0}:\ \forall{n > N}\ \forall{p}\ |a_n| + |a_{n+1}| + \dots + |a_{n+p}| < \varepsilon $\\
- Рассмотрим ряд $\sum_{n=1}^{\infty}{a_n}  \xRightarrow{\text{th. Коши}} \forall{\varepsilon} > 0 \exists{N > 0}:\ \forall{n > N}\ \forall{p}\ |a_n + a_{n+1} + \dots + a_{n+p}| \leq |a_n| + |a_{n+1}| + \dots + |a_{n+p}|< \varepsilon \Rightarrow $ ряд $\sum_{n=1}^{\infty}{a_n}$ - сходится
+ Дано $\sum_{n=1}^{\infty}{\abs{a_n}}$ - сходится. Докажем, что сходится ряд $\sum_{n=1}^{\infty}{a_n}$\\
+ $\sum_{n=1}^{\infty}{\abs{a_n}}$ - сходится $\xRightarrow{\text{по th. Коши}} \forall{\varepsilon} > 0\ \exists{N > 0}:\ \forall{n > N}\ \forall{p}\ \abs{a_n} + \abs{a_{n+1}} + \dots + \abs{a_{n+p}} < \varepsilon $\\
+ Рассмотрим ряд $\sum_{n=1}^{\infty}{a_n}  \xRightarrow{\text{th. Коши}} \forall{\varepsilon} > 0 \exists{N > 0}:\ \forall{n > N}\ \forall{p}\ \abs{a_n + a_{n+1} + \dots + a_{n+p}} \leq \abs{a_n} + \abs{a_{n+1}} + \dots + \abs{a_{n+p}}< \varepsilon \Rightarrow $ ряд $\sum_{n=1}^{\infty}{a_n}$ - сходится
 \end{proof}
 \begin{exmp}
- $ \sum_{n=1}^{\infty}{\frac{(-1)^n}{n}}$ - сходится по признаку Лейбница, но ряд $\sum_{n=1}^{\infty}{|\frac{(-1)^n}{n}|}$ - расходитя $\Rightarrow$ ряд сходится не абсолютно
+ $ \sum_{n=1}^{\infty}{\cfrac{(-1)^n}{n}}$ - сходится по признаку Лейбница, но ряд $\sum_{n=1}^{\infty}{\abs{\cfrac{(-1)^n}{n}}}$ - расходитя $\Rightarrow$ ряд сходится не абсолютно
 \end{exmp}
 \begin{definition*}
  Ряд называется условно сходящимся, если он сходится не абсолютно
@@ -419,7 +427,7 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
 \begin{theorem}[Общие свойства абсолютно сходящихся рядов]
  \begin{enumerate}
   \item Если $\sum_{n=1}^{\infty}{a_n}, \sum_{n=1}^{\infty}{b_n}$ - абсолютно сходящиеся ряды, то ряд $\sum_{n=1}^{\infty}{\lambda a_n + \mu b_k}$ абсолютно сходится
-  \item Если $\overline{\lim}_{n \rightarrow \infty}{|\frac{a_{n+1}}{a_n}|} = q$ или $\overline{\lim}_{n \rightarrow \infty}{\sqrt[n]{|a_n|}} = q$, тогда ряд $\begin{cases}
+  \item Если $\overline{\lim}_{n \rightarrow \infty}{\abs{\cfrac{a_{n+1}}{a_n}}} = q$ или $\overline{\lim}_{n \rightarrow \infty}{\sqrt[n]{\abs{a_n}}} = q$, тогда ряд $\begin{cases}
           \text{абсолютно сходитя}, & q<1 \\
           \text{расходитя},         & q>1 \\
           \text{не работает},       & q=1 \\
@@ -445,18 +453,18 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
   \item $\forall{l}\ \exists{m'}: \{ a_1 , \dots , a_l \} \subset \{b_1, \dots , b_{m'} \} \Rightarrow (m' \geq l)$
  \end{enumerate}
  \begin{itemize}
-  \item $A = \sum_{n=1}^{\infty}{a_n}    \sum_{n=1}^{m}{|b_n|} \leq \sum_{n=1}^{l}{|a_n|}$ и $\{ S_n^B \} \searrow \xRightarrow{\text{по th Вейерштрасса}}$ ряд $\sum_{n=1}^{\infty}{b_n}$ - сходится
+  \item $A = \sum_{n=1}^{\infty}{a_n}    \sum_{n=1}^{m}{\abs{b_n}} \leq \sum_{n=1}^{l}{\abs{a_n}}$ и $\{ S_n^B \} \searrow \xRightarrow{\text{по th Вейерштрасса}}$ ряд $\sum_{n=1}^{\infty}{b_n}$ - сходится
   \item Пусть  $\sum_{n=1}^{\infty}{a_n} = a$ и  $\sum_{n=1}^{\infty}{b_n} = b$
         Тогда:
-        $$\forall{\varepsilon}\ \exists{N_1}: \sum_{n\geq N_1}{|a_n|} < \varepsilon $$
-        $$\forall{\varepsilon}\ \exists{N_2}: \sum_{n\geq N_2}{|b_n|} < \varepsilon $$
+        $$\forall{\varepsilon}\ \exists{N_1}: \sum_{n\geq N_1}{\abs{a_n}} < \varepsilon $$
+        $$\forall{\varepsilon}\ \exists{N_2}: \sum_{n\geq N_2}{\abs{b_n}} < \varepsilon $$
         Возьмем $N = max\{ N_1, N_2 \}$\\
-        Пусть $m \geq N |\sum_{n=1}^{\infty}{b_n} - b|< \varepsilon \xRightarrow{\text{Из (1) пункта }} \exists{l(m)} \xRightarrow{\text{Из (2) пункта}} \exists{m'(l)} $
+        Пусть $m \geq N \abs{\sum_{n=1}^{\infty}{b_n} - b}< \varepsilon \xRightarrow{\text{Из (1) пункта }} \exists{l(m)} \xRightarrow{\text{Из (2) пункта}} \exists{m'(l)} $
         $$ \{b_1, \dots, b_m \} \subset \{a_1, \dots, a_l \} \subset \{b_1, \dots, b_{m'} \} $$
         $$ \sum_{n=1}^{l}{a_n} = \sum_{n=1}^{m}{b_n} + \underbrace{\sum_{j>m}{b_j}}_{\text{Те которые не вошли в первую сумму. Обозначис ее за $C$} } $$
-        $$ |C| \leq \sum_{j>m}^{m'}{|b_j|} < \varepsilon $$
-        $$ |\sum_{n=1}^{l}{a_k} - a| < \varepsilon$$
-        $| \Rightarrow |a-b| = |\sum_{n=1}^{m}{b_n} - b - \sum_{n=1}^{l}{a_n} + a + c | < 3 \varepsilon \xRightarrow{\text{Т.к $\varepsilon$ произвольное}} a = b$
+        $$ \abs{C} \leq \sum_{j>m}^{m'}{\abs{b_j}} < \varepsilon $$
+        $$ \abs{\sum_{n=1}^{l}{a_k} - a} < \varepsilon$$
+        $\InAll \abs{a-b} = \abs{\sum_{n=1}^{m}{b_n} - b - \sum_{n=1}^{l}{a_n} + a + c } < 3 \varepsilon \xRightarrow{\text{Т.к $\varepsilon$ произвольное}} a = b$
  \end{itemize}
 \end{proof}
 \begin{theorem}
@@ -471,15 +479,15 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
  $$ \dots $$
  $$ a_1 b_1 + a_1 b_2 + a_2 b_2 + a_2 b_1 + \dots \eqno(1)$$
  Рассмотрим ряд:
- $$ |a_1 b_1| + |a_1 b_2| + |a_2 b_2| + |a_2 b_1| + \dots $$
+ $$ \abs{a_1 b_1} + \abs{a_1 b_2} + \abs{a_2 b_2} + \abs{a_2 b_1} + \dots $$
  Введем обозначения:$S_n^A = \sum_{k=1}^{n}{a_k} \rightarrow S^A, S_n^B = \sum_{k=1}^{n}{b_k} \rightarrow S^B$\\
  Для того, чтобы доказать, что ряд сходится абсолютно, достаточно доказать, что существует хотябы одна подпоследовательность частичных сумм ограниченных сверху\\
  $S_n \nearrow$, т.к числа положительные
- $$S_1 = |a_1 b_1| = S_1^A \cdot S_1^B \leq S^A S^B$$
- $$S_4 = |a_1 b_1| + |a_1 b_2| + |a_2 b_2| + |a_2 b_1| = (|a_1| + |a_2|)(|b_1| + |b_2|)=S_2^A \cdot S_2^B \leq S^A S^B$$
+ $$S_1 = \abs{a_1 b_1} = S_1^A \cdot S_1^B \leq S^A S^B$$
+ $$S_4 = \abs{a_1 b_1} + \abs{a_1 b_2} + \abs{a_2 b_2} + \abs{a_2 b_1} = (\abs{a_1} + \abs{a_2})(\abs{b_1} + \abs{b_2})=S_2^A \cdot S_2^B \leq S^A S^B$$
  $$ \dots $$
- $$S_{n^2} = |a_1 b_1| + \dots + |a_1 b_n| + \dots + |a_n b_1| = (|a_1| + \dots + |a_n|)(|b_1| + \dots + |b_n|)=S_n^A \cdot S_n^B \leq S^A S^B$$
- $$| \Rightarrow S_{n^2} \leq \underbrace{S^A S^B}_{\text{Конечное число в силу абс. схожд.}}$$
+ $$S_{n^2} = \abs{a_1 b_1} + \dots + \abs{a_1 b_n} + \dots + \abs{a_n b_1} = (\abs{a_1} + \dots + \abs{a_n})(\abs{b_1} + \dots + \abs{b_n})=S_n^A \cdot S_n^B \leq S^A S^B$$
+ $$\InAll S_{n^2} \leq \underbrace{S^A S^B}_{\text{Конечное число в силу абс. схожд.}}$$
  $$  \Rightarrow S_n \leq S^A S^B, S_n \nearrow \xRightarrow{\text{По th. Вейерштрасса}} \exists{\lim_{n \rightarrow \infty}{S_n}} = S $$
  $  \Rightarrow $ ряд (1) сходится абсолютно $ \xRightarrow{\text{th 3}} $ исходный ряд сходится\\
  Докажем, что $S = S^A S^B$\\
@@ -495,7 +503,7 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
  \mbox{}\\
  Пусть $a_1^+ , \dots , a_n^+, \dots $ - неотрицательные члены последовательности, взятые по порядку\\
  Пусть $a_1^- , \dots , a_n^-, \dots $ - отрицательные члены последовательности, взятые по порядку\\
- По условию ряд $\sum_{n=1}^{\infty}{a_n}$ - сходится, но ряд $\sum_{n=1}^{\infty}{|a_n|}$ - расходится $\Rightarrow$
+ По условию ряд $\sum_{n=1}^{\infty}{a_n}$ - сходится, но ряд $\sum_{n=1}^{\infty}{\abs{a_n}}$ - расходится $\Rightarrow$
  $$ a_1^+ + \dots + a_n^+ + \dots \xrightarrow{n \rightarrow \infty} +\infty$$
  $$ a_1^- + \dots + a_n^- + \dots \xrightarrow{n \rightarrow \infty} -\infty$$
  В каждой этой сумме бесконечное число слагаемых, иначе н.н.н все члены одного знака, и сходимость эквивалентна абсолютной. Если нет нитого ни другого (оба конечны), тогда ряд будет абсолютно сходится(противоречие). Если одно есть, но нет другого, тогда ряд расходится\\
@@ -505,23 +513,23 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
    a_1^+ + \dots + a_{n_1-1}^+ \leq A < a_1^+ + \dots + a_{n-1}^+ + a_{n_1}^+, & a_1^+ < A    \\
   \end{cases}$$
  \mbox{}\\
- $$ S_{n_1} = a_1^+ + \dots + a_{n_1}^+, |S_{n_1} - A| < a_{n_1}^+$$
+ $$ S_{n_1} = a_1^+ + \dots + a_{n_1}^+, \abs{S_{n_1} - A} < a_{n_1}^+$$
  $$ n_2: a_1^+ + \dots + a_{n_1}^+ a_1^- + \dots + a_{n_2 - 1}^- \leq A < a_1^+ + \dots + a_{n_1}^+ +a_1^- + \dots + a_{n_2}^- $$
- $$ S_{n_1 + n_2} = a_1^+ + \dots + a_{n_1}^+ +a_1^- + \dots + a_{n_2}^-, |S_{n_1 + n_2} - A| < |a_{n_2}^-| $$
+ $$ S_{n_1 + n_2} = a_1^+ + \dots + a_{n_1}^+ +a_1^- + \dots + a_{n_2}^-, \abs{S_{n_1 + n_2} - A} < \abs{a_{n_2}^-} $$
  $ n_3: a_1^+ + \dots + a_{n_1}^+ +a_1^- + \dots + a_{n_2}^- + a_{n_1 + 1}^+ + \dots + a_{n_3 - 1}^+ \leq$\\
  $ \leq A < a_1^+ + \dots + a_{n_1}^+ +a_1^- + \dots + a_{n_2}^- + a_{n_1 + 1}^+ + \dots + a_{n_3}^+$
- $$ |S_{n_1+n_2+n_3} - A| < a_{n_3}^+$$
+ $$ \abs{S_{n_1+n_2+n_3} - A} < a_{n_3}^+$$
  $$ n_1+n_2 < n < n_1 + n_2 +n_3, S_n \nearrow $$
- $$ |S_n - A| < max\{|a_{n_2}^-|, a_{n_3}^+ \}$$
+ $$ \abs{S_n - A} < max\{\abs{a_{n_2}^-}, a_{n_3}^+ \}$$
  Применив метод математической индукции легко показать, что:\\
  Если $n_1 + n_2 + \dots +n_{2k-1} + n_{2k} < n \leq n_1 + n_2 + \dots + n_{2k-1} + n_{2k} + n_{2k+1}$, то
- $$ |S_n - A| < max\{|a_{2k}^-|, a_{2k+1}^+ \}$$
+ $$ \abs{S_n - A} < max\{\abs{a_{2k}^-}, a_{2k+1}^+ \}$$
  Если $n_1 + n_2 + \dots + n_{2k-1} + n_{2k} + n_{2k+1}< n \leq n_1 + n_2 + \dots + n_{2k-1} + n_{2k} + n_{2k+1} + n_{2k+2}$, то
- $$ |S_n - A| < max\{ a_{2k+1}^+, |a_{2k+2}^-| \}$$
+ $$ \abs{S_n - A} < max\{ a_{2k+1}^+, \abs{a_{2k+2}^-} \}$$
  Итак, сформирован новый ряд.\\
  Докажем, что $S_n \xrightarrow{n \rightarrow \infty} A$\\
- Пусть $\forall{\varepsilon} > 0 $ Из сходимости ряда $\sum_{n=1}^{\infty}{a_n}$ $\xRightarrow{\text{Необходимы признак сход-ти}} \lim_{n \rightarrow \infty}{a_n} = 0 \Rightarrow \exists{N > 0}:\ \forall{n > N}\ |a_n| < \varepsilon$
- $$ | \Rightarrow |S_n - A| < |a_n| < \varepsilon \Rightarrow S_n \xrightarrow{n \rightarrow \infty} A$$
+ Пусть $\forall{\varepsilon} > 0 $ Из сходимости ряда $\sum_{n=1}^{\infty}{a_n}$ $\xRightarrow{\text{Необходимы признак сход-ти}} \lim_{n \rightarrow \infty}{a_n} = 0 \Rightarrow \exists{N > 0}:\ \forall{n > N}\ \abs{a_n} < \varepsilon$
+ $$ \InAll \abs{S_n - A} < \abs{a_n} < \varepsilon \Rightarrow S_n \xrightarrow{n \rightarrow \infty} A$$
 \end{proof}
 \begin{upr}
  Покажите, что если ряд $\sum_{n=1}^{\infty}{a_n}$ - условно сходится, то его члены можно переставить так, чтобы он стал расходится
@@ -561,18 +569,18 @@ $$e = \lim_{n \rightarrow \infty}{(1+\frac{1}{n})^n} = \lim_{n \rightarrow \inft
  У всякой непрерывной на промежутке функции есть точная первообразная на этом промежутке
 \end{lemma}
 \begin{exmp}
- $|x| = \begin{cases}
+ $\abs{x} = \begin{cases}
    x,  & x\geq 0 \\
    -x, & x<0     \\
   \end{cases} \Rightarrow
-  (\frac{x|x|}{2})'=|x|
+  (\cfrac{x\abs{x}}{2})'=\abs{x}
  $
 \end{exmp}
 \begin{definition*}
  Функция $F: I \rightarrow \mathbb{R}$ называется обобщенной первообразной ф-ции $f: I \rightarrow \mathbb{R}$, если $F'(x) = f(x)$ всюду за исключением конечного числа точек и $F$ - непрерывная
 \end{definition*}
 \begin{exmp}
- $|x|$ - обобщенная первообразная $sign(x)$, т.к $|x|'=sign(x)$
+ $\abs{x}$ - обобщенная первообразная $sign(x)$, т.к $\abs{x}'=sign(x)$
 \end{exmp}
 \begin{lemma}
  Если функция кусочно непрерывна на промежутке и ограничена, тогда всегда у нее есть обобщенная первообразная на этом промежутке
@@ -608,7 +616,7 @@ $$ \int f(x)g(x)dx $$
  \item Таблица первообразных\\
        \includegraphics{pervoobraz}
        \begin{comment}
-       $$\int \frac{dx}{x} = \begin{cases}
+       $$\int \cfrac{dx}{x} = \begin{cases}
          ln(x)+C_1,  & x>0 \\
          -ln(x)+C_2, & x<0 \\
         \end{cases}$$
@@ -619,10 +627,10 @@ $$ \int f(x)g(x)dx $$
        $$ \int (f(x) + g(x))dx = \int f(x)dx + \int g(x)dx$$
        $$ \int \alpha f(x) dx = \alpha \int f(x)dx$$
        \begin{exmp}
-        $$ \int (x+1)^2 dx = \int (x^2 + 2x + 1)dx = \frac{x^3}{3} + x^2 + x + C $$
+        $$ \int (x+1)^2 dx = \int (x^2 + 2x + 1)dx = \cfrac{x^3}{3} + x^2 + x + C $$
        \end{exmp}
        \begin{exmp}
-        $$ \int \frac{x^2}{1+x^2} dx = \int \frac{x^2 + 1 -1}{1+x^2} = \int (1 - \frac{1}{1+x^2})dx = x - arctg(X) + C $$
+        $$ \int \cfrac{x^2}{1+x^2} dx = \int \cfrac{x^2 + 1 -1}{1+x^2} = \int (1 - \cfrac{1}{1+x^2})dx = x - arctg(X) + C $$
        \end{exmp}
  \item интегрирование по частям
        \begin{comment}
@@ -645,10 +653,10 @@ $$ \int f(x)g(x)dx $$
        Если $\phi(x)$ - дифференцируемая функция, то $y = \phi(x)$
        $$ \int f(\phi(y))dy = \int f(\phi(x))\phi'(x)dx$$
        \begin{exmp}
-        $$ \int \frac{x}{x^2+1} dx = \int \frac{\frac{1}{2}}{x^2+1} 2x dx = \int \frac{\frac{1}{2}}{x^2+1} (x^2)' dx$$
+        $$ \int \cfrac{x}{x^2+1} dx = \int \cfrac{\cfrac{1}{2}}{x^2+1} 2x dx = \int \cfrac{\cfrac{1}{2}}{x^2+1} (x^2)' dx$$
         Обозначим $y = x^2 + 1$
         $$ y = x^2 + 1  $$
-        $$ \int  \frac{\frac{1}{2}}{y}dy = \frac{1}{2}ln(y) + C = \frac{1}{2}ln(x^2 + 1) + C$$
+        $$ \int  \cfrac{\cfrac{1}{2}}{y}dy = \cfrac{1}{2}ln(y) + C = \cfrac{1}{2}ln(x^2 + 1) + C$$
        \end{exmp}
  \item "Стыковка"
        $$f:[a,c] \Rightarrow \mathbb{R}, a<b<c$$
@@ -664,7 +672,7 @@ $$ \int f(x)g(x)dx $$
 \subsubsection{Первообразная от рациональной функции}
 \begin{definition*}
  Рациональная функция - это отношение двух многочленов
- $$R(x)= \frac{P(x)}{Q(x)} \text{Где }P(x), Q(x) \text{ - многочлены}$$
+ $$R(x)= \cfrac{P(x)}{Q(x)} \text{Где }P(x), Q(x) \text{ - многочлены}$$
 \end{definition*}
 \begin{name}
  $deg P$ - степень многочлена $P(x) = a_n x^n + a_{n-1}x^{n-1}+ \dots +$\\ $+ a_1 x + a_0, a_n \ne 0$
@@ -674,7 +682,8 @@ $$ \int f(x)g(x)dx $$
 Где $z_1 \dots z_n $ - корни многочлена
 Если коэффициенты вещественные:\\
 либо корень вещественный,$z_k \in \mathbb{R}$ \\
-либо есть комплесно сопряженные $z_k, \overline{z_k}: (z-z_k)(z-\overline{z_k}) = z^2 - (z_k + \overline{z_k})z + z_k \overline{z_k}$
+либо есть комплесно сопряженные $z_k, \overline{z_k}: (z-z_k)(z-\overline{z_k}) = $\\
+$= z^2 - (z_k + \overline{z_k})z + z_k \overline{z_k}$
 \end{comment}
 \begin{lemma}
  Если $P(x)$ - многочлен над $\mathbb{R}$, то его можно разбить на $P(x)= (x-x_1)^{k_1} (x-x_2)^{k_2} \dots (x-x_m)^{k_m} (x^2+ p_1 x+q_1)^{l_1} \dots (x^2+ p_n x+q_n)^{l_n}$
@@ -687,56 +696,57 @@ $$ \int f(x)g(x)dx $$
  Еслм $deg(P), deg(Q)>0,$ и $d(x) = NOD(P(x), Q(x))$, тогда $\exists{u(x), v(x)}: deg(u)<deg(Q), deg(v)<deg(P),\\ d(x) = P(x)u(x) + Q(x)v(x)$
 \end{lemma}
 \begin{theorem}[о разложении в простые дроби]
- Пусть $P(x), Q(x)$ - многочлены, $0 < deg (P) < deg (Q), NOD(P(x), Q(x)) = 1$ и $P(x)$ как в лемме 5, тогда $$\frac{P(x)}{Q(x)} = \sum_{i=1}^{m}{\sum_{j=1}^{k_m}{\frac{C_{ij}}{(x-x_j)^j}}} + \sum_{i=1}^{n}{\sum_{j=1}^{l_n}{\frac{a_{ij}x+b_{ij}}{(x^2 + p_i x + q_i)^j}}}$$
+ Пусть $P(x), Q(x)$ - многочлены, $0 < deg (P) < deg (Q), NOD(P(x), Q(x)) = 1$ и $P(x)$ как в лемме 5, тогда $$\cfrac{P(x)}{Q(x)} = \sum_{i=1}^{m}{\sum_{j=1}^{k_m}{\cfrac{C_{ij}}{(x-x_j)^j}}} + \sum_{i=1}^{n}{\sum_{j=1}^{l_n}{\cfrac{a_{ij}x+b_{ij}}{(x^2 + p_i x + q_i)^j}}}$$
 \end{theorem}
 \begin{exmp}
- $$ \frac{3x^2 - 13x + 5}{x^3 -5x^2 +8x -4} = \frac{P(x)}{Q(x)} = R(x)$$
+ $$ \cfrac{3x^2 - 13x + 5}{x^3 -5x^2 +8x -4} = \cfrac{P(x)}{Q(x)} = R(x)$$
  \begin{enumerate}
   \item Найти корни знаменателя
         $Q(x)=(x-1)(x-2)^2$
-  \item теорема о разложении в простые дроби: $R(x) = \frac{A}{x-1}+ \frac{B}{x-2} + \frac{C}{(x-2)^2}$. Найдем коэффициенты $A, B, C$
+  \item теорема о разложении в простые дроби: $R(x) = \cfrac{A}{x-1}+ \cfrac{B}{x-2} + \cfrac{C}{(x-2)^2}$. Найдем коэффициенты $A, B, C$
         $$ 3x^2 - 13x + 5 = A(x-2)^2 + B(x-1)(x-2) + C(x-1)$$
         $$ A = -5, B = 8, C= -9$$
  \end{enumerate}
- $$ \int \frac{3x^2 - 13x + 5}{x^3 -5x^2 +8x -4} dx = \int \frac{-5}{x-1} dx + \int \frac{8}{x-2} dx + \int \frac{-9}{(x-2)^2} dx $$
+ $$ \int \cfrac{3x^2 - 13x + 5}{x^3 -5x^2 +8x -4} dx = \int \cfrac{-5}{x-1} dx + \int \cfrac{8}{x-2} dx + \int \cfrac{-9}{(x-2)^2} dx $$
 \end{exmp}
 \subsubsection{Первообразные простых дробей}
 \begin{comment}
-$$\int \frac{1}{x-x_i} dx = \{y=x - x_i \} = \int \frac{dy}{y}= ln|y|+C = ln|x-x_i| + C$$
-$$\int \frac{1}{(x-x_i)^k} dx = \frac{-1}{(k-1)(x-x_i)^{k-1}} + C $$
-$$ \int \frac{1}{x^2 + px + q} dx = \text{\{Выделим полный квадрат\}} = \int \frac{1}{(x- \frac{p}{2})^2 + (\underbrace{q- \frac{p^2}{4}}_{>0})} dx = $$
-$$ = \int \frac{1}{a^2((\frac{x+\frac{p}{2}}{a})^2 + 1)} dx =\{y =\frac{x + \frac{p}{2}}{a}\} = \int \frac{a}{a^2(y^2+1)} dy =\frac{1}{a} \int \frac{1}{y^2 +1} dy = \frac{1}{a} arctg(\frac{x}{x} + \frac{p}{2a})+ C$$
-$$ \int \frac{1}{1+x^2} dx = arctgx + C$$
-$$ \int \frac{x}{1+x^2} dx =\{ y = x^2\}= \int \frac{\frac{1}{2}dy}{y + 1}  =\frac{1}{2}ln(x^2 + 1) + C$$
-$$ \int \frac{x}{(1+x)^k} dx = \int \frac{\frac{1}{2}dy}{(1+y)^k}= -\frac{1}{2} \frac{1}{(k-1)(1+x^2)^{k-1}} + C$$
-$$ I_k(y) = \int \frac{1}{(1+y^2)^k} dy = \frac{y}{1+y^2}^k - \int y(\frac{1}{(1+y^2)^k})' dy= \frac{y}{1+y^2}^k - \int \frac{y(-k(1+y^2)^{k-1} 2y)}{(1+y^2)^{2k}} dy = $$
-$$= \frac{y}{1+y^2}^k + 2k \int \frac{y^2}{(1+y^2)^{k+1}} dy = \frac{y}{1+y^2}^k + 2k \int (\frac{y^2+1}{(1+y^2)^{k+1}} - \frac{1}{(1+y^2)^{k+1}}) dy = $$
-$$ = \frac{y}{1+y^2}^k + 2k I_k(y) - 2k I_{k+1}(y)$$
-$$ I_k(y) = \int \frac{1}{(1+y^2)^k} dy$$
+$$\int \cfrac{1}{x-x_i} dx = \{y=x - x_i \} = \int \cfrac{dy}{y}= ln\abs{y}+C = ln\abs{x-x_i} + C$$
+$$\int \cfrac{1}{(x-x_i)^k} dx = \cfrac{-1}{(k-1)(x-x_i)^{k-1}} + C $$
+$$ \int \cfrac{1}{x^2 + px + q} dx = \text{\{Выделим полный квадрат\}} = \int \cfrac{1}{(x- \cfrac{p}{2})^2 + (\underbrace{q- \cfrac{p^2}{4}}_{>0})} dx = $$
+$$ = \int \cfrac{1}{a^2((\cfrac{x+\cfrac{p}{2}}{a})^2 + 1)} dx =\{y =\cfrac{x + \cfrac{p}{2}}{a}\} = \int \cfrac{a}{a^2(y^2+1)} dy =\cfrac{1}{a} \int \cfrac{1}{y^2 +1} dy =$$
+$$= \cfrac{1}{a} arctg(\cfrac{x}{x} + \cfrac{p}{2a})+ C$$
+$$ \int \cfrac{1}{1+x^2} dx = arctgx + C$$
+$$ \int \cfrac{x}{1+x^2} dx =\{ y = x^2\}= \int \cfrac{\cfrac{1}{2}dy}{y + 1}  =\cfrac{1}{2}ln(x^2 + 1) + C$$
+$$ \int \cfrac{x}{(1+x)^k} dx = \int \cfrac{\cfrac{1}{2}dy}{(1+y)^k}= -\cfrac{1}{2} \cfrac{1}{(k-1)(1+x^2)^{k-1}} + C$$
+$$ I_k(y) = \int \cfrac{1}{(1+y^2)^k} dy = \cfrac{y}{1+y^2}^k - \int y(\cfrac{1}{(1+y^2)^k})' dy= \cfrac{y}{1+y^2}^k - \int \cfrac{y(-k(1+y^2)^{k-1} 2y)}{(1+y^2)^{2k}} dy = $$
+$$= \cfrac{y}{1+y^2}^k + 2k \int \cfrac{y^2}{(1+y^2)^{k+1}} dy = \cfrac{y}{1+y^2}^k + 2k \int (\cfrac{y^2+1}{(1+y^2)^{k+1}} - \cfrac{1}{(1+y^2)^{k+1}}) dy = $$
+$$ = \cfrac{y}{1+y^2}^k + 2k I_k(y) - 2k I_{k+1}(y)$$
+$$ I_k(y) = \int \cfrac{1}{(1+y^2)^k} dy$$
 $$ I_1(y) = arctg\ y + C$$
-$$ I_{k+1}(y) = \frac{1}{2k(1+y^2)^k} + \frac{2k-1}{2k} I_{k}(y)$$
+$$ I_{k+1}(y) = \cfrac{1}{2k(1+y^2)^k} + \cfrac{2k-1}{2k} I_{k}(y)$$
 \end{comment}
 \subsubsection{первообразные сводящиеся к рациональным}
 $R$ - рациональная функция
 \begin{enumerate}
  \item $R(x,\sqrt[n]{ax+b})$ замена $y = \sqrt[n]{ax+b}$ сводит к рациональной функции
        \begin{comment}
-       $$\int R(x, \sqrt[n]{ax+b}) dx = \int R(\frac{y^n - b}{a}, y) \frac{y^{n-1}}{a}dy$$
+       $$\int R(x, \sqrt[n]{ax+b}) dx = \int R(\cfrac{y^n - b}{a}, y) \cfrac{y^{n-1}}{a}dy$$
        \end{comment}
        \begin{exmp}
-        $$ \int \frac{\sqrt{2x+2}}{\sqrt{x+1} + x - 5} dx \text{\textcircled{ = }}$$
+        $$ \int \cfrac{\sqrt{2x+2}}{\sqrt{x+1} + x - 5} dx \text{\textcircled{ = }}$$
         $$ y = \sqrt{x=1}, x = y^2 - 1, dx = 2ydy $$
-        $$ \text{\textcircled{ = }} \int \frac{\sqrt{2} y 2y}{y + y^2 - 6} dy = 2\sqrt{2} \int \frac{y^2}{y^2+y-6} dy  = 2\sqrt{2} \int (1- \frac{y-6}{y^2+y-6}) dy = \dots$$
+        $$ \text{\textcircled{ = }} \int \cfrac{\sqrt{2} y 2y}{y + y^2 - 6} dy = 2\sqrt{2} \int \cfrac{y^2}{y^2+y-6} dy  = 2\sqrt{2} \int (1- \cfrac{y-6}{y^2+y-6}) dy = \dots$$
        \end{exmp}
- \item $R(x, \sqrt[n]{\frac{ax+b}{cx+d}}), ad \ne bc$ замена $y=\sqrt[n]{\frac{ax+b}{cx+d}}, x = \frac{b - dy^n}{cy^n-a} = z(y)$
-       $$ \int R(x, \sqrt[n]{\frac{ax+b}{cx+d}}) dx = \int R(z(y), y)\cdot z'(y) dy$$
+ \item $R(x, \sqrt[n]{\cfrac{ax+b}{cx+d}}), ad \ne bc$ замена $y=\sqrt[n]{\cfrac{ax+b}{cx+d}}, x = \cfrac{b - dy^n}{cy^n-a} = z(y)$
+       $$ \int R(x, \sqrt[n]{\cfrac{ax+b}{cx+d}}) dx = \int R(z(y), y)\cdot z'(y) dy$$
        \begin{exmp}
-        $$ \int \frac{\sqrt{x+1} - \sqrt{x-1}}{\sqrt{x+1} + \sqrt{x-1}} dx = \int \frac{1 - \sqrt{\frac{x-1}{x+1}}}{1 + \sqrt{\frac{x-1}{x+1}}} dx$$
+        $$ \int \cfrac{\sqrt{x+1} - \sqrt{x-1}}{\sqrt{x+1} + \sqrt{x-1}} dx = \int \cfrac{1 - \sqrt{\cfrac{x-1}{x+1}}}{1 + \sqrt{\cfrac{x-1}{x+1}}} dx$$
        \end{exmp}
- \item $R(sinX, cosX)$ универсальная тригонометрическая замена $y = tg(\frac{x}{2})$
-       $sinx = 2 sin(x/2)cos(x/2) = 2 tg(x/2) cos^2(x/2) = \frac{2 y}{1+y}$\\
-       $cosx= \frac{1-y}{1+y}$ \\
-       $dx = \frac{2}{1+y} dy$ \\
+ \item $R(sinX, cosX)$ универсальная тригонометрическая замена $y = tg(\cfrac{x}{2})$
+       $sinx = 2 sin(x/2)cos(x/2) = 2 tg(x/2) cos^2(x/2) = \cfrac{2 y}{1+y}$\\
+       $cosx= \cfrac{1-y}{1+y}$ \\
+       $dx = \cfrac{2}{1+y} dy$ \\
        Если $R(-sinX, cosX) = - R(sinX, cosX), t = cosX$\\
        Если $R(sinX, -cosX) = - R(sinX, cosX), t = sinX$\\
        Если $R(-sinX, -cosX) =  R(sinX, cosX), t = tgX$\\
@@ -752,15 +762,15 @@ $R$ - рациональная функция
        \end{itemize}
  \item Интегрирование тригонометрических функций
        \begin{itemize}
-        \item $\int R(sinX; cosX) dx \ \ ,  t=tg(\frac{x}{2})$ - универсальная подстановка
+        \item $\int R(sinX; cosX) dx \ \ ,  t=tg(\cfrac{x}{2})$ - универсальная подстановка
         \item Четность/нечетность функции $\rightarrow$ специальная замена
         \item Частные случаи(**)
        \end{itemize}
  \item Интегрирование иррациональных функций
        \begin{itemize}
-        \item $\int R(x, \sqrt[m]{\frac{ax+b}{cx+d}}) dx$
-              $$\int R(x, \sqrt[m]{\frac{ax+b}{cx+d}}, \sqrt[n]{\frac{ax+b}{cx+d}}, \dots ) dx $$
-              $t = \sqrt[N]{\frac{ax+b}{cx+d}}, N = NOK(m,n, \dots)$
+        \item $\int R(x, \sqrt[m]{\cfrac{ax+b}{cx+d}}) dx$
+              $$\int R(x, \sqrt[m]{\cfrac{ax+b}{cx+d}}, \sqrt[n]{\cfrac{ax+b}{cx+d}}, \dots ) dx $$
+              $t = \sqrt[N]{\cfrac{ax+b}{cx+d}}, N = NOK(m,n, \dots)$
         \item $\int R(x, \sqrt{ax^2+bx+c}) dx$ - выделение полного квадрата или замена Эйлера(***)
         \item Биноминальный интеграл (****)
        \end{itemize}
@@ -771,18 +781,18 @@ $R$ - рациональная функция
 
 \subsubsection{Частные случаи интегрирования тригонометрических функций}
 \begin{enumerate}
- \item $$\int sin^{2m}(x) cos^{2n}(x) dx \ \ \ \ \textit{используя формулы понижения степени получим} $$ $$  \int \frac{1-cos(2x)}{2}^m \frac{1+cos(2x)}{2}^n dx $$
+ \item $$\int sin^{2m}(x) cos^{2n}(x) dx \ \ \ \ \textit{используя формулы понижения степени получим} $$ $$  \int \cfrac{1-cos(2x)}{2}^m \cfrac{1+cos(2x)}{2}^n dx $$
  \item $$\int sin^{2m+1}(x) cos^{2n}(x) dx = \int sin^{2m}(x) cos^{2n+1}(x) dx = $$
        $$= - \int sin^{2m}(x) cos^{2n}(x) d \underbrace{cos(x)}_{t} = -\int (1-t^2)^m t^{2n} dt$$
  \item $\int sin(ax)cos(bx) dx = (1) $\\
        $\int sin(ax)sin(bx) dx = (2)$\\
        $\int cos(ax)cos(bx) dx = (3)$\\
-       $$(1)=\int \frac{1}{2}(sin(a+b)x+sin(a-b)x) dx$$
-       $$(2)=\int \frac{1}{2}(cos(a-b)x-cos(a+b)x) dx$$
-       $$(3)=\int \frac{1}{2}(cos(a+b)x+cos(a-b)x) dx$$
+       $$(1)=\int \cfrac{1}{2}(sin(a+b)x+sin(a-b)x) dx$$
+       $$(2)=\int \cfrac{1}{2}(cos(a-b)x-cos(a+b)x) dx$$
+       $$(3)=\int \cfrac{1}{2}(cos(a+b)x+cos(a-b)x) dx$$
 \end{enumerate}
 \subsubsection{\texorpdfstring{$\int R(x, \sqrt{ax^2+bx+c}) dx$}{(***)} }
-$$ax^2 +bx +c = a {\underbrace{(x+\frac{b}{2a})}_{u}}^2 + c - \frac{b^2}{4a}$$
+$$ax^2 +bx +c = a {\underbrace{(x+\cfrac{b}{2a})}_{u}}^2 + c - \cfrac{b^2}{4a}$$
 В зависимости от дискриминанта и знака $a$ сводится к:
 \begin{itemize}
  \item $\int R(u; \sqrt{a^2-u^2}) du$
@@ -790,7 +800,7 @@ $$ax^2 +bx +c = a {\underbrace{(x+\frac{b}{2a})}_{u}}^2 + c - \frac{b^2}{4a}$$
  \item $\int R(u; \sqrt{a^2+u^2}) du$
 \end{itemize}
 \begin{center}
- \begin{tabular}{ |c|c|c|c| }
+ \begin{tabular}{ c c c c }
   \hline
   случай           & подстановка (замена)          & $du$                          & корень                        \\
   \hline
@@ -806,78 +816,78 @@ $$ax^2 +bx +c = a {\underbrace{(x+\frac{b}{2a})}_{u}}^2 + c - \frac{b^2}{4a}$$
    \end{aligned}$ \\
   \hline
   $\sqrt{u^2-a^2}$ & $\begin{aligned}
-    u = \frac{a}{sin(t)} \\
-    u = \frac{a}{cos(t)} \\
+    u = \cfrac{a}{sin(t)} \\
+    u = \cfrac{a}{cos(t)} \\
    \end{aligned}$ & $\begin{aligned}
-    du = -\frac{acos(t)}{sin^2 (t)} dt \\
-    du = -\frac{asin(t)}{cos^2 (t)} dt \\
+    du = -\cfrac{acos(t)}{sin^2 (t)} dt \\
+    du = -\cfrac{asin(t)}{cos^2 (t)} dt \\
    \end{aligned}$ & $\begin{aligned}
-    \sqrt{(\frac{a}{sin(t)})^2 - a^2}=a\ ctg(t) \\
-    \sqrt{(\frac{a}{cos(t)})^2 - a^2}=a\ tg(t)  \\
+    \sqrt{(\cfrac{a}{sin(t)})^2 - a^2}=a\ ctg(t) \\
+    \sqrt{(\cfrac{a}{cos(t)})^2 - a^2}=a\ tg(t)  \\
    \end{aligned}$ \\
   \hline
   $\sqrt{u^2+a^2}$ & $\begin{aligned}
-    u = \frac{a}{tg(t)}  \\
-    u = \frac{a}{ctg(t)} \\
+    u = \cfrac{a}{tg(t)}  \\
+    u = \cfrac{a}{ctg(t)} \\
    \end{aligned}$ & $\begin{aligned}
-    du = \frac{a}{cos^2 (t)} dt  \\
-    du = -\frac{a}{sin^2 (t)} dt \\
+    du = \cfrac{a}{cos^2 (t)} dt  \\
+    du = -\cfrac{a}{sin^2 (t)} dt \\
    \end{aligned}$ & $\begin{aligned}
-    \sqrt{(\frac{a}{tg(t)})^2 - a^2}=\frac{a}{cos(t)}  \\
-    \sqrt{(\frac{a}{ctg(t)})^2 - a^2}=\frac{a}{sin(t)} \\
+    \sqrt{(\cfrac{a}{tg(t)})^2 - a^2}=\cfrac{a}{cos(t)}  \\
+    \sqrt{(\cfrac{a}{ctg(t)})^2 - a^2}=\cfrac{a}{sin(t)} \\
    \end{aligned}$ \\
   \hline
  \end{tabular}
 \end{center}
 \begin{exmp}
- $$ \int \frac{x^2-x+1}{(x^2+1)\sqrt{x^2+1}} dx= \left\{\!\begin{aligned}
-   x = tg(t)                 \\
-   dx = \frac{dt}{cos^2 (t)} \\
-   x^2+1 = \frac{1}{cos^2 (t)}
-  \end{aligned} \right\} = \int \frac{tg^2 (t) - tg (t) + 1}{\frac{1}{cos^2 (t)}\cdot \frac{1}{cos(t)}} \cdot \frac{dt}{cos^2 (t)} =$$
- $$ = \int (tg^2(t)+1)cos(t)\ dt - \int tg(t)cos(t)\ dt= \int \frac{1}{cos^2t}cos(t)\ dt - \int tg(t)cos(t)\ dt = $$
+ $$ \int \cfrac{x^2-x+1}{(x^2+1)\sqrt{x^2+1}} dx= \left\{\!\begin{aligned}
+   x = tg(t)                  \\
+   dx = \cfrac{dt}{cos^2 (t)} \\
+   x^2+1 = \cfrac{1}{cos^2 (t)}
+  \end{aligned} \right\} = \int \cfrac{tg^2 (t) - tg (t) + 1}{\cfrac{1}{cos^2 (t)}\cdot \cfrac{1}{cos(t)}} \cdot \cfrac{dt}{cos^2 (t)} =$$
+ $$ = \int (tg^2(t)+1)cos(t)\ dt - \int tg(t)cos(t)\ dt= \int \cfrac{1}{cos^2t}cos(t)\ dt - \int tg(t)cos(t)\ dt = $$
  $$=\left\{\!\begin{aligned}
-   u = tg(\frac{t}{2})    \\
-   dt = \frac{2du}{1+u^2} \\
-   cos(t) = \frac{2u}{1+u^2}
-  \end{aligned} \right\} = \int \frac{1+u^2}{2u} \frac{2du}{1+u^2} du + cos(t) = ln|u|+cos(t) + C=$$
- $$=ln|tg(\frac{arctg(x)}{2})| + cos(arctg(x)) + C$$
+   u = tg(\cfrac{t}{2})    \\
+   dt = \cfrac{2du}{1+u^2} \\
+   cos(t) = \cfrac{2u}{1+u^2}
+  \end{aligned} \right\} = \int \cfrac{1+u^2}{2u} \cfrac{2du}{1+u^2} du + cos(t) = ln\abs{u}+cos(t) + C=$$
+ $$=ln\abs{tg(\cfrac{arctg(x)}{2})} + cos(arctg(x)) + C$$
 \end{exmp}
 \subsubsection{Подстановка Эйлера}
 $$ \int R(x, \sqrt{ax^2+bx+c}) dx $$
 \begin{enumerate}
  \item $a>0\ \ \underbrace{\sqrt{ax^2+bx+c}}_{\text{Корней нет}}=t \pm \sqrt{a}x$
        $$ ax^2 + bx+ c = t^2 \pm 2\sqrt{a}x + ax^2$$
-       $$ x = \frac{t^2-c}{b \mp 2t \sqrt{a}} \Rightarrow \sqrt{ax^2+bx+c}=t \pm \frac{\sqrt{a}(t^2-c)}{b\mp2t \sqrt{a}}$$
+       $$ x = \cfrac{t^2-c}{b \mp 2t \sqrt{a}} \Rightarrow \sqrt{ax^2+bx+c}=t \pm \cfrac{\sqrt{a}(t^2-c)}{b\mp2t \sqrt{a}}$$
        Получаем рациональную функцию под интегралом
  \item 2 различных корня $ax^2+bx+c=a(x-x_0)(x-x_1)$
-       $$ t = \frac{ \sqrt{ax^2+bx+c}}{x-x_0},\ t^2 (x-x_0)^2 = ax^2+bx+c$$
+       $$ t = \cfrac{ \sqrt{ax^2+bx+c}}{x-x_0},\ t^2 (x-x_0)^2 = ax^2+bx+c$$
        $$ t^2(x-x_0) = a(x-x_1)$$
-       $$ x = \frac{-ax_1 + t^2 x_0}{t^2 - a} \Rightarrow \sqrt{ax^2+bx+c} = t(x-x_0)=$$
-       $$ = t(\frac{-ax_1 + t^2 x_0}{t^2 - a} - x_0)$$
+       $$ x = \cfrac{-ax_1 + t^2 x_0}{t^2 - a} \Rightarrow \sqrt{ax^2+bx+c} = t(x-x_0)=$$
+       $$ = t(\cfrac{-ax_1 + t^2 x_0}{t^2 - a} - x_0)$$
 \end{enumerate}
 \subsubsection{Биноминальные интегралы}
 $$ \int x^m (ax^n + b)^p dx\ , m,n,p \in \mathbb{Q}$$
 \begin{enumerate}[label=\alph*)]
  \item $p$ - целое, тогда по биному Ньютона
  \item $p$ - дробное\\
-       Выполнить замену $z=x^n$, тогда $x=z^{\frac{1}{n}}, dx=\frac{1}{n}z^{\frac{1}{n}-1}dz$
-       $$ \Rightarrow \int z^{\frac{m}{n}}(az+b)^p \frac{1}{n}z^{n(\frac{1}{n}-1)} dz  =$$
+       Выполнить замену $z=x^n$, тогда $x=z^{\cfrac{1}{n}}, dx=\cfrac{1}{n}z^{\cfrac{1}{n}-1}dz$
+       $$ \Rightarrow \int z^{\cfrac{m}{n}}(az+b)^p \cfrac{1}{n}z^{n(\cfrac{1}{n}-1)} dz  =$$
        Вариант 1
-       $$= \frac{1}{n} \int z^{\frac{m+1}{n}-1}(az+b)^p dz\text{, если }\frac{m+1}{n} \text{- целое, то}$$
-       $$p = \frac{\mu}{\nu} \Rightarrow t^{\nu}=az+b=ax^n+b \Rightarrow \text{получим рациональную функцию}$$
+       $$= \cfrac{1}{n} \int z^{\cfrac{m+1}{n}-1}(az+b)^p dz\text{, если }\cfrac{m+1}{n} \text{- целое, то}$$
+       $$p = \cfrac{\mu}{\nu} \Rightarrow t^{\nu}=az+b=ax^n+b \Rightarrow \text{получим рациональную функцию}$$
        Вариант 2
-       $$= \frac{1}{n} \int z^{\frac{m+1}{n}-1+p}(\frac{az+b}{z})^p dz$$
-       Если $\frac{m+1}{n}+p-1$ - целое, то $t^\nu = \frac{az+b}{z}=\frac{ax^n+b}{x^n}$
+       $$= \cfrac{1}{n} \int z^{\cfrac{m+1}{n}-1+p}(\cfrac{az+b}{z})^p dz$$
+       Если $\cfrac{m+1}{n}+p-1$ - целое, то $t^\nu = \cfrac{az+b}{z}=\cfrac{ax^n+b}{x^n}$
 \end{enumerate}
 \begin{theorem}[Чебышева]
  $$\int x^m(ax^n+b)^p dx$$ вычесляется в элементарных функциях только, если
  \begin{enumerate}
   \item p-целое
-  \item p-дробное, $\frac{\mu}{\nu}$ $\left[
+  \item p-дробное, $\cfrac{\mu}{\nu}$ $\left[
          \begin{gathered}
-          \frac{m+1}{n} \text{ - целое}\hfill,   t^\nu = ax^n+b             \\
-          \frac{m+1}{n}+p \text{ - целое}\hfill,  t^\nu = \frac{ax^n+b}{x^n}
+          \cfrac{m+1}{n} \text{ - целое}\hfill,   t^\nu = ax^n+b             \\
+          \cfrac{m+1}{n}+p \text{ - целое}\hfill,  t^\nu = \cfrac{ax^n+b}{x^n}
          \end{gathered}
          \right.$
  \end{enumerate}
@@ -887,11 +897,10 @@ $$ \int x^m (ax^n + b)^p dx\ , m,n,p \in \mathbb{Q}$$
 $$ f:[a,b] \rightarrow R, f(x) \geq 0$$
 \begin{formula}[Ньютона-Лейбница]
  $$S = F(b)-F(a) =  \int_a^b f(x) dx, \text{ где } F \text{ - первообразная f}$$
- $$S'(x) = \lim_{\Delta x \rightarrow 0}{\frac{S(x +\Delta x)-S(x)}{\Delta x}} = f(x) $$
+ $$S'(x) = \lim_{\Delta x \rightarrow 0}{\cfrac{S(x +\Delta x)-S(x)}{\Delta x}} = f(x) $$
 \end{formula}
 \begin{definition*}
  Кольцо множеств - набор множеств замкнутый относительно
- % TODO: add \
  $\cup, \cap, \setminus , \Delta  $
 \end{definition*}
 \begin{exmp}
@@ -999,7 +1008,7 @@ $ \tau = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \} $\\
 \begin{definition*}
  \textit{Интеграл Римона}
  $I$ - называется интегралом Римона, если $f$ на $[a,b]$,если
- $$ \forall{\varepsilon}>0 \exists{\delta}>0: |I-S(f, \tau, \xi)|<\varepsilon $$
+ $$ \forall{\varepsilon}>0 \exists{\delta}>0: \abs{I-S(f, \tau, \xi)}<\varepsilon $$
  $$ \int_a^b f(x)  dx = \lim_{\Delta(P) \rightarrow 0}{S(f,\tau,\xi)} $$
  Если этот предел существует и независит от $\tau, \xi$
 \end{definition*}
@@ -1015,26 +1024,25 @@ $ \tau = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \} $\\
  $\forall{\tau} $ - разбиение $[0,1]$ $\exists{\xi_k` }\in \mathbb{Q}, \xi_k``  \notin \mathbb{Q} $
  $$S(D, \tau, \xi_k`  ) = \sum_{n=1}^{\infty}{1(x_k - x_{k-1})} = 1$$
  $$S(D, \tau, \xi_k`` ) = \sum_{n=1}^{\infty}{0(x_k - x_{k-1})} = 0 $$
- $$ | \Rightarrow \nexists lim $$
+ $$ \InAll \nexists lim $$
 \end{exmp}
 \begin{exmp}
  $$R(X) = \begin{cases}
-   \frac{1}{n}, & x = \frac{m}{n} \text{несократима} \\
-   0,           & x \notin \mathbb{Q}                \\
+   \cfrac{1}{n}, & x = \cfrac{m}{n} \text{несократима} \\
+   0,            & x \notin \mathbb{Q}                 \\
   \end{cases} \text{ на [a,b]}$$
- $$ S(R, \tau, \xi) = \sum_{i=0}^{k}{R(\xi_i)\delta x_i} = \sum_{R(\xi_i) < \frac{1}{N}}{R(\xi_i)\delta x_i}+ \sum_{R(\xi_i) \geq \frac{1}{N}}{R(\xi_i)\delta x_i} <$$
- $$ < \sum_{R(\xi_i) < \frac{1}{N}}{\frac{1}{N} \delta x_i} + \sum_{R(\xi_i) \geq \frac{1}{N}} {1 \delta x_i} < \frac{1}{N} \sum_{R(\xi_i) < \frac{1}{N}}{\delta x_i} + \Delta (\tau) \text{кол-во } \{R(\xi_i) \geq \frac{1}{N} \} <$$
+ $$ S(R, \tau, \xi) = \sum_{i=0}^{k}{R(\xi_i)\delta x_i} = \sum_{R(\xi_i) < \cfrac{1}{N}}{R(\xi_i)\delta x_i}+ \sum_{R(\xi_i) \geq \cfrac{1}{N}}{R(\xi_i)\delta x_i} <$$
+ $$ < \sum_{R(\xi_i) < \cfrac{1}{N}}{\cfrac{1}{N} \delta x_i} + \sum_{R(\xi_i) \geq \cfrac{1}{N}} {1 \delta x_i} < \cfrac{1}{N} \sum_{R(\xi_i) < \cfrac{1}{N}}{\delta x_i} + \Delta (\tau) \text{кол-во } \{R(\xi_i) \geq \cfrac{1}{N} \} <$$
  Грубой оценкой является $N^2$\\
  $N = 1, x = 1  \longrightarrow1$\\
- $N = 2, x = 1, x = \frac{1}{2} \longrightarrow2$\\
- $N = 3, x = 1, x = \frac{1}{2}, x = \frac{1}{3}, x = \frac{2}{3} \longrightarrow 4$\\
- Далее, если кол-во $\{x: R(x) \geq \frac{1}{N} \}$ не более $N^2$, то для $\{x: R(x) \geq \frac{1}{N+1} \}$ могут добавляться дроби $\frac{k}{N+1}$, $k = 1, \dots, n$\\
+ $N = 2, x = 1, x = \cfrac{1}{2} \longrightarrow2$\\
+ $N = 3, x = 1, x = \cfrac{1}{2}, x = \cfrac{1}{3}, x = \cfrac{2}{3} \longrightarrow 4$\\
+ Далее, если кол-во $\{x: R(x) \geq \cfrac{1}{N} \}$ не более $N^2$, то для $\funcSet{x}{R(x) \geq \cfrac{1}{N+1}}$ могут добавляться дроби $\cfrac{k}{N+1}$, $k = 1, \dots, n$\\
  Т.е добавится не более $N$ штук $N^2+N <(N+1)^2$
- %TODO: Add circle for <
- $$S(R, \tau, \xi) < \frac{1}{N}+\Delta(\tau)N^2$$
- Засчет выбора достаточно малого $\Delta(\tau): \forall{\varepsilon}>0\ \exists{N}\ \ \frac{1}{N}<\frac{\varepsilon}{2} $ и $\Delta = \frac{1}{N^3}$\\
+ $$S(R, \tau, \xi) < \cfrac{1}{N}+\Delta(\tau)N^2$$
+ Засчет выбора достаточно малого $\Delta(\tau): \forall{\varepsilon}>0\ \exists{N}\ \ \cfrac{1}{N}<\cfrac{\varepsilon}{2} $ и $\Delta = \cfrac{1}{N^3}$\\
  $\Rightarrow \forall{\tau}: \Delta(\tau) < \delta $ получаем:
- $$|0 - S(R, \tau, \xi)| = \frac{1}{N} +\delta N^2 = \frac{1}{N} + \frac{N^2}{N^3}=\frac{2}{N} < 2 \frac{\varepsilon}{2} = \varepsilon \Rightarrow \int\limits_0^1 R(x)  dx $$
+ $$\abs{0 - S(R, \tau, \xi)} = \cfrac{1}{N} +\delta N^2 = \cfrac{1}{N} + \cfrac{N^2}{N^3}=\cfrac{2}{N} < 2 \cfrac{\varepsilon}{2} = \varepsilon \Rightarrow \int\limits_0^1 R(x)  dx $$
 \end{exmp}
 \subsubsection{Верхние и нижние суммы Дарбу}
 \begin{definition*}
@@ -1062,8 +1070,8 @@ $ \tau = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \} $\\
  $$\forall{\varepsilon}>0\ \exists{\tau}\ \exists{\overline{\xi}}: 0 \leq S_\tau - S(f,\tau, \overline{\xi})< \varepsilon $$
 \end{property}
 \begin{proof}
- По определению $M_k \exists{\xi_k} \in [x_{k-1}, x_k]: M_k - f(\xi_k) < \frac{\varepsilon}{b-a}, \underline{\xi} ={\xi_k}$
- $$S_\tau - S(f, \tau, \underline{\xi}) = \sum_{i=0}^{n}{(M_k-f(\xi_k)) \Delta x_k} < \frac{\varepsilon}{b-a}\sum_{i=0}^{n}{\Delta x_k} = \varepsilon$$
+ По определению $M_k \exists{\xi_k} \in [x_{k-1}, x_k]: M_k - f(\xi_k) < \cfrac{\varepsilon}{b-a}, \underline{\xi} ={\xi_k}$
+ $$S_\tau - S(f, \tau, \underline{\xi}) = \sum_{i=0}^{n}{(M_k-f(\xi_k)) \Delta x_k} < \cfrac{\varepsilon}{b-a}\sum_{i=0}^{n}{\Delta x_k} = \varepsilon$$
 \end{proof}
 \begin{property}
  $$\forall{\varepsilon}>0\ \exists{\tau}\ \exists{\underline{\xi}}: 0 \leq  S(f,\tau, \underline{\xi}) - S_\tau < \varepsilon $$
@@ -1083,28 +1091,70 @@ $ \tau = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \} $\\
 \end{lemma}
 \begin{proof}
  $M=m \Rightarrow f(x) = const = m = M\ \underline{I} = s_\tau, \overline{I}=S_\tau$
- $$ M > m, \forall{\varepsilon}\ \exists{\tau^*}: S_{\tau^*}-\underline{I}<\frac{\varepsilon}{2} \text{по опр inf} $$
- Пусть $p$ - кол-во точек $\tau^*$, лежащие внутри $[a,b]$. Выберем $$\delta = \frac{\varepsilon}{2(M-m)p}$$
+ $$ M > m, \forall{\varepsilon}\ \exists{\tau^*}: S_{\tau^*}-\underline{I}<\cfrac{\varepsilon}{2} \text{по опр inf} $$
+ Пусть $p$ - кол-во точек $\tau^*$, лежащие внутри $[a,b]$. Выберем $$\delta = \cfrac{\varepsilon}{2(M-m)p}$$
  Пусть $\tau : \Delta(\tau) < \delta, $ $\tau' = \tau \cup \tau^*$ \\
- $$ S_\tau - \underline{I} = S_\tau - S_{\tau'} + S_{\tau'} - \underline{I} \leq (M-m)p\Delta(\tau) + S_{\tau'} - \underline{I} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon $$
+ $$ S_\tau - \underline{I} = S_\tau - S_{\tau'} + S_{\tau'} - \underline{I} \leq (M-m)p\Delta(\tau) + S_{\tau'} - \underline{I} < \cfrac{\varepsilon}{2} + \cfrac{\varepsilon}{2} = \varepsilon $$
  Для второго \textit{УПР!}
 \end{proof}
-\begin{theorem}[Критерий Дарбу интегрируемости по Римону]
+\begin{theorem}[Критерий Дарбу интегрируемости по Римону]\label{th:krDarbu}
  Ограниченная на $[a,b]$ ф-ция $f$ интегрируема по Римону $\Leftrightarrow \ \forall{\varepsilon}>0\ \exists{\tau}:\ S_\tau - s_\tau < \varepsilon$
 \end{theorem}
 \begin{proof}
  $\Rightarrow$\\
  Тогда $\exists{\delta}> 0 $ из определения инт-мости выберем $\tau: \Delta(\tau)< \delta \  $
- $$ |I - S(f, \tau, \xi)| <\frac{\varepsilon}{4}\ \forall{\xi} $$
+ $$ \abs{I - S(f, \tau, \xi)} <\cfrac{\varepsilon}{4}\ \forall{\xi} $$
  По св-ву 4 и 5 выберем $\underline{\xi}, \overline{\xi}$:
- $$ S_\tau - S(f,\tau, \overline{\xi}) < \frac{\varepsilon}{4}, \ S(f, \tau, \underline{\xi})- s_\tau<\frac{\varepsilon}{4} $$
+ $$ S_\tau - S(f,\tau, \overline{\xi}) < \cfrac{\varepsilon}{4}, \ S(f, \tau, \underline{\xi})- s_\tau<\cfrac{\varepsilon}{4} $$
  $$S_\tau-s_\tau = S_\tau - S(f, \tau, \overline{\xi}) + S(f,\tau, \overline{\xi})- I + I - S(f,\tau, \underline{\xi}) +S(f,\tau, \underline{\xi}) -s_\tau < \varepsilon  $$
-
  $ \Leftarrow $\\
  Из условия следует: $\underline{I} = \overline{I} = I$ - обозначение. \\
  По лемме Дарбу: по $\varepsilon $ выберем $\delta: \Delta(\tau) < \delta$\\
- $$S_\tau - I < \frac{\varepsilon}{2}, I- s_\tau < \frac{\varepsilon}{2} \Rightarrow $$
- $$ \Rightarrow \forall{\xi} \text{ по св-ву 1} |S(f,\tau,\xi) -I|<\varepsilon $$
-
+ $$S_\tau - I < \cfrac{\varepsilon}{2}, I- s_\tau < \cfrac{\varepsilon}{2} \Rightarrow $$
+ $$ \Rightarrow \forall{\xi} \text{ по св-ву 1} \abs{S(f,\tau,\xi) -I}<\varepsilon $$
 \end{proof}
+\begin{memories}
+ В прошлом семестре вводилось определение колебания функции $f$ на $[x_{k-1}, x_k]$:
+ $$ \omega_k = \sup_{x',x'' \in [x_{k-1}, x_k]} \abs{f(x'')-f(x')} $$
+\end{memories}
+Очевидно, что
+$$ \omega_k = \underbrace{M_k}_{\sup_{[x_{k-1}, x_k]} f(x)} + \underbrace{m_k}_{\inf_{[x_{k-1}, x_k]} f(x)} $$
+Следовательно,
+$$ \underbrace{S_\tau - s_\tau}_{\text{Эта разность фигурирует в Теореме 1}} = \sum_{k=1}^{n}{\omega_k \Delta x_k} $$
+\begin{consequence*}
+ Ограниченная на $[a,b]$ функция $f$ интегрируема\\ $\Leftrightarrow \forall{\varepsilon} > 0 \ \exists{\text{ Разбиение }\tau}: \sum_{k=1}^{m}{\omega_k \Delta x_k} < \varepsilon$
+\end{consequence*}
+\subsection{Некоторые классы интегрируемых функций}
+\begin{theorem}[Основное св-во интегрируемых функций, необходиоме условие]
+ Если функция $f$ интегрируема на $[a,b]$, то она ограничена на $[a,b]$
+\end{theorem}
+\begin{proof}[От противного]
+ Пусть $f$ не ограничена на $[a,b]$ и пусть выбрано разбиение $\tau: a = x_0<x_1< \dots < x_k = b$\\
+ Т.к $f$ не ограничена на $[a,b]$, то $f$ не ограничена на каком-то маленьком отрезке разбиения. Пусть это будет $[x_0, x_1]$. Тогда $\exists{}$ последовательность $\xi_1^{(n)} \in [x_0,x_1]\text{(здесь (n) просто номер $\xi_1$ )}, n=1,2, \dots$, такая, что $\lim_{n \rightarrow \infty}{f(\xi_1^{(n)})} = \infty$\\
+ Фиксируем точки на других отрезках: $\xi_i\in[x_{i-1}, x_{i}]$. Тогда для данного $\tau$ и $\xi_i$ сумма $\sum_{i =2}^{k}{f(\xi_i)\Delta x_i}$  какое-то определенное число.\\
+ $$ \InAll \lim_{n \rightarrow \infty}{S(f,\tau,\xi)} = \lim_{n \rightarrow \infty}{S(f,\tau, \xi_1^{(n)}, \xi_2, \xi_3, \dots )} = $$
+ $$= \lim_{n \rightarrow \infty}{( \underbrace{f(\xi_1^{(n)})}_{\rightarrow \infty}\Delta x_1 + \underbrace{\sum_{i =2}^{k}{f(\xi_i)\Delta x_i} }_{\text{Число}})} = \infty$$
+ \begin{equation}
+  \InAll \forall{M} > 0\ \exists{n_0}: \abs{S(f,\tau, \xi_1^{n_0}, \xi_2, \xi_3, \dots, \xi_k ) }>M \label{eq:ref}
+ \end{equation}
+ $\InAll $ интегральные суммы не могут стремиться к конечному пределу при $\Delta(\tau) \rightarrow 0$\\
+ Действительно, если $\exists{\lim_{\Delta(\tau) \rightarrow 0}{S(f,\tau, \xi)}} = A$ - конечное, то
+ $$\forall{\varepsilon}>0 \ \exists{\delta}: \forall{\tau}: \Delta (\tau) < \delta\ \forall{\xi}\ \abs{S(f, \tau, \xi) - A} <\varepsilon $$
+ $$\InAll \abs{S(f,\tau, \xi)} \leq \abs{S(f,\tau, \xi) - A} + \abs{A} < \varepsilon + \abs{A} $$
+ А мы получили в \ref{eq:ref}, что $\forall$разбиения $\tau$ при фиксированном $\varepsilon$ можно выбрать $\xi$ так, что $\abs{S(f,\tau, \xi)}>\abs{A} + \varepsilon= M \Rightarrow \bot$\\
+\end{proof}
+\begin{theorem}
+ Непревная на отрезке функция - интегрируема
+\end{theorem}
+\begin{proof}
+ По теореме Кантор, любая непрерывная на отрезке функция - равномерно непрерывна:
+ $$ \forall{\varepsilon}>0\ \exists{\delta}: \abs{x'-x''}<\delta \Rightarrow \abs{f(x') - f(x'')} < \varepsilon $$
+ Рассмотрим разбиение $\tau$ такое, что $\Delta(\tau) < \delta$, тогда если $x', x''\in [x_{k-1};x_k], то \abs{f(x') -f(x'')}<\varepsilon$
+ $$ \sup_{x', x''}{\abs{f(x')-f(x'')}} = \sup{(f(x'))} - \inf{(f(x''))} = M_k - m_k \leq \varepsilon \text{ Равенство появилось из-за sup} $$
+ $$ \Rightarrow S_\tau - s_\tau = \sum{M_k-m_k}\Delta x_k \leq \varepsilon(b-a) $$
+ $  \Rightarrow $ по критерию Дарбу (\ref{th:krDarbu}) функция интегрируема\\
+\end{proof}
+\begin{theorem}
+ Если $f$ имеет конечное число разрывов и ограничена на $[a,b]$
+\end{theorem}
 \end{document}
