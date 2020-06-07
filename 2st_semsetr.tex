@@ -77,8 +77,8 @@
 \subsubsection{Конечные суммы}
 $$a_1+a_2+\dots+a_n = \sum_{k=1}^{n} a_k$$
 \begin{itemize}
- \item $\sum_{k=1}^{n}{a_n} + \sum_{k=1}^{n}{b_n} = \sum_{k=1}^{n}{(a_n+b_n)}$
- \item $\lambda \sum_{k=1}^{n}{a_n} = \sum_{k=1}^{n}{(\lambda a_n)}$
+ \item $\sum_{k=1}^{n}{a_k} + \sum_{k=1}^{n}{b_k} = \sum_{k=1}^{n}{(a_k+b_k)}$
+ \item $\lambda \sum_{k=1}^{n}{a_k} = \sum_{k=1}^{n}{(\lambda a_k)}$
 \end{itemize}
 \subsubsection{Числовые ряды}
 \definition{Числовым рядом называется выражение вида $$\sum_{k=1}^{\infty}{a_k} = a_1 + a_2 + \dots + a_n+ \dots $$ где $a_k \in \mathbb{R}$ - общий член последовательности, \\а $S_1 = a_1,  S_2 = a_1 + a_2, S_n = \sum_{k=1}^{n}{a_k}$ - частичные суммы ряда }
@@ -177,18 +177,18 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \cfra
         $\xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=N_0}^{\infty}{b_k}$ - сходится\\
         $\xRightarrow{\text{по th 3}} \sum_{k=N_0}^{\infty}{\cfrac{3c}{2} b_n}$ - сходится \\
         $\xRightarrow{\text{по th 5}} \sum_{k=N_0}^{\infty}{a_n}$ - сходится \\
-        $\xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=1}^{\infty}{a_n} $ - сходится
+        $\xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=1}^{\infty}{a_k} $ - сходится
   \item Пусть $\sum_{k=1}^{\infty}{b_k}$ - расходится\\
         $\xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=N_0}^{\infty}{b_k}$ - расходится\\
-        $\xRightarrow{\text{по th 3}} \sum_{k=N_0}^{\infty}{\cfrac{c}{2} b_n}$ - расходится \\
-        $\xRightarrow{\text{по th 5}} \sum_{k=N_0}^{\infty}{a_n}$ - расходится\\
-        $ \xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=1}^{\infty}{a_n} $ - расходится
+        $\xRightarrow{\text{по th 3}} \sum_{k=N_0}^{\infty}{\cfrac{c}{2} b_k}$ - расходится \\
+        $\xRightarrow{\text{по th 5}} \sum_{k=N_0}^{\infty}{a_k}$ - расходится\\
+        $ \xRightarrow{\text{по сл-вию из th. Коши}} \sum_{k=1}^{\infty}{a_k} $ - расходится
  \end{enumerate}
 \end{proof}
-\subsubsection{Телескопический признак. \texorpdfstring{Эталонный ряд $\sum_{k=1}^{\infty}{\cfrac{1}{n^p}}$}{Эталонный ряд} }
+\subsubsection{Телескопический признак. \texorpdfstring{Эталонный ряд $\sum_{k=1}^{\infty}{\cfrac{1}{k^p}}$}{Эталонный ряд} }
 \begin{theorem}[Телескопический признак]
- Пусть $a_n \searrow , a_n \geq 0$ ряд $\sum_{k=1}^{\infty}{a_n} $ - сходится \\
- $\Leftrightarrow$ сходится $\sum_{k=0}^{\infty}{2^n a_{2^n}}$
+ Пусть $a_k \searrow , a_k \geq 0$ ряд $\sum_{k=1}^{\infty}{a_k} $ - сходится \\
+ $\Leftrightarrow$ сходится $\sum_{k=0}^{\infty}{2^k a_{2^k}}$
 \end{theorem}
 \begin{proof}
  Правый ряд $a_1 + 2a_2 + 4a_4+\dots$
@@ -203,23 +203,23 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \cfra
  Рассмотрим отдельно каждое неравенство
  \begin{enumerate}
   \item $S_{2^{n+1}}^A - a_1 \leq S_n^B$
-        Если ряд $S_n^B$ - сходится $\Rightarrow S_{2^{n+1}}^A - a_1$ - сходится $\Rightarrow S_n^A \leq S^B$ и $\{ S_n^A \}\nearrow \xRightarrow{\text{По th. Вейерштрасса}}$ ряд $\sum_{k=1}^{\infty}{a_n}$ - сходится
+        Если ряд $S_n^B$ - сходится $\Rightarrow S_{2^{n+1}}^A - a_1$ - сходится $\Rightarrow S_n^A \leq S^B$ и $\{ S_n^A \}\nearrow \xRightarrow{\text{По th. Вейерштрасса}}$ ряд $\sum_{n=1}^{\infty}{a_n}$ - сходится
   \item $\cfrac{1}{2} (S_{n+1}^B - a_1) \leq S_{2^{n+1}}^A - a_1$
         $$S_{n+1}^B \leq 2S_{2^{n+1}}^A - a_1$$
-        Если ряд $\sum_{k=1}^{\infty}{a_n}$ - сходится $\Rightarrow S_n^B \leq 2S_{2^{n+1}}^A - a_1 $ и $\{ S_n^B \}\nearrow\xRightarrow{\text{По th. Вейерштрасса}}$ ряд $\sum_{k=1}^{\infty}{2^n a_{2^n}}$ - сходится
+        Если ряд $\sum_{n=1}^{\infty}{a_n}$ - сходится $\Rightarrow S_n^B \leq 2S_{2^{n+1}}^A - a_1 $ и $\{ S_n^B \}\nearrow\xRightarrow{\text{По th. Вейерштрасса}}$ ряд $\sum_{n=1}^{\infty}{2^n a_{2^n}}$ - сходится
  \end{enumerate}
  \textit{Примечание:} Расхождение доказывается по признаку сравнения\\
 \end{proof}
 \begin{theorem}
- Ряд $\sum_{k=1}^{\infty}{\cfrac{1}{n^p}}$ $\begin{cases}
-   \text{cходится} ,   & \text{если} p > 1    \\
-   \text{расходится} , & \text{если} p \leq 1 \\
+ Ряд $\sum_{n=1}^{\infty}{\cfrac{1}{n^p}}$ $\begin{cases}
+   \text{cходится} ,   & \text{если } p > 1    \\
+   \text{расходится} , & \text{если } p \leq 1 \\
   \end{cases}$
 \end{theorem}
 \begin{proof} \mbox{}\\
  \begin{itemize}
   \item Пусть $p > 1 \Rightarrow 0 < \{\cfrac{1}{n^p} \} \searrow_0 $
-        Рассмотрим ряд из th 7 $\sum_{k=0}^{\infty}{2^n \cfrac{1}{2^{np}}} = \sum_{k=0}^{\infty}{(2^{1-p})^n}$ - геометрическая прогрессия $q = 2^{1-p} \Rightarrow \sum_{k=1}^{\infty}{(2^{1-p})^n}$ - сходится $\xRightarrow{\text{по th 7}} \sum_{k=1}^{\infty}{\cfrac{1}{n^p}}$ - сходится
+        Рассмотрим ряд из th 7 $\sum_{k=0}^{\infty}{2^n \cfrac{1}{2^{np}}} = \sum_{k=0}^{\infty}{(2^{1-p})^n}$ - геометрическая прогрессия $q = 2^{1-p} \Rightarrow \sum_{n=1}^{\infty}{(2^{1-p})^n}$ - сходится $\xRightarrow{\text{по th 7}} \sum_{n=1}^{\infty}{\cfrac{1}{n^p}}$ - сходится
   \item Пусть $p \leq 1$
         $$\cfrac{1}{n^p} > \cfrac{1}{n}\ \forall{n} \in \mathbb{N} \Rightarrow \text{ т.к } \cfrac{1}{n} \text{ - расходится }
          \xRightarrow{\text{по признаку сравнения}} \cfrac{1}{n^p} \text{ - расходится} $$
@@ -229,8 +229,8 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \cfra
 \begin{theorem}[признак Даламбера]
  Пусть $a_n > 0 $ и $\exists{\overline{\lim}_{n \rightarrow \infty}{\cfrac{a_{n+1}}{a_n}}} = q$, тогда
  \begin{enumerate}
-  \item Если $ 0 \leq q < 1$, то ряд $\sum_{k=1}^{\infty}{a_n} $ - сходится
-  \item Если $ q > 1$, то ряд $\sum_{k=1}^{\infty}{a_n} $ - расходится
+  \item Если $ 0 \leq q < 1$, то ряд $\sum_{n=1}^{\infty}{a_n} $ - сходится
+  \item Если $ q > 1$, то ряд $\sum_{n=1}^{\infty}{a_n} $ - расходится
   \item Если $ q = 1$, то признак не работает
  \end{enumerate}
 \end{theorem}
@@ -250,7 +250,7 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \cfra
         $$ N+2: a_{n+3} < a_{n+2} \widetilde{q} <  a_{n+1} \widetilde{q}$$
         $$ \dots $$
         $$ N+k-1: a_{n+k} < a_{n+k-1} \widetilde{q} < \dots <a_{n+1} \widetilde{q}^{k-1}$$
-        Т.к $\sum_{k=1}^{\infty}{\widetilde{q}^k}$ - геометрическая прогрессия ($\widetilde{q}<1$)$\Rightarrow$ сходится $\xRightarrow{\text{по признаку сравнения}} \sum_{n=1}^{\infty}{a_{n+k}}$ - сходится $\xRightarrow{\text{Следствие критерия Коши}} \sum_{n=1}^{\infty}{a_n}$ - сходится
+        Т.к $\sum_{n=1}^{\infty}{\widetilde{q}^k}$ - геометрическая прогрессия ($\widetilde{q}<1$)$\Rightarrow$ сходится $\xRightarrow{\text{по признаку сравнения}} \sum_{n=1}^{\infty}{a_{n+k}}$ - сходится $\xRightarrow{\text{Следствие критерия Коши}} \sum_{n=1}^{\infty}{a_n}$ - сходится
   \item Пусть $q > 1$ \\
         Возьмем $\varepsilon: \widetilde{q} = q - \varepsilon > 1$ \\
         Тогда $\forall{n} > N\ a_n \widetilde{q} <a_{n+1} \xRightarrow{\text{по 1 пункту}} a_{n+k} >a_{n+1} \widetilde{q}^{k-1}$
@@ -265,8 +265,8 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \cfra
 \begin{theorem}[радикальный признак Коши] \mbox{}\\
  Пусть $a_n \geq 0 $ и $\exists{\overline{\lim}_{n \rightarrow \infty}{\sqrt[n]{a_n}}} = q$, тогда
  \begin{enumerate}
-  \item Если $ 0 \leq q < 1$, то ряд $\sum_{k=1}^{\infty}{a_n} $ - сходится
-  \item Если $ q > 1$, то ряд $\sum_{k=1}^{\infty}{a_n} $ - расходится
+  \item Если $ 0 \leq q < 1$, то ряд $\sum_{n=1}^{\infty}{a_n} $ - сходится
+  \item Если $ q > 1$, то ряд $\sum_{n=1}^{\infty}{a_n} $ - расходится
   \item Если $ q = 1$, то признак не работает
  \end{enumerate}
 \end{theorem}
@@ -293,8 +293,8 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \cfra
 \begin{theorem}[Признак Раабе]
  Пусть $a_n > 0 $ и $\exists{\lim_{n \rightarrow \infty}{n(\cfrac{a_n}{a_{n+1}}-1)}} = q$, тогда
  \begin{enumerate}
-  \item Если $ q < 1$, то ряд $\sum_{k=1}^{\infty}{a_n} $ - расходится
-  \item Если $ q > 1$, то ряд $\sum_{k=1}^{\infty}{a_n} $ - сходится
+  \item Если $ q < 1$, то ряд $\sum_{n=1}^{\infty}{a_n} $ - расходится
+  \item Если $ q > 1$, то ряд $\sum_{n=1}^{\infty}{a_n} $ - сходится
   \item Если $ q = 1$, то признак не работает
  \end{enumerate}
 \end{theorem}
@@ -364,7 +364,7 @@ $$e = \lim_{n \rightarrow \infty}{(1+\cfrac{1}{n})^n} = \lim_{n \rightarrow \inf
  Пусть дан ряд $\sum_{n=1}^{\infty}{a_n b_n}$ тогда, если:
  \begin{enumerate}
   \item $a_n$ монотонно стремится к 0
-  \item $\exists{C}\ \forall{n}\ \abs{\sum_{k=1}^{m}{b_k}} \leq C$
+  \item $\exists{C}\ \forall{n}\ \abs{\sum_{k=1}^{n}{b_k}} \leq C$
  \end{enumerate}
  Ряд $\sum_{n=1}^{\infty}{a_n b_n}$ сходится
 \end{theorem}
@@ -402,7 +402,7 @@ $$e = \lim_{n \rightarrow \infty}{(1+\cfrac{1}{n})^n} = \lim_{n \rightarrow \inf
  $$= \cfrac{1}{2sin(x/2)} (cos(x/2) - cos(3x/2) + \dots + cos(\cfrac{2m-1}{2}x) - cos(\cfrac{2m+1}{2}x)  =$$
  $$ = \cfrac{1}{2sin(x/2)}(cos(x/2)- cos(\cfrac{2m+1}{2}x) )$$
  Если $sin(x/2) = 0 \Rightarrow sin(nx) = 0 \Rightarrow$ ряд сходится \\
- Если $sin(x/2) \ne 0 \Rightarrow \abs{\sum_{k=1}^{n}{sin(nx)}} \leq \cfrac{2}{2sin(x/2)} = \cfrac{1}{sin(x/2)} = C$\\
+ Если $sin(x/2) \ne 0 \Rightarrow \abs{\sum_{n=1}^{n}{sin(nx)}} \leq \cfrac{2}{2sin(x/2)} = \cfrac{1}{sin(x/2)} = C$\\
  $| \xRightarrow{\text{по признаку Дирихле}}$ ряд сходится
 \end{exmp}
 \upr $$\sum_{n=1}^{\infty}{\cfrac{sin(n)cos(\cfrac{\pi}{4})}{2}}$$
