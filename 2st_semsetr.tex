@@ -35,6 +35,7 @@
 \newtheorem*{question}{Вопрос}
 \newtheorem*{formula}{Формула}
 \newtheorem{upr*}{Упражнение}
+\newtheorem{utv*}{Утверждение}
 \newtheorem{consequence}{Следствие}
 \newtheorem*{consequence*}{Следствие}
 \newtheorem{property}{Свойство}
@@ -104,7 +105,7 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \cfra
  $$\sum_{k=1}^{\infty}{a_k}\text{ - сходится }\Leftrightarrow S_n = \sum_{k=1}^{n}{a_k} \text{ - сходится }$$ $$\xLeftrightarrow{\text{По кр. Коши}} \forall{\varepsilon}>0 \exists{N}\ :\forall{m\geq n-1 > N}\  \abs{S_m-S_{n-1}}<\varepsilon$$
  $$\forall{\varepsilon}>0 \exists{N}\ :\forall{m\geq n \geq N+1}\ \abs{\sum_{k=n}^{m}{a_k}}<\varepsilon$$
 \end{proof}
-\exmp $$\sum_{k=1}^{\infty}{\cfrac{1}{n}} \text{ - расходится }  \sum_{k=1}^{\infty}{\cfrac{1}{n^2}} \text{ - сходится } $$
+\exmp $$\sum_{k=1}^{\infty}{\cfrac{1}{k}} \text{ - расходится }  \sum_{k=1}^{\infty}{\cfrac{1}{k^2}} \text{ - сходится } $$
 \begin{consequence*}
  Если в ряду изменить произвольным образом конечное число слагаемых, то новый ряд сходится, когда сходится исходный, и новый ряд расходится, если исходный расходится
 \end{consequence*}
@@ -975,10 +976,10 @@ $$ f:[a,b] \rightarrow R, f(x) \geq 0$$
  Пусть $f: [a,b] \rightarrow \mathbb{R}$ - ограниченая функция.
  Определим \textit{верхний интеграл Дарбу}.\\
  Пусть $P = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \}$. На каждом отрезке $A_i = [x_i;x_{i+1}]$ выберем $C_i \geq f(x) \forall{x} \in A$.
- $$ \int_a^{b*} f(x)  dx = inf_{P, C_i}\{\sum_{i=0}^{n-1}{C_i(x_{i+1}-x_i)}\} $$
+ $$ \int_a^{b*} f(x)  dx = \inf_{P, C_i}\{\sum_{i=0}^{n-1}{C_i(x_{i+1}-x_i)}\} $$
  Аналогично определяется \textit{нижний интегралл Дарбу}
  $$ \int_{a*}^{b} f(x)  dx = $$
- $$=sup_{P, C_i}\{\sum_{i=0}^{n-1}{C_i(x_{i+1}-x_i), P = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \}, C_i \leq f(x) \forall{x} \in [x_i;x_{i+1}]\}} $$
+ $$=\sup_{P, C_i}\Set{\sum_{i=0}^{n-1}{C_i(x_{i+1}-x_i), P = \Set{ a= x_0 <x_1 < x_2< \dots < x_n = b }, C_i \leq f(x) \forall{x} \in [x_i;x_{i+1}]} } $$
 \end{definition*}
 \begin{comment}
 $$ \int_{a*}^{b} f(x)  dx \leq \int_a^{b*} f(x)  dx$$
@@ -998,7 +999,7 @@ $$\int_a^b f(x)  dx = \int_{a*}^{b} f(x)  dx = \int_a^{b*} f(x)  dx$$
 \subsubsection{Модель интегралла Римана}
 $$\text{Пусть } f:[a,b] \rightarrow \mathbb{R}$$
 $ \tau = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \} $\\
-Набор точек $\{ \xi_1, \dots ,\xi_n \}$ - подчиненён разбиению P, если $$ \xi_i\in[x_{i-1}m x_i] $$
+Набор точек $\{ \xi_1, \dots ,\xi_n \}$ - подчиненён разбиению P, если $$ \xi_i\in[x_{i-1}, x_i] $$
 \begin{formula}[Сумма Римона]
  $$ S(f, P, \xi)=\sum_{i=1}^{n}{f(\xi_i)(x_i-x_{i-1})} $$
 \end{formula}
@@ -1021,9 +1022,9 @@ $ \tau = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \} $\\
    1, & \text{рац на }[0,1] \\
    0, & \text{ир на }[0,1]  \\
   \end{cases}$$
- $\forall{\tau} $ - разбиение $[0,1]$ $\exists{\xi_k` }\in \mathbb{Q}, \xi_k``  \notin \mathbb{Q} $
- $$S(D, \tau, \xi_k`  ) = \sum_{n=1}^{\infty}{1(x_k - x_{k-1})} = 1$$
- $$S(D, \tau, \xi_k`` ) = \sum_{n=1}^{\infty}{0(x_k - x_{k-1})} = 0 $$
+ $\forall{\tau} $ - разбиение $[0,1]$ $\exists{\xi_k' }\in \mathbb{Q}, \xi_k''  \notin \mathbb{Q} $
+ $$S(D, \tau, \xi_k'  ) = \sum_{n=1}^{\infty}{1(x_k - x_{k-1})} = 1$$
+ $$S(D, \tau, \xi_k'' ) = \sum_{n=1}^{\infty}{0(x_k - x_{k-1})} = 0 $$
  $$ \InAll \nexists lim $$
 \end{exmp}
 \begin{exmp}
@@ -1070,7 +1071,7 @@ $ \tau = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \} $\\
  $$\forall{\varepsilon}>0\ \exists{\tau}\ \exists{\overline{\xi}}: 0 \leq S_\tau - S(f,\tau, \overline{\xi})< \varepsilon $$
 \end{property}
 \begin{proof}
- По определению $M_k \exists{\xi_k} \in [x_{k-1}, x_k]: M_k - f(\xi_k) < \cfrac{\varepsilon}{b-a}, \underline{\xi} ={\xi_k}$
+ По определению $M_k: \exists{\xi_k} \in [x_{k-1}, x_k]: M_k - f(\xi_k) < \cfrac{\varepsilon}{b-a}, \underline{\xi} ={\xi_k}$
  $$S_\tau - S(f, \tau, \underline{\xi}) = \sum_{i=0}^{n}{(M_k-f(\xi_k)) \Delta x_k} < \cfrac{\varepsilon}{b-a}\sum_{i=0}^{n}{\Delta x_k} = \varepsilon$$
 \end{proof}
 \begin{property}
@@ -1198,7 +1199,7 @@ $\mathcal R_{[a,b]}$ - множество интегрируемых функц�
  Пусть $f, g \in \mathcal R_{[a,b]} $, тогда:
  \begin{enumerate}
   \item $f+g \in \mathcal R_{[a,b]}$
-  \item $df \in \mathcal R_{[a,b]}$
+  \item $\alpha f \in \mathcal R_{[a,b]}$
   \item $\abs{f} \in \mathcal R_{[a,b]}$
   \item $fg \in \mathcal R_{[a,b]}$
   \item Пусть $[c,d]\subset[a,b]$. Тогда если $f \in \mathcal R_{[a,b]}, то f \Biggr|_{[c,d]} \in \mathcal R_{[a,b]}$
@@ -1243,4 +1244,6 @@ $\mathcal R_{[a,b]}$ - множество интегрируемых функц�
         \end{enumerate}
  \end{enumerate}
 \end{proof}
+
+
 \end{document}
