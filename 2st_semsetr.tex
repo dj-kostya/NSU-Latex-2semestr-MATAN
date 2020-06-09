@@ -309,7 +309,7 @@ $$S_0 = 1, S_1 = 1+q, S_2= 1 + q +q^2, \dots , S_n = \sum_{k=1}^{n}{q^k} = \cfra
 
 $$e = \lim_{n \rightarrow \infty}{(1+\cfrac{1}{n})^n} = \lim_{n \rightarrow \infty}{e_n} $$
 \begin{enumerate}
- \item $$ e_n = (1 + \cfrac{1}{n})^n = \sum_{n=0}^{\infty}{C_k^n \cfrac{1}{n^k}} = \sum_{k=0}^{n}{\cfrac{n!}{k!(n-k)!} \cfrac{1}{n^k}} = $$
+ \item $$ e_n = (1 + \cfrac{1}{n})^n = \sum_{k=0}^{n}{C_k^n \cfrac{1}{n^k}} = \sum_{k=0}^{n}{\cfrac{n!}{k!(n-k)!} \cfrac{1}{n^k}} = $$
        $$= \sum_{k=0}^{n}{\cfrac{(n-k+1)(n-k+2)\dots n}{k! n^k}} < \sum_{k=0}^{n}{\cfrac{n^k}{k!n^k}}=\sum_{k=0}^{n}{\cfrac{1}{k!}} = S_n \Rightarrow e_n < S_n $$
  \item Пусть $m<n$
        $$e_n = \sum_{k=0}^{n}{C_n^k \cfrac{1}{n^k}} > \sum_{k=0}^{m}{C_n^k \cfrac{1}{n^k}}= $$
@@ -425,7 +425,7 @@ $$e = \lim_{n \rightarrow \infty}{(1+\cfrac{1}{n})^n} = \lim_{n \rightarrow \inf
 \begin{definition*}
  Ряд называется условно сходящимся, если он сходится не абсолютно
 \end{definition*}
-\begin{theorem}[Общие свойства абсолютно сходящихся рядов]
+\begin{theorem}[Общие свойства абсолютно сходящихся рядов]\mbox{}\\
  \begin{enumerate}
   \item Если $\sum_{n=1}^{\infty}{a_n}, \sum_{n=1}^{\infty}{b_n}$ - абсолютно сходящиеся ряды, то ряд $\sum_{n=1}^{\infty}{\lambda a_n + \mu b_k}$ абсолютно сходится
   \item Если $\overline{\lim}_{n \rightarrow \infty}{\abs{\cfrac{a_{n+1}}{a_n}}} = q$ или $\overline{\lim}_{n \rightarrow \infty}{\sqrt[n]{\abs{a_n}}} = q$, тогда ряд $\begin{cases}
@@ -563,7 +563,7 @@ $$e = \lim_{n \rightarrow \infty}{(1+\cfrac{1}{n})^n} = \lim_{n \rightarrow \inf
 \begin{proof}
  Рассмотрим $G(x) = F_1(x) - F_2(x)$
  $$ G'(x) = F_1'(x) - F_2'(x) = 0 $$
- $$ \forall{x,y} \in [a,b] G(x) - G(y)=G`(\Xi)(x-y) = 0$$
+ $$ \forall{x,y} \in [a,b] G(x) - G(y)=G`(\xi)(x-y) = 0$$
  Тогда $$G(x)=G(a) = C$$
 \end{proof}
 \begin{lemma}[из будущего]
@@ -634,11 +634,11 @@ $$ \int f(x)g(x)dx $$
         $$ \int \cfrac{x^2}{1+x^2} dx = \int \cfrac{x^2 + 1 -1}{1+x^2} = \int (1 - \cfrac{1}{1+x^2})dx = x - arctg(X) + C $$
        \end{exmp}
  \item интегрирование по частям
-       \begin{comment}
+
        $$(f(x)g(x))'= f'(x)g(x) + f(x)g'(x)$$
        $$ \int (f'(x)g(x) + f(x)g'(x)) dx = f(x)g(x) + C $$
-       $$ \int f(x)g'(x) = f(x)g(x)- \int f'(x)g(x) + C$$
-       \end{comment}
+       $$ \int f(x)g'(x)dx = f(x)g(x)- \int f'(x)g(x)dx + C$$
+
        \begin{comment}
        Когда использовать: $ \int x^n f(x) dx, \int \dots ln \dots dx, \int \dots arctg \dots dx $
        \end{comment}
@@ -714,12 +714,12 @@ $= z^2 - (z_k + \overline{z_k})z + z_k \overline{z_k}$
 \begin{comment}
 $$\int \cfrac{1}{x-x_i} dx = \{y=x - x_i \} = \int \cfrac{dy}{y}= ln\abs{y}+C = ln\abs{x-x_i} + C$$
 $$\int \cfrac{1}{(x-x_i)^k} dx = \cfrac{-1}{(k-1)(x-x_i)^{k-1}} + C $$
-$$ \int \cfrac{1}{x^2 + px + q} dx = \text{\{Выделим полный квадрат\}} = \int \cfrac{1}{(x- \cfrac{p}{2})^2 + (\underbrace{q- \cfrac{p^2}{4}}_{>0})} dx = $$
+$$ \int \cfrac{1}{x^2 + px + q} dx = \text{\{Выделим полный квадрат\}} = \int \cfrac{1}{(x- \cfrac{p}{2})^2 + (\underbrace{q- \cfrac{p^2}{4}}_{a>0})} dx = $$
 $$ = \int \cfrac{1}{a^2((\cfrac{x+\cfrac{p}{2}}{a})^2 + 1)} dx =\{y =\cfrac{x + \cfrac{p}{2}}{a}\} = \int \cfrac{a}{a^2(y^2+1)} dy =\cfrac{1}{a} \int \cfrac{1}{y^2 +1} dy =$$
-$$= \cfrac{1}{a} arctg(\cfrac{x}{x} + \cfrac{p}{2a})+ C$$
+$$= \cfrac{1}{a} arctg(\cfrac{x}{a} + \cfrac{p}{2a})+ C$$
 $$ \int \cfrac{1}{1+x^2} dx = arctgx + C$$
-$$ \int \cfrac{x}{1+x^2} dx =\{ y = x^2\}= \int \cfrac{\cfrac{1}{2}dy}{y + 1}  =\cfrac{1}{2}ln(x^2 + 1) + C$$
-$$ \int \cfrac{x}{(1+x)^k} dx = \int \cfrac{\cfrac{1}{2}dy}{(1+y)^k}= -\cfrac{1}{2} \cfrac{1}{(k-1)(1+x^2)^{k-1}} + C$$
+$$ \int \cfrac{x}{1+x^2} dx =\{ y = x^2\}= \int \cfrac{\cfrac{1}{2}dy}{y + 1}  =\cfrac{1}{2}ln \abs{x^2 + 1} + C$$
+$$ \int \cfrac{x}{(1+x)^k} dx = \int \cfrac{\cfrac{1}{2}dy}{(1+y)^k}= - \cfrac{1}{2(k-1)(1+x^2)^{k-1}} + C$$
 $$ I_k(y) = \int \cfrac{1}{(1+y^2)^k} dy = \cfrac{y}{1+y^2}^k - \int y(\cfrac{1}{(1+y^2)^k})' dy= \cfrac{y}{1+y^2}^k - \int \cfrac{y(-k(1+y^2)^{k-1} 2y)}{(1+y^2)^{2k}} dy = $$
 $$= \cfrac{y}{1+y^2}^k + 2k \int \cfrac{y^2}{(1+y^2)^{k+1}} dy = \cfrac{y}{1+y^2}^k + 2k \int (\cfrac{y^2+1}{(1+y^2)^{k+1}} - \cfrac{1}{(1+y^2)^{k+1}}) dy = $$
 $$ = \cfrac{y}{1+y^2}^k + 2k I_k(y) - 2k I_{k+1}(y)$$
@@ -782,7 +782,7 @@ $R$ - рациональная функция
 
 \subsubsection{Частные случаи интегрирования тригонометрических функций}
 \begin{enumerate}
- \item $$\int sin^{2m}(x) cos^{2n}(x) dx \ \ \ \ \textit{используя формулы понижения степени получим} $$ $$  \int \cfrac{1-cos(2x)}{2}^m \cfrac{1+cos(2x)}{2}^n dx $$
+ \item $$\int sin^{2m}(x) cos^{2n}(x) dx \ \ \ \ \textit{используя формулы понижения степени получим} $$ $$  \int (\cfrac{1-cos(2x)}{2})^m (\cfrac{1+cos(2x)}{2})^n dx $$
  \item $$\int sin^{2m+1}(x) cos^{2n}(x) dx = \int sin^{2m}(x) cos^{2n+1}(x) dx = $$
        $$= - \int sin^{2m}(x) cos^{2n}(x) d \underbrace{cos(x)}_{t} = -\int (1-t^2)^m t^{2n} dt$$
  \item $\int sin(ax)cos(bx) dx = (1) $\\
@@ -917,7 +917,7 @@ $$ f:[a,b] \rightarrow R, f(x) \geq 0$$
  Площадь на кольце $R$ подмножеств $\mathbb{R}^2$ это функция $S: R \rightarrow \mathbb{R}$, такая что:
  \begin{enumerate}
   \item $\forall{A} \subset R, S(A) \geq 0$
-  \item $ \forall{A,B} \subset R, A\cap B = \emptyset \rightarrow S(A\cup B) = S(A) + S(B)$
+  \item $ \forall{A,B} \subset R, A\cap B = \emptyset \Rightarrow S(A\cup B) = S(A) + S(B)$
   \item не меняется при сдвигах, поворотах, отражениях. Т.е $L:\mathbb{R}^2 \rightarrow \mathbb{R}^2 \Rightarrow S(L(A)) = S(A)$
   \item $S([0,1]^2) = 1$
  \end{enumerate}
@@ -930,7 +930,7 @@ $$ f:[a,b] \rightarrow R, f(x) \geq 0$$
 \end{comment}
 \begin{comment}
 \begin{enumerate}
- \item Из определения $S(\subset) = 0$ \\
+ \item Из определения $S(\emptyset) = 0$ \\
        $S(A \cup \emptyset) = S(\emptyset) +  S(A)$
  \item $S([0,a] \times [0,b]) = ab$
 \end{enumerate}
@@ -1000,15 +1000,15 @@ $$\int_a^b f(x)  dx = \int_{a*}^{b} f(x)  dx = \int_a^{b*} f(x)  dx$$
 $$\text{Пусть } f:[a,b] \rightarrow \mathbb{R}$$
 $ \tau = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \} $\\
 Набор точек $\{ \xi_1, \dots ,\xi_n \}$ - подчиненён разбиению P, если $$ \xi_i\in[x_{i-1}, x_i] $$
-\begin{formula}[Сумма Римона]
+\begin{formula}[Сумма Римана]
  $$ S(f, P, \xi)=\sum_{i=1}^{n}{f(\xi_i)(x_i-x_{i-1})} $$
 \end{formula}
 \begin{definition*}
  \textit{Шаг разбиения}: $\Delta(\tau) = max_{i=1, \dots,n} (x_i - x_{i-1})$
 \end{definition*}
 \begin{definition*}
- \textit{Интеграл Римона}
- $I$ - называется интегралом Римона, если $f$ на $[a,b]$,если
+ \textit{Интеграл Римана}
+ $I$ - называется интегралом Римана,  $f$ на $[a,b]$,если
  $$ \forall{\varepsilon}>0 \exists{\delta}>0: \abs{I-S(f, \tau, \xi)}<\varepsilon $$
  $$ \int_a^b f(x)  dx = \lim_{\Delta(P) \rightarrow 0}{S(f,\tau,\xi)} $$
  Если этот предел существует и независит от $\tau, \xi$
@@ -1048,9 +1048,9 @@ $ \tau = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \} $\\
 \subsubsection{Верхние и нижние суммы Дарбу}
 \begin{definition*}
  Пусть $f: [a,b] \rightarrow \mathbb{R}$ - ограниченая функция.
- Определим \textit{верхняя сумма Дарбу}.\\
+ Определим \textit{верхнюю и нижнею суммы Дарбу}.\\
  $f$ - огр на $[a,b]$
- $$ M_k = \sup_{[x_k, x_{k-1}]}(f(x)), m_k = \inf_{[x_{k-1}, x_k]}(f(x)) $$
+ $$ M_k = \sup_{[x_k, x_{k+1}]}(f(x)), m_k = \inf_{[x_{k-1}, x_k]}(f(x)) $$
  $$S_\tau = \sum_{k=0}^{n}{M_k \Delta x_k} , s_\tau = \sum_{k=0}^{n}{m_k \Delta x_k}$$
 \end{definition*}
 
@@ -1062,11 +1062,17 @@ $ \tau = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \} $\\
 \end{property}
 \begin{property}
  $$\forall{\tau', \tau''}: s_{\tau'} \leq S_{\tau''} $$
- Нижний предел:
- $$ \sup_{\tau} (s_\tau) = \underline{I} = \int\limits_{a*}^b f(x)dx$$
- Верхний предел:
- $$ \inf_{\tau} (S_\tau) = \overline{I} = \int\limits_{a}^{b*} f(x)dx$$
 \end{property}
+\begin{definition*}
+ Нижний интегралл Дарбу:
+ $$ \sup_{\tau} (s_\tau) = \underline{I} = \int\limits_{a*}^b f(x)dx$$
+\end{definition*}
+\begin{definition*}
+ Верхний интегралл Дарбу:
+ $$ \inf_{\tau} (S_\tau) = \overline{I} = \int\limits_{a}^{b*} f(x)dx$$
+\end{definition*}
+
+
 \begin{property}
  $$\forall{\varepsilon}>0\ \exists{\tau}\ \exists{\overline{\xi}}: 0 \leq S_\tau - S(f,\tau, \overline{\xi})< \varepsilon $$
 \end{property}
@@ -1098,8 +1104,8 @@ $ \tau = \{ a= x_0 <x_1 < x_2< \dots < x_n = b \} $\\
  $$ S_\tau - \underline{I} = S_\tau - S_{\tau'} + S_{\tau'} - \underline{I} \leq (M-m)p\Delta(\tau) + S_{\tau'} - \underline{I} < \cfrac{\varepsilon}{2} + \cfrac{\varepsilon}{2} = \varepsilon $$
  Для второго \textit{УПР!}
 \end{proof}
-\begin{theorem}[Критерий Дарбу интегрируемости по Римону]\label{th:krDarbu}
- Ограниченная на $[a,b]$ ф-ция $f$ интегрируема по Римону $\Leftrightarrow \ \forall{\varepsilon}>0\ \exists{\tau}:\ S_\tau - s_\tau < \varepsilon$
+\begin{theorem}[Критерий Дарбу интегрируемости по Риману]\label{th:krDarbu}
+ Ограниченная на $[a,b]$ ф-ция $f$ интегрируема по Риману $\Leftrightarrow \ \forall{\varepsilon}>0\ \exists{\tau}:\ S_\tau - s_\tau < \varepsilon$
 \end{theorem}
 \begin{proof}
  $\Rightarrow$\\
