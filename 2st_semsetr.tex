@@ -60,6 +60,7 @@
 \author{Носорев Константин}
 \date{2019-2020\\}
 \hypersetup{
+       unicode,
        colorlinks=true, %set true if you want colored links
        linktoc=all,     %set to all if you want both sections and subsections linked
        linkcolor=blue,  %choose some color if you want links to stand out
@@ -70,9 +71,13 @@
 \numberwithin{comment*}{subsection}
 \numberwithin{consequence}{subsection}
 \numberwithin{property}{subsection}
+\makeatletter
+\newcommand*{\toccontents}{\@starttoc{toc}}
+\makeatother
 \begin{document}
 \maketitle
 \tableofcontents
+\newpage
 \section{Ряды}
 \subsection{Определение ряда. Основные свойства}
 \setcounter{subsubsection}{-1}
