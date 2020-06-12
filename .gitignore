@@ -2,6 +2,7 @@
 *.*
 /tmp
 !.gitignore
+!.gitattributes
 !pictures/*
 !*.pdf
 !2st_semsetr.tex
